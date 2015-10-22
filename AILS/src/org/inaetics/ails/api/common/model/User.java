@@ -2,6 +2,8 @@ package org.inaetics.ails.api.common.model;
 
 import java.util.UUID;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * Representation of a User.
  * 
@@ -24,11 +26,7 @@ public class User {
      */
     public User(UUID uuid, String name, byte[] mac) {
         super();
-        if (uuid == null) {
-            // TODO Change to use Google Guava's checkNotNull() method, requires library import
-            throw new IllegalArgumentException("uuid may not be null");
-        }
-        this.uuid = uuid;
+        this.uuid = checkNotNull(uuid);
         this.name = name;
         this.mac = mac;
     }
