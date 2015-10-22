@@ -19,14 +19,14 @@ public interface UserService {
      * 
      * @param user @NotNull The new User to add.
      */
-    public void add(User user);
+    void add(User user);
 
     /**
      * Retrieve a List of all Users known by this service.
      * 
      * @return A List containing all the Users.
      */
-    public List<User> getAll();
+    List<User> getAll();
 
     /**
      * Retrieve a specific User known by this service, by its unique key.
@@ -34,6 +34,6 @@ public interface UserService {
      * @param id @NotNull The uniquely identifying key of the User to retrieve.
      * @return An Optional containing the User object if found, or an empty Optional if not.
      */
-    public Optional<User> findById(Object id);
+    Optional<User> findById(Object id);
 
 }
