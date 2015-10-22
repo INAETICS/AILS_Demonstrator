@@ -10,7 +10,7 @@ import java.util.UUID;
  * @since 22-10-2015
  */
 public class Device {
-    
+
     private final String name;
     private final byte[] mac;
     private final Accuracy accuracy;
@@ -58,5 +58,5 @@ public class Device {
      */
     public Accuracy getAccuracy() {
         return accuracy;
-    }  
+    }
 }

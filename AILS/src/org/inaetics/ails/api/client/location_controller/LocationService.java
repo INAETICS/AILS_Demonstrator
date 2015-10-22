@@ -14,7 +14,7 @@ import org.inaetics.ails.api.common.model.User;
  * @since 20-10-2015
  */
 public interface LocationService {
-    
+
     /**
      * Get the user list from the server.
      * 
@@ -34,8 +34,8 @@ public interface LocationService {
      * 
      * @param user @NotNull The given user.
      * 
-     * @return An optional containing the location of the given user if the operation
-     * succeeded, otherwise returns an empty optional.
+     * @return An optional containing the location of the given user if the operation succeeded,
+     *         otherwise returns an empty optional.
      */
     public Optional<Location> queryUserLocation(User user);
 
