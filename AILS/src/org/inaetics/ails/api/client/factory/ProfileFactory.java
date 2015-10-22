@@ -2,7 +2,7 @@ package org.inaetics.ails.api.client.factory;
 
 import java.util.Optional;
 
-import org.inaetics.ails.api.model.WiFiProfile;
+import org.inaetics.ails.api.common.model.WiFiProfile;
 
 /**
  * Profile Factory

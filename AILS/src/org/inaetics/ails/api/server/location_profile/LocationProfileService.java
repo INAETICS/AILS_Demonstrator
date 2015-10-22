@@ -1,6 +1,6 @@
 package org.inaetics.ails.api.server.location_profile;
 
-import org.inaetics.ails.api.model.LocationProfile;
+import org.inaetics.ails.api.common.model.LocationProfile;
 
 /**
  * This service provides functions to add new {@link LocationProfile LocationProfiles}. These

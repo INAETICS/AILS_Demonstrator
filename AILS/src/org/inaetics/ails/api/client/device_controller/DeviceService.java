@@ -1,6 +1,6 @@
 package org.inaetics.ails.api.client.device_controller;
 
-import org.inaetics.ails.api.model.Accuracy;
+import org.inaetics.ails.api.common.model.Accuracy;
 
 /**
  * Device services

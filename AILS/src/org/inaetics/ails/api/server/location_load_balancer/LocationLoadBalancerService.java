@@ -2,7 +2,8 @@ package org.inaetics.ails.api.server.location_load_balancer;
 
 import java.util.Optional;
 import java.util.UUID;
-import org.inaetics.ails.api.model.Location;
+
+import org.inaetics.ails.api.common.model.Location;
 
 public interface LocationLoadBalancerService {
 	/** 

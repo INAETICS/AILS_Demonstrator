@@ -1,4 +1,4 @@
-package org.inaetics.ails.api.model;
+package org.inaetics.ails.api.common.model;
 
 /**
  * Accuracy describes the accuracy with which a {@link User} can be located.
