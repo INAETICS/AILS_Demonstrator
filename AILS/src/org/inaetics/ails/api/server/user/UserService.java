@@ -3,7 +3,7 @@ package org.inaetics.ails.api.server.user;
 import java.util.List;
 import java.util.Optional;
 
-import org.inaetics.ails.api.model.User;
+import org.inaetics.ails.api.common.model.User;
 
 /**
  * This service provides functions to add and get {@link User Users}.

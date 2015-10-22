@@ -3,8 +3,8 @@ package org.inaetics.ails.api.client.location_controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.inaetics.ails.api.model.Location;
-import org.inaetics.ails.api.model.User;
+import org.inaetics.ails.api.common.model.Location;
+import org.inaetics.ails.api.common.model.User;
 
 /**
  * Location Services
