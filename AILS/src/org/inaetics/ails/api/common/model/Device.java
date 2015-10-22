@@ -25,7 +25,7 @@ public class Device {
     }
 
     /**
-     * Retrieve the UUID of this User.
+     * Retrieve the UUID of this Device.
      * 
      * @return This User's UUID.
      */
@@ -45,7 +45,7 @@ public class Device {
     /**
      * Retrieve the MAC-address of this Device.
      * 
-     * @return A byte[] representation of the MAC-address of this User's device.
+     * @return A byte[] representation of the MAC-address of this Device.
      */
     public byte[] getMac() {
         return mac;
