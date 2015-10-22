@@ -8,7 +8,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Representation of a User.
  * 
  * @author nicokorthout
- * @version 0.1.0
+ * @version 0.1.1
  * @since 20-10-2015
  */
 public class User {
