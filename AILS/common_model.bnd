@@ -1,0 +1,2 @@
+Export-Package: org.inaetics.ails.api.common.model
+Bundle-Version: 0.1.0.${tstamp}

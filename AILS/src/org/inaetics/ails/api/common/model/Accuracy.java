@@ -1,4 +1,4 @@
-package org.inaetics.ails.api.model;
+package org.inaetics.ails.api.common.model;
 
 public enum Accuracy {
 	LOCATION,

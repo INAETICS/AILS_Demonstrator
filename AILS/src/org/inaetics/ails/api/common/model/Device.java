@@ -1,4 +1,4 @@
-package org.inaetics.ails.api.model;
+package org.inaetics.ails.api.common.model;
 
 import java.util.UUID;
 

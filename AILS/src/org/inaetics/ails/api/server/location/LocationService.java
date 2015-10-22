@@ -3,8 +3,8 @@ package org.inaetics.ails.api.server.location;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.inaetics.ails.api.model.Location;
-import org.inaetics.ails.api.model.User;
+import org.inaetics.ails.api.common.model.Location;
+import org.inaetics.ails.api.common.model.User;
 
 /**
  * This service provides functions to find {@link Location Locations} of {@link User Users}.
