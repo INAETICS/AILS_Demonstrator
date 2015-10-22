@@ -28,7 +28,7 @@ public interface LocationLoadBalancerService {
 	 * The implementation of this function should be thread safe but not blocking, it must support
 	 * multiple callers without corrupting its state
 	 * 
-	 * @see org.inaetics.ails.api.server.location_service.LocationService#getLocation(java.util.UUID)
+	 * @see org.inaetics.ails.api.server.location_service.LocationService#findByUserUUID(java.util.UUID)
 	 */
-	Optional<Location> getLocation(UUID uuid);
+	Optional<Location> findByUserUUID(UUID uuid);
 }
