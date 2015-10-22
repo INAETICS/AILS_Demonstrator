@@ -2,8 +2,6 @@ package org.inaetics.ails.api.model;
 
 import java.util.UUID;
 
-import org.inaetics.ails.api.client.Accuracy;
-
 /**
  * Representation of a Device.
  * 
