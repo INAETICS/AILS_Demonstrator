@@ -6,7 +6,7 @@ import java.util.UUID;
  * Representation of a User.
  * 
  * @author nicokorthout
- * @version 1.0
+ * @version 0.1.0
  * @since 20-10-2015
  */
 public class User {
