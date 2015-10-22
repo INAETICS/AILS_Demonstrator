@@ -1,78 +1,48 @@
 package org.inaetics.ails.api.common.model;
 
+import java.time.Instant;
+import java.util.List;
+
 /**
- * Representation of a WiFi
+ * Representation of a WiFi Profile.
  * 
  * @author Jessy Naus
- * @version 0.1.0
+ * @version 0.2.0
  * @since 22-10-2015
  */
 public class WiFiProfile {
-    private final String SSID;
-    private final byte[] mac;
-    private final int rssi;
-    private final int networkId;
-
+    
+    private final Instant creationDate;
+    private final List<AccessPointMeasurement> accessPointMeasurements;
+    
     /**
      * Constructor for WiFiProfile.
      * 
-     * @param SSID @NotNull SSID of the access point.
-     * @param mac @NotNull MAC address of the access point.
-     * @param rssi Rssi value of the access point.
-     * @param networkId Network ID of the access point.
-     * @param IPaddress IP address of the access point.
+     * @param creationDate Instant of the creation date of this WiFiProfile.
+     * @param accessPointMeasurements List of AccessPointMeasurements belonging to this WiFiProfile.
      */
-    public WiFiProfile(String SSID, byte[] mac, int rssi, int networkId) {
+    public WiFiProfile(Instant creationDate, List<AccessPointMeasurement> accessPointMeasurements) {
         super();
-
-        if (SSID == null) {
-            // TODO Change to use Google Guava's checkNotNull() method, requires library import
-            throw new IllegalArgumentException("uuid may not be null");
-        }
-        if (mac == null) {
-            // TODO Change to use Google Guava's checkNotNull() method, requires library import
-            throw new IllegalArgumentException("uuid may not be null");
-        }
-
-        this.SSID = SSID;
-        this.mac = mac;
-        this.rssi = rssi;
-        this.networkId = networkId;
+        this.creationDate = creationDate;
+        this.accessPointMeasurements = accessPointMeasurements;
     }
 
     /**
-     * Retrieve the SSID of this WiFi Profile.
+     * Return the Instant of the creation date of this WiFiProfile.
      * 
-     * @return This WiFi Profile's SSID.
-     */    
-    public String getSSID() {
-        return SSID;
-    }
-
-    /**
-     * Retrieve the MAC-address of this WiFi Profile.
-     * 
-     * @return A byte[] representation of the MAC-address of this User's device.
+     * @return the creationDate
      */
-    public byte[] getMac() {
-        return mac;
+    public Instant getCreationDate() {
+        return creationDate;
     }
 
     /**
-     * Retrieve the Rssi value of this WiFi Profile.
+     * Retrieve the List of AccessPointMeasurements.
      * 
-     * @return This WiFi Profile's Rssi value.
-     */ 
-    public int getRssi() {
-        return rssi;
+     * @return the accessPointMeasurements
+     */
+    public List<AccessPointMeasurement> getAccessPointMeasurements() {
+        return accessPointMeasurements;
     }
-
-    /**
-     * Retrieve the network ID of this WiFi Profile.
-     * 
-     * @return This WiFi Profile's network ID.
-     */ 
-    public int getNetworkId() {
-        return networkId;
-    }
+    
 }

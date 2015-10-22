@@ -4,10 +4,11 @@ package org.inaetics.ails.api.common.model;
  * Representation of a Location.
  * 
  * @author Jessy Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 22-10-2015
  */
 public class Location {
+    
     private final String area;
     private final String building;
     private final String site;
@@ -65,4 +66,5 @@ public class Location {
     public String getOrganization() {
         return organization;
     }
+    
 }
