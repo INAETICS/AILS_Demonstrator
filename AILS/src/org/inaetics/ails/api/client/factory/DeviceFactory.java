@@ -1,6 +1,6 @@
 package org.inaetics.ails.api.client.factory;
 
-import org.inaetics.ails.api.model.Device;
+import org.inaetics.ails.api.common.model.Device;
 
 /**
  * Device Factory
