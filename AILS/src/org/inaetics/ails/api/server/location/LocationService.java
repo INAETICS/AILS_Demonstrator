@@ -9,7 +9,7 @@ import org.inaetics.ails.api.common.model.User;
 /**
  * This service provides functions to find {@link Location Locations} of {@link User Users}.
  * 
- * @author nicokorthout
+ * @author L. Buit, N. Korthout, J. Naus
  * @version 0.1.1
  * @since 22-10-2015
  */

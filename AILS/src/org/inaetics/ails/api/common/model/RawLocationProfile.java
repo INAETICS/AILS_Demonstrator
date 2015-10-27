@@ -6,7 +6,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Representation of raw location profile data. Consists of a WiFi profile and a location
  * description.
  * 
- * @author nicokorthout
+ * @author L. Buit, N. Korthout, J. Naus
  * @version 0.1.0
  * @since 22-10-2015
  */

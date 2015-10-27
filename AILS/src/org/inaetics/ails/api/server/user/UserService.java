@@ -8,7 +8,7 @@ import org.inaetics.ails.api.common.model.User;
 /**
  * This service provides functions to add and get {@link User Users}.
  * 
- * @author nicokorthout
+ * @author L. Buit, N. Korthout, J. Naus
  * @version 0.1.0
  * @since 20-10-2015
  */
@@ -35,5 +35,4 @@ public interface UserService {
      * @return An Optional containing the User object if found, or an empty Optional if not.
      */
     Optional<User> findById(Object id);
-
 }

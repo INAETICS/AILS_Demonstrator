@@ -3,7 +3,7 @@ package org.inaetics.ails.api.common.model;
 /**
  * Representation of a Location.
  * 
- * @author Jessy Naus
+ * @author L. Buit, N. Korthout, J. Naus
  * @version 0.1.1
  * @since 22-10-2015
  */

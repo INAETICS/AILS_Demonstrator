@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Representation of a WiFi Profile.
  * 
- * @author Jessy Naus
+ * @author L. Buit, N. Korthout, J. Naus
  * @version 0.2.0
  * @since 22-10-2015
  */

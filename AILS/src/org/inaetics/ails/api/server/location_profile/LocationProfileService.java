@@ -6,7 +6,7 @@ import org.inaetics.ails.api.common.model.RawLocationProfile;
  * This service provides functions to add new {@link RawLocationProfile LocationProfiles}. These
  * LocationProfiles can be used by the {@link LocationService} to locate a {@link User}'s device.
  * 
- * @author nicokorthout
+ * @author L. Buit, N. Korthout, J. Naus
  * @version 0.1.0
  * @since 22-10-2015
  */
