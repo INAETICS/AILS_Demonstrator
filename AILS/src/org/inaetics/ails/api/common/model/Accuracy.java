@@ -8,9 +8,5 @@ package org.inaetics.ails.api.common.model;
  * @since 20-10-2015
  */
 public enum Accuracy {
-	AREA,
-	BUILDING,
-	SITE,
-	ORGANIZATION,
-	OFF
+    AREA, BUILDING, SITE, ORGANIZATION, OFF
 }

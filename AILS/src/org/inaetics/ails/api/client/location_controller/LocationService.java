@@ -34,8 +34,8 @@ public interface LocationService {
      * 
      * @param user @NotNull The given {@link User}.
      * 
-     * @return An optional containing the {@link Location} of the given user if the operation succeeded,
-     *         otherwise returns an empty optional.
+     * @return An optional containing the {@link Location} of the given user if the operation
+     *         succeeded, otherwise returns an empty optional.
      */
     public Optional<Location> queryUserLocation(User user);
 

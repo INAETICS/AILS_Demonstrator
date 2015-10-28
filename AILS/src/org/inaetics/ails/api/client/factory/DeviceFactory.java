@@ -29,7 +29,7 @@ public interface DeviceFactory {
      * Update a device.
      * 
      * @param device @NotNull the device to update.
-     *  
+     * 
      * @return The current device's state.
      */
     public Device updateDevice(Device device);

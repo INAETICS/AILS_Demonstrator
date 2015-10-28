@@ -10,12 +10,12 @@ import com.google.common.base.Preconditions;
  * @since 22-10-2015
  */
 public class Location {
-    
+
     private final String area;
     private final String building;
     private final String site;
     private final String organization;
-   
+
     /**
      * Constructor of a Location.
      * 
@@ -36,7 +36,7 @@ public class Location {
      * Retrieve the area of this Location.
      * 
      * @return This Location's area.
-     */ 
+     */
     public String getArea() {
         return area;
     }
@@ -45,7 +45,7 @@ public class Location {
      * Retrieve the building of this Location.
      * 
      * @return This Location's building.
-     */ 
+     */
     public String getBuilding() {
         return building;
     }
@@ -54,7 +54,7 @@ public class Location {
      * Retrieve the site of this Location.
      * 
      * @return This Location's site.
-     */ 
+     */
     public String getSite() {
         return site;
     }
@@ -63,9 +63,9 @@ public class Location {
      * Retrieve the organization of this Location.
      * 
      * @return This Location's organization.
-     */ 
+     */
     public String getOrganization() {
         return organization;
     }
-    
+
 }

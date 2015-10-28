@@ -23,5 +23,5 @@ public interface LocationProvider {
      * @return An Optional containing the Location object if found, or an empty Optional if not.
      */
     Optional<Location> locate(UUID uuid);
-    
+
 }

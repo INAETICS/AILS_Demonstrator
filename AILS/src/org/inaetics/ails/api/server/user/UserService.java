@@ -37,7 +37,7 @@ public interface UserService {
      * @return An Optional containing the User object if found, or an empty Optional if not.
      */
     Optional<User> find(UUID uuid);
-    
+
     /**
      * Find the Location of a {@link User}.
      * 

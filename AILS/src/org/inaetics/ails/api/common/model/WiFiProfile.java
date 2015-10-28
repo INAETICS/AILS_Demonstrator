@@ -13,7 +13,7 @@ import com.google.common.base.Preconditions;
  * @since 22-10-2015
  */
 public class WiFiProfile {
-    
+
     private final Instant creationDate;
     private final List<AccessPointMeasurement> accessPointMeasurements;
 
@@ -48,5 +48,5 @@ public class WiFiProfile {
     public List<AccessPointMeasurement> getAccessPointMeasurements() {
         return accessPointMeasurements;
     }
-    
+
 }
