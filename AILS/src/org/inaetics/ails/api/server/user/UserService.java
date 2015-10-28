@@ -11,7 +11,7 @@ import org.inaetics.ails.api.common.model.User;
  * This service provides functions to add and get {@link User Users}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.2.0
  * @since 20-10-2015
  */
 public interface UserService {
