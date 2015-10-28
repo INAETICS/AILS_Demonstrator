@@ -2,13 +2,13 @@ package org.inaetics.ails.api.common.model;
 
 import java.util.UUID;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import com.google.common.base.Preconditions;
 
 /**
  * Representation of a User.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
+ * @version 0.1.2
  * @since 20-10-2015
  */
 public class User {
@@ -26,7 +26,7 @@ public class User {
      */
     public User(UUID uuid, String name, byte[] mac) {
         super();
-        this.uuid = checkNotNull(uuid);
+        this.uuid = Preconditions.checkNotNull(uuid);
         this.name = name;
         this.mac = mac;
     }

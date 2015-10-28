@@ -1,12 +1,12 @@
 package org.inaetics.ails.api.common.model;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import com.google.common.base.Preconditions;
 
 /**
  * Representation of an access point. Can be used for location measurements.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 22-10-2015
  */
 public class AccessPoint {
@@ -20,7 +20,7 @@ public class AccessPoint {
      */
     public AccessPoint(byte[] mac) {
         super();
-        this.mac = checkNotNull(mac);
+        this.mac = Preconditions.checkNotNull(mac);
     }
 
     /**

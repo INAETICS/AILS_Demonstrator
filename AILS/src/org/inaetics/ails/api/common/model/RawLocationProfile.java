@@ -1,13 +1,13 @@
 package org.inaetics.ails.api.common.model;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import com.google.common.base.Preconditions;
 
 /**
  * Representation of raw location profile data. Consists of a WiFi profile and a location
  * description.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 22-10-2015
  */
 public class RawLocationProfile {
@@ -23,8 +23,8 @@ public class RawLocationProfile {
      */
     public RawLocationProfile(WiFiProfile wifiProfile, Location location) {
         super();
-        this.wifiProfile = checkNotNull(wifiProfile);
-        this.location = checkNotNull(location);
+        this.wifiProfile = Preconditions.checkNotNull(wifiProfile);
+        this.location = Preconditions.checkNotNull(location);
     }
 
     /**

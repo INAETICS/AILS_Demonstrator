@@ -1,13 +1,13 @@
 package org.inaetics.ails.api.common.model;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import com.google.common.base.Preconditions;
 
 /**
- * Representation of raw location profile data. Consists of a WiFi profile and a location
- * description.
+ * A UserWiFiProfile can used to store a {@link WiFiProfile} that specifically belongs to a
+ * {@link User}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 28-10-2015
  */
 public class UserWiFiProfile {
@@ -23,8 +23,8 @@ public class UserWiFiProfile {
      */
     public UserWiFiProfile(WiFiProfile wifiProfile, User user) {
         super();
-        this.wifiProfile = checkNotNull(wifiProfile);
-        this.user = checkNotNull(user);
+        this.wifiProfile = Preconditions.checkNotNull(wifiProfile);
+        this.user = Preconditions.checkNotNull(user);
     }
 
     /**

@@ -1,5 +1,7 @@
 package org.inaetics.ails.api.common.model;
 
+import com.google.common.base.Preconditions;
+
 /**
  * Representation of a Location.
  * 
@@ -17,18 +19,17 @@ public class Location {
     /**
      * Constructor of a Location.
      * 
-     * @param area The associated area of a Location.
-     * @param building The associated building of a Location.
-     * @param site The associated site of a Location.
-     * @param organization The associated organization of a Location.
+     * @param area @NotNull The associated area of a Location.
+     * @param building @NotNull The associated building of a Location.
+     * @param site @NotNull The associated site of a Location.
+     * @param organization @NotNull The associated organization of a Location.
      */
     public Location(String area, String building, String site, String organization) {
         super();
-        
-        this.area = area;
-        this.building = building;
-        this.site = site;
-        this.organization = organization;
+        this.area = Preconditions.checkNotNull(area);
+        this.building = Preconditions.checkNotNull(building);
+        this.site = Preconditions.checkNotNull(site);
+        this.organization = Preconditions.checkNotNull(organization);
     }
 
     /**

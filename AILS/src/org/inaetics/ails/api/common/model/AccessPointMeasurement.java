@@ -1,13 +1,13 @@
 package org.inaetics.ails.api.common.model;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import com.google.common.base.Preconditions;
 
 /**
  * Representation of an access point measurement. This describes the measurement of access points by
  * a single device.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 22-10-2015
  */
 public class AccessPointMeasurement {
@@ -21,7 +21,7 @@ public class AccessPointMeasurement {
      */
     public AccessPointMeasurement(AccessPoint accessPoint) {
         super();
-        this.accessPoint = checkNotNull(accessPoint);
+        this.accessPoint = Preconditions.checkNotNull(accessPoint);
     }
 
     /**
