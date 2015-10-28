@@ -5,7 +5,7 @@ import java.util.UUID;
 /**
  * Representation of a Device.
  * 
- * @author Jessy Naus
+ * @author L. Buit, N. Korthout, J. Naus
  * @version 0.1.0
  * @since 22-10-2015
  */
@@ -25,7 +25,7 @@ public class Device {
     }
 
     /**
-     * Retrieve the UUID of this User.
+     * Retrieve the UUID of this Device.
      * 
      * @return This User's UUID.
      */
@@ -45,7 +45,7 @@ public class Device {
     /**
      * Retrieve the MAC-address of this Device.
      * 
-     * @return A byte[] representation of the MAC-address of this User's device.
+     * @return A byte[] representation of the MAC-address of this Device.
      */
     public byte[] getMac() {
         return mac;

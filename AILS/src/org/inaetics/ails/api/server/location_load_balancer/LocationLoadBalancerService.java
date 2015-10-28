@@ -5,6 +5,12 @@ import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.Location;
 
+/**
+ * 
+ * @author L. Buit, N. Korthout, J. Naus
+ * @version 0.1.0
+ * @since 22-10-2015
+ */
 public interface LocationLoadBalancerService {
 	/** 
 	 * Adds or removes servers from the system, if a negative number is 

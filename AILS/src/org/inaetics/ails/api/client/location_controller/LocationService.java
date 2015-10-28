@@ -9,14 +9,14 @@ import org.inaetics.ails.api.common.model.User;
 /**
  * Location Services
  * 
- * @author Jessy Naus
+ * @author L. Buit, N. Korthout, J. Naus
  * @version 0.1.0
  * @since 20-10-2015
  */
 public interface LocationService {
 
     /**
-     * Get the user list from the server.
+     * Get the {@link User} list from the server.
      * 
      * @return List of users.
      */
@@ -30,19 +30,19 @@ public interface LocationService {
     public void displayUserlist(List<User> users);
 
     /**
-     * Get the location of a given user.
+     * Get the location of a given {@link User}.
      * 
-     * @param user @NotNull The given user.
+     * @param user @NotNull The given {@link User}.
      * 
-     * @return An optional containing the location of the given user if the operation succeeded,
+     * @return An optional containing the {@link Location} of the given user if the operation succeeded,
      *         otherwise returns an empty optional.
      */
     public Optional<Location> queryUserLocation(User user);
 
     /**
-     * Display a location.
+     * Display a {@link Location}.
      * 
-     * @param location Location to be displayed.
+     * @param location {@link Location} to be displayed.
      */
     public void displayLocation(Location location);
 }

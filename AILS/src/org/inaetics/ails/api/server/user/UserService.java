@@ -10,7 +10,7 @@ import org.inaetics.ails.api.common.model.User;
 /**
  * This service provides functions to add and get {@link User Users}.
  * 
- * @author nicokorthout
+ * @author L. Buit, N. Korthout, J. Naus
  * @version 0.1.0
  * @since 20-10-2015
  */
@@ -44,5 +44,6 @@ public interface UserService {
      * @param id @NotNull Uniqely identifying ID that 
      */
     Optional<Location> locateUser(UUID id);
+
 
 }
