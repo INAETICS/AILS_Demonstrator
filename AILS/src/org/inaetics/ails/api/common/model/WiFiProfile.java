@@ -9,7 +9,7 @@ import com.google.common.base.Preconditions;
  * Representation of a WiFi Profile.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.2.1
+ * @version 0.2.2
  * @since 22-10-2015
  */
 public class WiFiProfile {
@@ -26,8 +26,9 @@ public class WiFiProfile {
      */
     public WiFiProfile(Instant creationDate, List<AccessPointMeasurement> accessPointMeasurements) {
         super();
-        this.creationDate = Preconditions.checkNotNull(creationDate);
-        this.accessPointMeasurements = Preconditions.checkNotNull(accessPointMeasurements);
+        this.creationDate = Preconditions.checkNotNull(creationDate, "creationDate is not set");
+        this.accessPointMeasurements = Preconditions.checkNotNull(accessPointMeasurements,
+                "accessPointMeasurements is not set");
     }
 
     /**

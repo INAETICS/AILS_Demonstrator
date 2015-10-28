@@ -7,7 +7,7 @@ import com.google.common.base.Preconditions;
  * {@link User}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
+ * @version 0.1.2
  * @since 28-10-2015
  */
 public class UserWiFiProfile {
@@ -23,8 +23,8 @@ public class UserWiFiProfile {
      */
     public UserWiFiProfile(WiFiProfile wifiProfile, User user) {
         super();
-        this.wifiProfile = Preconditions.checkNotNull(wifiProfile);
-        this.user = Preconditions.checkNotNull(user);
+        this.wifiProfile = Preconditions.checkNotNull(wifiProfile, "wifiProfile is not set");
+        this.user = Preconditions.checkNotNull(user, "user is not set");
     }
 
     /**

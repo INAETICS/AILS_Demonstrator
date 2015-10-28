@@ -21,7 +21,7 @@ public class AccessPointMeasurement {
      */
     public AccessPointMeasurement(AccessPoint accessPoint) {
         super();
-        this.accessPoint = Preconditions.checkNotNull(accessPoint);
+        this.accessPoint = Preconditions.checkNotNull(accessPoint, "accesspoint is not set");
     }
 
     /**

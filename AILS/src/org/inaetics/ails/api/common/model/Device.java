@@ -8,7 +8,7 @@ import com.google.common.base.Preconditions;
  * Representation of a Device.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
+ * @version 0.1.2
  * @since 22-10-2015
  */
 public class Device {
@@ -34,7 +34,7 @@ public class Device {
         super();
         this.name = Preconditions.checkNotNull(name, "name is not set");
         this.mac = Preconditions.checkNotNull(mac, "mac is not set");
-        this.uuid = Preconditions.checkNotNull(uuid);
+        this.uuid = Preconditions.checkNotNull(uuid, "uuid is not set");
         this.accuracy = accuracy != null ? accuracy : DEFAULT_ACCURACY;
     }
 

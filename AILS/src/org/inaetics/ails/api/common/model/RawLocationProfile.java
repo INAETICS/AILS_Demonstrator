@@ -7,7 +7,7 @@ import com.google.common.base.Preconditions;
  * description.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
+ * @version 0.1.2
  * @since 22-10-2015
  */
 public class RawLocationProfile {
@@ -23,8 +23,8 @@ public class RawLocationProfile {
      */
     public RawLocationProfile(WiFiProfile wifiProfile, Location location) {
         super();
-        this.wifiProfile = Preconditions.checkNotNull(wifiProfile);
-        this.location = Preconditions.checkNotNull(location);
+        this.wifiProfile = Preconditions.checkNotNull(wifiProfile, "wifiProfile is not set");
+        this.location = Preconditions.checkNotNull(location, "location is not set");
     }
 
     /**

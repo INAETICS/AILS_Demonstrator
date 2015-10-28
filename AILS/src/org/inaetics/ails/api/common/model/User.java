@@ -8,7 +8,7 @@ import com.google.common.base.Preconditions;
  * Representation of a User.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.2
+ * @version 0.1.3
  * @since 20-10-2015
  */
 public class User {
@@ -26,7 +26,7 @@ public class User {
      */
     public User(UUID uuid, String name, byte[] mac) {
         super();
-        this.uuid = Preconditions.checkNotNull(uuid);
+        this.uuid = Preconditions.checkNotNull(uuid, "uuid is not set");
         this.name = name;
         this.mac = mac;
     }

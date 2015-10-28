@@ -6,7 +6,7 @@ import com.google.common.base.Preconditions;
  * Representation of a Location.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
+ * @version 0.1.2
  * @since 22-10-2015
  */
 public class Location {
@@ -26,10 +26,10 @@ public class Location {
      */
     public Location(String area, String building, String site, String organization) {
         super();
-        this.area = Preconditions.checkNotNull(area);
-        this.building = Preconditions.checkNotNull(building);
-        this.site = Preconditions.checkNotNull(site);
-        this.organization = Preconditions.checkNotNull(organization);
+        this.area = Preconditions.checkNotNull(area, "area is not set");
+        this.building = Preconditions.checkNotNull(building, "building is not set");
+        this.site = Preconditions.checkNotNull(site, "site is not set");
+        this.organization = Preconditions.checkNotNull(organization, "organization is not set");
     }
 
     /**
