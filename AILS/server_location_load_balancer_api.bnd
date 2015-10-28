@@ -1,2 +1,0 @@
-Bundle-Version: 0.1.0.${tstamp}
-Export-Package: org.inaetics.ails.api.server.location_load_balancer
