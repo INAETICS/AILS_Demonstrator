@@ -1,4 +1,4 @@
-package org.inaetics.ails.api.server.location;
+package org.inaetics.ails.api.server.location.provider;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -7,13 +7,13 @@ import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.User;
 
 /**
- * This service provides functions to find {@link Location Locations} of {@link User Users}.
+ * A LocationProvider provides a way to find a {@link Location}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
- * @since 22-10-2015
+ * @version 0.1.0
+ * @since 28-10-2015
  */
-public interface LocationService {
+public interface LocationProvider {
 
     /**
      * Find the Location of a {@link User}.
@@ -22,6 +22,6 @@ public interface LocationService {
      *        Location.
      * @return An Optional containing the Location object if found, or an empty Optional if not.
      */
-    Optional<Location> findByUserUUID(UUID uuid);
-
+    Optional<Location> locate(UUID uuid);
+    
 }

@@ -11,7 +11,7 @@ import org.inaetics.ails.api.common.model.User;
  * This service provides functions to add and get {@link User Users}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.2.0
+ * @version 1.0.0
  * @since 20-10-2015
  */
 public interface UserService {
@@ -31,19 +31,21 @@ public interface UserService {
     List<User> getAll();
 
     /**
-     * Retrieve a specific User known by this service, by its unique key.
+     * Retrieve a specific User known by this service, identified by its UUID.
      * 
-     * @param id @NotNull The uniquely identifying key of the User to retrieve.
+     * @param uuid @NotNull Universally unique identifier identifying the User to retrieve.
      * @return An Optional containing the User object if found, or an empty Optional if not.
      */
-    Optional<User> findById(Object id);
+    Optional<User> find(UUID uuid);
     
     /**
-     * Given a UUID of a user, retrieve its location
+     * Find the Location of a {@link User}.
      * 
-     * @param id @NotNull Uniqely identifying ID that 
+     * @param uuid @NotNull Universally unique identifier identifying the User of which to find the
+     *        Location.
+     * @return An Optional containing the Location object if found, or an empty Optional if not.
      */
-    Optional<Location> locateUser(UUID id);
+    Optional<Location> locate(UUID uuid);
 
 
 }
