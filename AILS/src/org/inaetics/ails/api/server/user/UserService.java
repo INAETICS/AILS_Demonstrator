@@ -2,7 +2,9 @@ package org.inaetics.ails.api.server.user;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
+import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.User;
 
 /**
@@ -35,5 +37,12 @@ public interface UserService {
      * @return An Optional containing the User object if found, or an empty Optional if not.
      */
     Optional<User> findById(Object id);
+    
+    /**
+     * Given a UUID of a user, retrieve its location
+     * 
+     * @param id @NotNull Uniqely identifying ID that 
+     */
+    Optional<Location> locateUser(UUID id);
 
 }
