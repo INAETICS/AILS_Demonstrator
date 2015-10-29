@@ -1,4 +1,4 @@
-package org.inaetics.ails.api.server.user;
+package org.inaetics.ails.api.server.user.service;
 
 import java.util.List;
 import java.util.Optional;
