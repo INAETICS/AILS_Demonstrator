@@ -1,3 +1,5 @@
+-dsannotations: *
+Bundle-Version: 0.0.0.${tstamp}
+Private-Package: org.inaetics.ails.impl.server.user.service
 Export-Package: org.inaetics.ails.api.server.user.service
-Bundle-Version: 0.1.0.${tstamp}
 Bundle-Activator: org.inaetics.ails.impl.server.user.service.UserServiceActivator

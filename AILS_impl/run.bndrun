@@ -6,7 +6,7 @@
 
 -runbundles: \
 	AILS.common_model;version=snapshot,\
-	AILS.server_user_service_api;version=snapshot,\
+	AILS_impl.service_user_service_impl;version=snapshot,\
 	com.google.guava;version='[13.0.1,13.0.2)',\
 	com.google.guava;version='[18.0.0,18.0.1)',\
 	org.apache.felix.gogo.command;version='[0.14.0,0.14.1)',\
@@ -16,6 +16,6 @@
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
-	osgi.identity;filter:='(osgi.identity=AILS.server_user_service_api)',\
 	osgi.identity;filter:='(osgi.identity=com.google.guava)',\
-	osgi.identity;filter:='(osgi.identity=AILS.common_model)'
+	osgi.identity;filter:='(osgi.identity=AILS_impl.service_user_service_impl)'
+-resolve: auto

@@ -1,0 +1,17 @@
+-buildpath: \
+	osgi.core,\
+	osgi.cmpn;version=5.0.0,\
+	AILS.client_device_controller_api;version=latest,\
+	AILS.client_learning_controller_api;version=latest,\
+	AILS.client_location_controller_api;version=latest,\
+	AILS.client_profile_factory_api;version=latest,\
+	AILS.common_model;version=latest,\
+	AILS.server_location_api;version=latest,\
+	AILS.server_location_profile_api;version=latest,\
+	AILS.server_location_provider_query;version=latest,\
+	AILS.server_location_provider_user;version=latest,\
+	AILS.server_streaming_profile_api;version=latest,\
+	AILS.server_user_datastore_api;version=latest,\
+	AILS.server_user_extendeddatastore_api;version=latest,\
+	AILS.server_user_service_api;version=latest
+-sub: *.bnd
