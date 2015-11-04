@@ -23,11 +23,4 @@ public class UserServiceActivator extends DependencyActivatorBase {
                 .add(createServiceDependency().setService(LocationProvider.class).setRequired(true))
                 .add(createServiceDependency().setService(UserDataStore.class).setRequired(true)));
     }
-
-    @Override
-    public void destroy(BundleContext bc, DependencyManager dm) throws Exception {
-        // TODO Auto-generated method stub
-
-    }
-
 }
