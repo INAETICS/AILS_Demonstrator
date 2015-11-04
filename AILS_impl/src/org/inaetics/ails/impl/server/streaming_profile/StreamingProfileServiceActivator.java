@@ -22,10 +22,4 @@ public class StreamingProfileServiceActivator extends DependencyActivatorBase {
                 .setImplementation(StreamingProfileServiceImpl.class)
                 .add(createServiceDependency().setService(BufferService.class).setRequired(true)));
     }
-
-    @Override
-    public void destroy(BundleContext context, DependencyManager dm) throws Exception {
-        // TODO Auto-generated method stub
-
-    }
 }

@@ -11,18 +11,18 @@ import org.inaetics.ails.api.server.user.datastore.UserDataStore;
 import org.inaetics.ails.api.server.user.service.UserService;
 
 /**
- * Implementation of UserService. 
+ * Implementation of UserService.
  * 
  * @author L. Buit, N. Korthout, J. Naus
  * @version 0.1.0
  * @since 04-11-2015
  */
 public class UserServiceImpl implements UserService {
-    
+
     // Injected by Dependency Manager
     private volatile LocationProvider locationProvider;
     private volatile UserDataStore userDataStore;
-    
+
     @Override
     public void add(User user) {
         userDataStore.storeUser(user);
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAll() {
-        throw new UnsupportedOperationException("UserServiceImpl.getAll() not yet implemented."); 
+        throw new UnsupportedOperationException("UserServiceImpl.getAll() not yet implemented.");
     }
 
     @Override

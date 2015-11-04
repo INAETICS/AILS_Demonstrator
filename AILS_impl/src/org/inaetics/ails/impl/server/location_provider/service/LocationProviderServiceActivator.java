@@ -7,19 +7,11 @@ import org.osgi.framework.BundleContext;
 
 public class LocationProviderServiceActivator extends DependencyActivatorBase {
 
-	@Override
-	public void init(BundleContext ctx, DependencyManager dm) throws Exception {
-        dm.add(createComponent()
-                .setInterface(LocationProvider.class.getName(), null)
+    @Override
+    public void init(BundleContext ctx, DependencyManager dm) throws Exception {
+        dm.add(createComponent().setInterface(LocationProvider.class.getName(), null)
                 .setImplementation(UserLocationProviderService.class));
         // TODO: Depend on User Extended data
-	}
-
-	@Override
-	public void destroy(BundleContext arg0, DependencyManager arg1) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
+    }
 
 }

@@ -8,10 +8,10 @@ import org.inaetics.ails.api.server.location.provider.LocationProvider;
 
 public class UserLocationProviderService implements LocationProvider {
 
-	@Override
-	public Optional<Location> locate(UUID uuid) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
-	}
+    @Override
+    public Optional<Location> locate(UUID uuid) {
+        // TODO Auto-generated method stub
+        return Optional.empty();
+    }
 
 }

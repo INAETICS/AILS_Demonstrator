@@ -15,20 +15,18 @@ public class BufferServiceImpl implements BufferService<UserWiFiProfile> {
 
     @Override
     public void add(UserWiFiProfile e) {
-        // TODO Auto-generated method stub
-
+        throw new UnsupportedOperationException(
+                "BufferServiceImpl.add(UserWiFiProfile e) not yet implemented.");
     }
 
     @Override
     public UserWiFiProfile remove() {
-        // TODO Auto-generated method stub
-        return null;
+        throw new UnsupportedOperationException("BufferServiceImpl.remove() not yet implemented.");
     }
 
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+        throw new UnsupportedOperationException("BufferServiceImpl.size() not yet implemented.");
     }
 
 }
