@@ -1,20 +1,27 @@
 package org.inaetics.ails.impl.server.user.service;
 
-import org.osgi.framework.BundleActivator;
+import org.apache.felix.dm.DependencyActivatorBase;
+import org.apache.felix.dm.DependencyManager;
+import org.inaetics.ails.api.server.location.provider.LocationProvider;
+import org.inaetics.ails.api.server.user.service.UserService;
 import org.osgi.framework.BundleContext;
 
-public class UserServiceActivator implements BundleActivator {
+public class UserServiceActivator extends DependencyActivatorBase {
 
     @Override
-    public void start(BundleContext context) throws Exception {
-        // TODO Auto-generated method stub
-        System.out.println("Running for my life!");
+    public void init(BundleContext bc, DependencyManager dm) throws Exception {
+        dm.add(createComponent()
+                .setInterface(UserService.class.getName(), null)
+                .setImplementation(UserServiceImpl.class)
+                .add(createServiceDependency()
+                        .setService(LocationProvider.class)
+                        .setRequired(true)));
     }
 
     @Override
-    public void stop(BundleContext context) throws Exception {
+    public void destroy(BundleContext bc, DependencyManager dm) throws Exception {
         // TODO Auto-generated method stub
-        System.out.println("He's dead, Jim!");
+
     }
 
 }

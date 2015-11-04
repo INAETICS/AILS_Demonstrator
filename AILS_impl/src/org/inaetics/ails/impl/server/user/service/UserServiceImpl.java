@@ -6,10 +6,19 @@ import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.User;
+import org.inaetics.ails.api.server.location.provider.LocationProvider;
 import org.inaetics.ails.api.server.user.service.UserService;
 
 public class UserServiceImpl implements UserService {
-
+    
+    // Injected by Dependency Manager
+    private volatile LocationProvider locationProvider;
+    
+    public UserServiceImpl() {
+        // TODO Auto-generated constructor stub
+        System.out.println("constructing UserServiceImpl");
+    }
+    
     @Override
     public void add(User user) {
         // TODO Auto-generated method stub
@@ -30,8 +39,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<Location> locate(UUID uuid) {
-        // TODO Auto-generated method stub
-        return null;
+        return locationProvider.locate(uuid);
     }
 
 }
