@@ -15,5 +15,11 @@ public class LocationProviderServiceActivator extends DependencyActivatorBase {
         // TODO: Depend on User Extended data
 	}
 
+	@Override
+	public void destroy(BundleContext arg0, DependencyManager arg1) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
