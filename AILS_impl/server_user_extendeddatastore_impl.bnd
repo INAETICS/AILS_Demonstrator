@@ -1,0 +1,4 @@
+Private-Package: org.inaetics.ails.impl.server.user.extendeddatastore
+Bundle-Activator: org.inaetics.ails.impl.server.user.extendeddatastore.UserExtendedDataStoreActivator
+Export-Package: org.inaetics.ails.impl.server.user.extendeddatastore
+Bundle-Version: 0.0.0.${tstamp}

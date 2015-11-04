@@ -11,7 +11,7 @@ import org.osgi.framework.BundleContext;
  * Activator for UserService. Injects dependencies into UserService.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 04-11-2015
  */
 public class UserServiceActivator extends DependencyActivatorBase {
@@ -22,12 +22,6 @@ public class UserServiceActivator extends DependencyActivatorBase {
                 .setImplementation(UserServiceImpl.class)
                 .add(createServiceDependency().setService(LocationProvider.class).setRequired(true))
                 .add(createServiceDependency().setService(UserDataStore.class).setRequired(true)));
-    }
-
-    @Override
-    public void destroy(BundleContext bc, DependencyManager dm) throws Exception {
-        // TODO Auto-generated method stub
-
     }
 
 }
