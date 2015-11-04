@@ -6,10 +6,19 @@ import org.inaetics.ails.impl.server.buffer.BufferServiceImpl;
 
 import com.google.common.base.Preconditions;
 
+/**
+ * The StreamingProfileServiceImpl class provides an implementation of the
+ * {@link StreamingProvileService StreamingProfileService}
+ * 
+ * @author L. Buit, N. Korthout, J. Naus
+ * @version 0.1.0
+ * @since 04-11-2015
+ */
 public class StreamingProfileServiceImpl implements StreamingProfileService {
 
+    // Injected by Dependency Manager
     public volatile BufferServiceImpl buffer;
-    
+
     /**
      * This constructs a Streaming Profile Service with a buffer.
      * 
@@ -18,7 +27,7 @@ public class StreamingProfileServiceImpl implements StreamingProfileService {
     public StreamingProfileServiceImpl(BufferServiceImpl buffer) {
         this.buffer = Preconditions.checkNotNull(buffer, "Buffer is not set");
     }
-    
+
     @Override
     public void add(UserWiFiProfile userWiFiProfile) {
         buffer.add(userWiFiProfile);
