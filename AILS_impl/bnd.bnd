@@ -1,7 +1,8 @@
 -buildpath: \
 	osgi.core,\
-	osgi.cmpn;version=5.0.0,\
+	osgi.cmpn;version=latest,\
 	AILS.client_device_controller_api;version=latest,\
+	AILS.server_location_provider_api;version=latest,\
 	AILS.client_learning_controller_api;version=latest,\
 	AILS.client_location_controller_api;version=latest,\
 	AILS.client_profile_factory_api;version=latest,\
@@ -12,9 +13,9 @@
 	AILS.server_user_datastore_api;version=latest,\
 	AILS.server_user_extendeddatastore_api;version=latest,\
 	AILS.server_user_service_api;version=latest,\
-	org.apache.felix.dependencymanager,\
-	org.apache.felix.dependencymanager.runtime,\
-	org.apache.felix.dependencymanager.shell,\
-	com.google.guava,\
+	org.apache.felix.dependencymanager;version=latest,\
+	org.apache.felix.dependencymanager.runtime;version=latest,\
+	org.apache.felix.dependencymanager.shell;version=latest,\
+	com.google.guava;version=latest,\
 	AILS.server_buffer_api;version=latest
 -sub: *.bnd
