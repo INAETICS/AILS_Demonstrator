@@ -13,5 +13,10 @@
 	AILS.server_streaming_profile_api;version=latest,\
 	AILS.server_user_datastore_api;version=latest,\
 	AILS.server_user_extendeddatastore_api;version=latest,\
-	AILS.server_user_service_api;version=latest
+	AILS.server_user_service_api;version=latest,\
+	org.apache.felix.dependencymanager,\
+	org.apache.felix.dependencymanager.runtime,\
+	org.apache.felix.dependencymanager.shell,\
+	com.google.guava,\
+	AILS.server_buffer_api;version=latest
 -sub: *.bnd

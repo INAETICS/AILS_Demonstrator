@@ -1,0 +1,5 @@
+Private-Package: org.inaetics.ails.impl.server.buffer
+Bundle-Version: 0.0.0.${tstamp}
+Bundle-Activator: org.inaetics.ails.impl.server.buffer.BufferServiceActivator
+Export-Package: org.inaetics.ails.impl.server.buffer
+-dsannotations: *
