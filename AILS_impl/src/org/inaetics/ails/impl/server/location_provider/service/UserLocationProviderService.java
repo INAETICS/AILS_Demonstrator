@@ -11,7 +11,7 @@ public class UserLocationProviderService implements LocationProvider {
 	@Override
 	public Optional<Location> locate(UUID uuid) {
 		// TODO Auto-generated method stub
-		return null;
+		return Optional.empty();
 	}
 
 }

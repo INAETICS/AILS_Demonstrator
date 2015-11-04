@@ -1,20 +1,19 @@
 package org.inaetics.ails.impl.server.location_provider.service;
 
-import org.osgi.framework.BundleActivator;
+import org.apache.felix.dm.DependencyActivatorBase;
+import org.apache.felix.dm.DependencyManager;
+import org.inaetics.ails.api.server.location.provider.LocationProvider;
 import org.osgi.framework.BundleContext;
 
-public class LocationProviderServiceActivator implements BundleActivator {
+public class LocationProviderServiceActivator extends DependencyActivatorBase {
 
 	@Override
-	public void start(BundleContext context) throws Exception {
-		// TODO Auto-generated method stub
-		
+	public void init(BundleContext ctx, DependencyManager dm) throws Exception {
+        dm.add(createComponent()
+                .setInterface(LocationProvider.class.getName(), null)
+                .setImplementation(UserLocationProviderService.class));
+        // TODO: Depend on User Extended data
 	}
 
-	@Override
-	public void stop(BundleContext context) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
