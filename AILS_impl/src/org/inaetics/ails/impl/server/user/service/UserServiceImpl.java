@@ -7,34 +7,35 @@ import java.util.UUID;
 import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.User;
 import org.inaetics.ails.api.server.location.provider.LocationProvider;
+import org.inaetics.ails.api.server.user.datastore.UserDataStore;
 import org.inaetics.ails.api.server.user.service.UserService;
 
+/**
+ * Implementation of UserService. 
+ * 
+ * @author L. Buit, N. Korthout, J. Naus
+ * @version 0.1.0
+ * @since 04-11-2015
+ */
 public class UserServiceImpl implements UserService {
     
     // Injected by Dependency Manager
     private volatile LocationProvider locationProvider;
-    
-    public UserServiceImpl() {
-        // TODO Auto-generated constructor stub
-        System.out.println("constructing UserServiceImpl");
-    }
+    private volatile UserDataStore userDataStore;
     
     @Override
     public void add(User user) {
-        // TODO Auto-generated method stub
-
+        userDataStore.storeUser(user);
     }
 
     @Override
     public List<User> getAll() {
-        // TODO Auto-generated method stub
-        return null;
+        throw new UnsupportedOperationException("UserServiceImpl.getAll() not yet implemented."); 
     }
 
     @Override
     public Optional<User> find(UUID uuid) {
-        // TODO Auto-generated method stub
-        return null;
+        return userDataStore.getUser(uuid);
     }
 
     @Override

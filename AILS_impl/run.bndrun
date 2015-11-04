@@ -17,6 +17,7 @@
 -resolve: auto
 -runbundles: \
 	AILS.common_model;version=snapshot,\
+	AILS.server_user_datastore_api;version=snapshot,\
 	AILS_impl.server_location_provider_service_impl;version=snapshot,\
 	AILS_impl.service_user_service_impl;version=snapshot,\
 	com.google.guava;version='[13.0.1,13.0.2)',\
