@@ -19,6 +19,7 @@
 -runbundles: \
 	AILS.common_model;version=snapshot,\
 	AILS.server_buffer_api;version=snapshot,\
+	AILS.server_user_datastore_api;version=snapshot,\
 	AILS_impl.server_location_provider_service_impl;version=snapshot,\
 	AILS_impl.server_streaming_profile_service_impl;version=snapshot,\
 	AILS_impl.service_user_service_impl;version=snapshot,\
