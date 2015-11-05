@@ -1,4 +1,4 @@
-package org.inaetics.ails.impl.server.location_provider.service;
+package org.inaetics.ails.impl.server.location.provider;
 
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;

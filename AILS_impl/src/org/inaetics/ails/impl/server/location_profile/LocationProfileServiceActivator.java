@@ -1,4 +1,4 @@
-package org.inaetics.ails.impl.server.location_profile_service;
+package org.inaetics.ails.impl.server.location_profile;
 
 import org.osgi.framework.BundleContext;
 import org.apache.felix.dm.DependencyActivatorBase;

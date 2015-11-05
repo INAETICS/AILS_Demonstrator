@@ -1,4 +1,4 @@
-package org.inaetics.ails.impl.server.user.extendeddatastore;
+package org.inaetics.ails.impl.server.user.extended_datastore;
 
 import java.util.Optional;
 import java.util.UUID;

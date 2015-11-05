@@ -1,4 +1,4 @@
-package org.inaetics.ails.impl.server.user.extendeddatastore;
+package org.inaetics.ails.impl.server.user.extended_datastore;
 
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;

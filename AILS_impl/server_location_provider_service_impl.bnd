@@ -1,4 +1,4 @@
 Export-Package: org.inaetics.ails.api.server.location.provider
-Private-Package: org.inaetics.ails.impl.server.location_provider.service
-Bundle-Activator: org.inaetics.ails.impl.server.location_provider.service.LocationProviderServiceActivator
+Private-Package: org.inaetics.ails.impl.server.location.provider
+Bundle-Activator: org.inaetics.ails.impl.server.location.provider.LocationProviderServiceActivator
 Bundle-Version: 0.0.0.${tstamp}
