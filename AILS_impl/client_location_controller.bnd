@@ -1,0 +1,4 @@
+Private-Package: org.inaetics.ails.impl.client.location_controller
+Bundle-Version: 0.0.0.${tstamp}
+Bundle-Activator: org.inaetics.ails.impl.client.location_controller.LocationServiceActivator
+Export-Package: org.inaetics.ails.impl.client.location_controller
