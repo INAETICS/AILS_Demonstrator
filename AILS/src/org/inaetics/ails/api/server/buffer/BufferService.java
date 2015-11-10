@@ -1,11 +1,13 @@
 package org.inaetics.ails.api.server.buffer;
 
+import java.util.Optional;
+
 /**
  * A buffer can be used to temporarily store objects before processing. The buffer provides ways to
  * add and remove elements and to check its size.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 1.0.0
+ * @version 2.0.0
  * @since 28-10-2015
  * @param <E> The type of elements this buffer can handle.
  */
@@ -14,16 +16,16 @@ public interface BufferService<E> {
     /**
      * Add an element to the buffer.
      * 
-     * @param e @NotNull the type of elements held in this collection.
+     * @param e @NotNull The element to place in this buffer.
      */
     void add(E e);
 
     /**
-     * Removes an element from the buffer.
+     * Gets an element from the buffer and remove it.
      * 
-     * @return the element to remove.
+     * @return An Optional containing the next element if found, or an empty Optional if not.
      */
-    E remove();
+    Optional<E> remove();
 
     /**
      * Returns the number of elements in this buffer.

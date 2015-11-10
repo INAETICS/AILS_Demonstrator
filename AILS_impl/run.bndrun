@@ -14,15 +14,19 @@
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.dependencymanager.runtime)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.dependencymanager.shell)',\
 	osgi.identity;filter:='(osgi.identity=AILS_impl.server_location_provider_service_impl)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_user_extendeddatastore_impl)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_buffer)',\
 	osgi.identity;filter:='(osgi.identity=AILS_impl.server_streaming_profile_service_impl)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_user_extendeddatastore_impl)'
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_streaming_profile_miner)'
 -resolve: auto
 -runbundles: \
 	AILS.common_model;version=snapshot,\
 	AILS.server_buffer_api;version=snapshot,\
 	AILS.server_user_datastore_api;version=snapshot,\
 	AILS.server_user_extendeddatastore_api;version=snapshot,\
+	AILS_impl.server_buffer;version=snapshot,\
 	AILS_impl.server_location_provider_service_impl;version=snapshot,\
+	AILS_impl.server_streaming_profile_miner;version=snapshot,\
 	AILS_impl.server_streaming_profile_service_impl;version=snapshot,\
 	AILS_impl.server_user_extendeddatastore_impl;version=snapshot,\
 	AILS_impl.service_user_service_impl;version=snapshot,\

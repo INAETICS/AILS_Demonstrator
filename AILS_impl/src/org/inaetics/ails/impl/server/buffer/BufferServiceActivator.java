@@ -1,30 +1,34 @@
 package org.inaetics.ails.impl.server.buffer;
 
+import java.util.Properties;
+
+import org.apache.felix.dm.DependencyActivatorBase;
+import org.apache.felix.dm.DependencyManager;
 import org.inaetics.ails.api.server.buffer.BufferService;
-import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceRegistration;
 
 /**
- * The BufferServiceActivator starts the {@link BufferService BufferService}.
+ * The BufferServiceActivator starts several {@link BufferService} implementations.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 1.0.0
  * @since 04-11-2015
  */
-public class BufferServiceActivator implements BundleActivator {
-
-    private ServiceRegistration serviceRegistration;
+public class BufferServiceActivator extends DependencyActivatorBase {
 
     @Override
-    public void start(BundleContext context) throws Exception {
-        serviceRegistration = context.registerService(BufferService.class.getName(),
-                new BufferServiceImpl(), null);
-    }
+    public void init(BundleContext context, DependencyManager manager) throws Exception {
+        Properties props = new Properties();
+        props.put("type", "UserWiFiProfile");
 
-    @Override
-    public void stop(BundleContext context) throws Exception {
-        serviceRegistration.unregister();
+        manager.add(createComponent().setInterface(BufferService.class.getName(), props)
+                .setImplementation(BufferServiceFIFOImpl.class));
+
+        Properties props2 = new Properties();
+        props2.put("type", "RawLocationProfile");
+
+        manager.add(createComponent().setInterface(BufferService.class.getName(), props2)
+                .setImplementation(BufferServiceFIFOImpl.class));
     }
 
 }
