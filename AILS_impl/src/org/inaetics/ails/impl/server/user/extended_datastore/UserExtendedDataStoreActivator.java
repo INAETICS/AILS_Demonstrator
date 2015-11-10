@@ -10,14 +10,14 @@ import org.osgi.framework.BundleContext;
  * Activator for UserExtendedDataStore.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 04-11-2015
  */
 public class UserExtendedDataStoreActivator extends DependencyActivatorBase {
 
     @Override
-    public void init(BundleContext bc, DependencyManager dm) throws Exception {
-        dm.add(createComponent()
+    public void init(BundleContext context, DependencyManager manager) throws Exception {
+        manager.add(createComponent()
                 .setInterface(new String[] {UserDataStore.class.getName(),
                         UserLocationDataStore.class.getName()}, null)
                 .setImplementation(UserExtendedDataStoreImpl.class));

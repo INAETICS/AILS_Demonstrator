@@ -10,14 +10,14 @@ import org.inaetics.ails.api.server.location_profile.LocationProfileService;
  * LocationProfileService}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 05-11-2015
  */
 public class LocationProfileServiceActivator extends DependencyActivatorBase {
 
     @Override
-    public void init(BundleContext context, DependencyManager dm) throws Exception {
-        dm.add(createComponent().setInterface(LocationProfileService.class.getName(), null)
+    public void init(BundleContext context, DependencyManager manager) throws Exception {
+        manager.add(createComponent().setInterface(LocationProfileService.class.getName(), null)
                 .setImplementation(LocationProfileServiceImpl.class));
     }
 
