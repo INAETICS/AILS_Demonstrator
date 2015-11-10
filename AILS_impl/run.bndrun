@@ -21,9 +21,7 @@
 -resolve: auto
 -runbundles: \
 	AILS.common_model;version=snapshot,\
-	AILS.server_buffer_api;version=snapshot,\
 	AILS.server_user_datastore_api;version=snapshot,\
-	AILS.server_user_extendeddatastore_api;version=snapshot,\
 	AILS_impl.server_buffer;version=snapshot,\
 	AILS_impl.server_location_provider_service_impl;version=snapshot,\
 	AILS_impl.server_streaming_profile_miner;version=snapshot,\
