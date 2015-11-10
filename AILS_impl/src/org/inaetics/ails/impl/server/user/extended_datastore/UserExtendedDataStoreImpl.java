@@ -6,8 +6,11 @@ import java.util.UUID;
 import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.User;
 import org.inaetics.ails.api.common.model.UserLocation;
+import org.inaetics.ails.api.server.database.DAO;
 import org.inaetics.ails.api.server.user.datastore.UserDataStore;
 import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStore;
+
+import com.google.common.base.Preconditions;
 
 /**
  * Implementation of the DataStores for User and Location combined. Provides a way to store and read
@@ -15,34 +18,33 @@ import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStor
  * information.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 04-11-2015
  */
 public class UserExtendedDataStoreImpl implements UserDataStore, UserLocationDataStore {
 
-    // TODO add DAO dependency
+    // Injected by Dependency Manager
+    private volatile DAO<UUID, User> userDAO;
+    private volatile DAO<UUID, UserLocation> userLocationDAO;
 
     @Override
     public Optional<User> getUser(UUID uuid) {
-        throw new UnsupportedOperationException(
-                "UserExtendedDataStoreImpl.getUser(UUID uuid) not yet implemented.");
+        return userDAO.find(Preconditions.checkNotNull(uuid, "uuid is not set"));
     }
 
     @Override
     public void storeUser(User user) {
-        throw new UnsupportedOperationException(
-                "UserExtendedDataStoreImpl.storeUser(User user) not yet implemented.");
+        userDAO.store(Preconditions.checkNotNull(user, "user is not set"));
     }
 
     @Override
     public Optional<Location> getLocation(UUID uuid) {
-        throw new UnsupportedOperationException(
-                "UserExtendedDataStoreImpl.getLocation(UUID uuid) not yet implemented.");
+        Preconditions.checkNotNull(uuid, "uuid is not set");
+        return userLocationDAO.find(uuid).map(UserLocation::getLocation);
     }
 
     @Override
     public void storeUserLocation(UserLocation userLocation) {
-        throw new UnsupportedOperationException(
-                "UserExtendedDataStoreImpl.storeUserLocation(UserLocation userLocation) not yet implemented.");
+        userLocationDAO.store(userLocation);
     }
 }

@@ -1,0 +1,3 @@
+Private-Package: org.inaetics.ails.impl.server.database
+Bundle-Activator: org.inaetics.ails.impl.server.database.DAOActivator
+Export-Package: org.inaetics.ails.api.server.database

@@ -8,32 +8,33 @@ import java.util.Optional;
  * mapping between model objects and their respective database tables.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 1.0.0
  * @since 28-10-2015
+ * @param <K> The type of uniquely identifying key this implementation uses.
  * @param <T> The type of object this implementation maps to database methods.
  */
-public interface DAO<T> {
+public interface DAO<K, T> {
 
     /**
      * Store the object t in the database.
      * 
      * @param t @NotNull The object to store.
      */
-    void store(T t);
+    K store(T object);
 
     /**
      * Delete the object t from the database.
      * 
      * @param t @NotNull The object to delete.
      */
-    void delete(T t);
+    void delete(K key);
 
     /**
      * Update the object t in the database.
      * 
      * @param t @NotNull The object to update.
      */
-    void update(T t);
+    void update(T object);
 
     /**
      * Find an object in the database, using its uniquely identifying key.
@@ -41,7 +42,7 @@ public interface DAO<T> {
      * @param key @NotNull The uniquely identifying key of the object to find.
      * @return An Optional containing the object if found, or an empty Optional if not.
      */
-    Optional<T> find(Object key);
+    Optional<T> find(K key);
 
     /**
      * Get a List of all objects of type <T> stored in the database.
