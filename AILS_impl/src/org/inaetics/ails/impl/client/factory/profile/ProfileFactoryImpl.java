@@ -1,8 +1,14 @@
 package org.inaetics.ails.impl.client.factory.profile;
 
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.inaetics.ails.api.client.factory.ProfileFactory;
+import org.inaetics.ails.api.common.model.AccessPoint;
+import org.inaetics.ails.api.common.model.AccessPointMeasurement;
 import org.inaetics.ails.api.common.model.WiFiProfile;
 
 /**
@@ -10,15 +16,57 @@ import org.inaetics.ails.api.common.model.WiFiProfile;
  * ProfileFactory}
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.2.0
  * @since 05-11-2015
  */
 public class ProfileFactoryImpl implements ProfileFactory {
 
+    private Random rand = new Random();
+
     @Override
     public Optional<WiFiProfile> getProfile() {
-        throw new UnsupportedOperationException(
-                "ProfileFactoryImpl.getProfile() not yet implemented.");
+        List<AccessPointMeasurement> accessPointMeasurement =
+                new ArrayList<AccessPointMeasurement>();
+        for (int i = 0; i < 10; i++) {
+            accessPointMeasurement
+                    .add(new AccessPointMeasurement(new AccessPoint(randomMac()), randomRSSI()));
+        }
+
+        if (shouldReturnOptional()) {
+            return Optional.empty();
+        } else {
+            return Optional.of(new WiFiProfile(Instant.now(), accessPointMeasurement));
+        }
     }
 
+    /**
+     * Generate a random RSSI value between 80 (inclusive) and 120 (exclusive).
+     * 
+     * @return Random RSSI value.
+     */
+    private int randomRSSI() {
+        return rand.nextInt(120) + 80;
+    }
+
+    /**
+     * Generate a random MAC address.
+     * 
+     * @return a MAC address.
+     */
+    private byte[] randomMac() {
+        byte[] mac = new byte[6];
+
+        rand.nextBytes(mac);
+
+        return mac;
+    }
+
+    /**
+     * Generate a random boolean.
+     * 
+     * @return a boolean.
+     */
+    private boolean shouldReturnOptional() {
+        return rand.nextBoolean();
+    }
 }

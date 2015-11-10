@@ -11,7 +11,7 @@ import org.inaetics.ails.api.client.learning_controller.LearningService;
  * @since 05-11-2015
  */
 public class LearningServiceImpl implements LearningService {
-
+    
     @Override
     public void startLearningMode() {
         throw new UnsupportedOperationException(

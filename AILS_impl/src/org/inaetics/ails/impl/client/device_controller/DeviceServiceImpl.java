@@ -2,6 +2,8 @@ package org.inaetics.ails.impl.client.device_controller;
 
 import org.inaetics.ails.api.client.device_controller.DeviceService;
 import org.inaetics.ails.api.common.model.Accuracy;
+import org.inaetics.ails.api.common.model.Device;
+import org.inaetics.ails.impl.client.factory.device.DeviceFactoryImpl;
 
 /**
  * The DeviceServiceImpl class provides an implementation of the
@@ -12,11 +14,12 @@ import org.inaetics.ails.api.common.model.Accuracy;
  * @since 05-11-2015
  */
 public class DeviceServiceImpl implements DeviceService {
+    private volatile DeviceFactoryImpl device;
     
     @Override
     public void setAccuracy(Accuracy accuracy) {
         throw new UnsupportedOperationException(
-                "DeviceServiceImpl.setAccuracy(Accuracy accuracy) not yet implemented.");
+                "DeviceServiceImpl.setName(String name) not yet implemented.");
     }
 
     @Override

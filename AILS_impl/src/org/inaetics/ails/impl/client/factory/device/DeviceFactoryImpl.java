@@ -1,5 +1,7 @@
 package org.inaetics.ails.impl.client.factory.device;
 
+import java.util.UUID;
+
 import org.inaetics.ails.api.client.factory.DeviceFactory;
 import org.inaetics.ails.api.common.model.Device;
 
@@ -12,22 +14,25 @@ import org.inaetics.ails.api.common.model.Device;
  */
 public class DeviceFactoryImpl implements DeviceFactory {
 
+    private Device device;
+
     @Override
     public Device createDevice() {
-        throw new UnsupportedOperationException(
-                "DeviceFactoryImpl.createDevice() not yet implemented.");
+        String name = "AILS";
+        UUID uuid = UUID.randomUUID();
+        byte[] mac = {(byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF};
+
+        return device = new Device(name, mac, uuid, null);
     }
 
     @Override
     public Device readDevice() {
-        throw new UnsupportedOperationException(
-                "DeviceFactoryImpl.readDevice() not yet implemented.");
+        return device;
     }
 
     @Override
     public Device updateDevice(Device device) {
-        throw new UnsupportedOperationException(
-                "DeviceFactoryImpl.updateDevice(Device device) not yet implemented.");
+        return this.device = device;
     }
 
 }

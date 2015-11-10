@@ -13,15 +13,17 @@ import com.google.common.base.Preconditions;
 public class AccessPointMeasurement {
 
     private final AccessPoint accessPoint;
+    private final int measurementValue;
 
     /**
      * Constructor for AccessPointMeasurement.
      * 
      * @param accessPoint @NotNull The access point on which the measurement was performed.
      */
-    public AccessPointMeasurement(AccessPoint accessPoint) {
+    public AccessPointMeasurement(AccessPoint accessPoint, int measurementValue) {
         super();
         this.accessPoint = Preconditions.checkNotNull(accessPoint, "accesspoint is not set");
+        this.measurementValue = Preconditions.checkNotNull(measurementValue, "measurementValue is not set");
     }
 
     /**
@@ -33,4 +35,12 @@ public class AccessPointMeasurement {
         return accessPoint;
     }
 
+    /**
+     * Retrieve the measurement value on which the measurement was performed.
+     * 
+     * @return the measurement value
+     */
+    public int getMeasurementValue() {
+        return measurementValue;
+    }
 }
