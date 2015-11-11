@@ -1,8 +1,8 @@
-package org.inaetics.ails.impl.client.factory.device;
+package org.inaetics.ails.impl.client.dao.device;
 
 import java.util.UUID;
 
-import org.inaetics.ails.api.client.factory.DeviceFactory;
+import org.inaetics.ails.api.client.dao.device.DeviceDAO;
 import org.inaetics.ails.api.common.model.Device;
 
 /**
@@ -12,7 +12,7 @@ import org.inaetics.ails.api.common.model.Device;
  * @version 0.1.0
  * @since 05-11-2015
  */
-public class DeviceFactoryImpl implements DeviceFactory {
+public class DeviceDAOImpl implements DeviceDAO {
 
     private Device device;
 
