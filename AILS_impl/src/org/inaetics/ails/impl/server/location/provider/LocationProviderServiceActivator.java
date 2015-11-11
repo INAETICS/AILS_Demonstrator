@@ -2,7 +2,10 @@ package org.inaetics.ails.impl.server.location.provider;
 
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
+import org.inaetics.ails.api.server.buffer.BufferService;
 import org.inaetics.ails.api.server.location.provider.LocationProvider;
+import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStore;
+import org.inaetics.ails.impl.server.user.extended_datastore.UserExtendedDataStoreImpl;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -18,8 +21,9 @@ public class LocationProviderServiceActivator extends DependencyActivatorBase {
     @Override
     public void init(BundleContext context, DependencyManager manager) throws Exception {
         manager.add(createComponent().setInterface(LocationProvider.class.getName(), null)
-                .setImplementation(UserLocationProviderService.class));
-        // TODO: Depend on User Extended data
+                .setImplementation(UserLocationProviderService.class).add(createServiceDependency()
+                        .setService(UserLocationDataStore.class)
+                        .setRequired(true)));
     }
 
 }
