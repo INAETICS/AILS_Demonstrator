@@ -15,15 +15,18 @@ import org.inaetics.ails.api.server.buffer.BufferService;
  * {@link Location} of a {@link User}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 10-11-2015
  */
 public class StreamingProfileMiner {
 
     // Injected by Dependency Manager
-    private volatile BufferService<UserWiFiProfile> buffer;
+    private volatile BufferService<UserWiFiProfile> incomingUserWiFiProfileBuffer;
 
-    public StreamingProfileMiner() {
+    /**
+     * Called by Felix DM when starting this component.
+     */
+    public void start() {
         new StreamingProfileMinerThread().start();
     }
 
@@ -31,8 +34,9 @@ public class StreamingProfileMiner {
 
         @Override
         public void run() {
-            while (buffer == null) {
-                System.out.println("StreamingProfileMiner not yet received BufferService<UserWiFiProfile>");
+            while (incomingUserWiFiProfileBuffer == null) {
+                System.out.println("StreamingProfileMiner not yet "
+                        + "received BufferService<UserWiFiProfile>");
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException e) {
