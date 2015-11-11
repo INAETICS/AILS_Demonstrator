@@ -1,5 +1,9 @@
 package org.inaetics.ails.impl.client.learning_controller;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+import org.inaetics.ails.api.client.factory.RawLocationProfileFactory;
 import org.inaetics.ails.api.client.learning_controller.LearningService;
 
 /**
@@ -12,16 +16,29 @@ import org.inaetics.ails.api.client.learning_controller.LearningService;
  */
 public class LearningServiceImpl implements LearningService {
     
+    private volatile RawLocationProfileFactory rawLocationProfileFactory;
+    
+    private Timer timer;
+    private TimerTask task;
+    
     @Override
     public void startLearningMode() {
-        throw new UnsupportedOperationException(
-                "LearningServiceImpl.startLearningMode() not yet implemented.");
+        timer = new Timer();
+        task = new TimerTask() {
+            
+            @Override
+            public void run() {
+                rawLocationProfileFactory.getProfile();
+                
+            }
+        };
+        
+        timer.schedule(task, 0, 60000);
     }
 
     @Override
     public void stopLearningMode() {
-        throw new UnsupportedOperationException(
-                "LearningServiceImpl.stopLearningMode() not yet implemented.");
+        task.cancel();
+        timer.cancel();
     }
-
 }
