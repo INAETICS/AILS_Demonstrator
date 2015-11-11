@@ -11,7 +11,7 @@ import org.osgi.framework.BundleContext;
  * Activates the {@link DAO DAOs}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 10-11-2015
  */
 public class DAOActivator extends DependencyActivatorBase {
@@ -22,7 +22,7 @@ public class DAOActivator extends DependencyActivatorBase {
         props.put("type", "User");
 
         manager.add(createComponent().setInterface(DAO.class.getName(), props)
-                .setImplementation(UserLocationDAOMockImpl.class));
+                .setImplementation(UserDAOMockImpl.class));
         
         Properties props2 = new Properties();
         props2.put("type", "UserLocation");
