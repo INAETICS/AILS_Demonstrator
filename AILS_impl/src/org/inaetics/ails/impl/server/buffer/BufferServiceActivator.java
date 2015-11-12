@@ -19,7 +19,7 @@ public class BufferServiceActivator extends DependencyActivatorBase {
     @Override
     public void init(BundleContext context, DependencyManager manager) throws Exception {
         Properties props = new Properties();
-        props.put("type", "UserWiFiProfile");
+        props.put("type", "AnonUserWiFiProfile");
 
         manager.add(createComponent().setInterface(BufferService.class.getName(), props)
                 .setImplementation(BufferServiceFIFOImpl.class));

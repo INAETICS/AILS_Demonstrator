@@ -6,8 +6,8 @@ import java.util.TimerTask;
 
 import org.inaetics.ails.api.client.factory.WiFiProfileFactory;
 import org.inaetics.ails.api.client.streaming_controller.StreamingService;
-import org.inaetics.ails.api.common.model.User;
-import org.inaetics.ails.api.common.model.UserWiFiProfile;
+import org.inaetics.ails.api.common.model.AnonUser;
+import org.inaetics.ails.api.common.model.AnonUserWiFiProfile;
 import org.inaetics.ails.api.common.model.WiFiProfile;
 import org.inaetics.ails.api.server.streaming_profile.service.StreamingProfileService;
 
@@ -29,7 +29,7 @@ public class StreamingServiceImpl implements StreamingService {
     private final Timer timer;
     private final TimerTask task;
 
-    public StreamingServiceImpl(User user) {
+    public StreamingServiceImpl(AnonUser anonUser) {
         timer = new Timer();
         task = new TimerTask() {
 
@@ -38,8 +38,8 @@ public class StreamingServiceImpl implements StreamingService {
                 Optional<WiFiProfile> wifiProfile = wifiProfileFactory.getProfile();
 
                 if (wifiProfile.isPresent()) {
-                    UserWiFiProfile userWiFiProfile = new UserWiFiProfile(-1, wifiProfile.get(), user);
-                    streamingProfileService.add(userWiFiProfile);
+                    AnonUserWiFiProfile anonUserWiFiProfile = new AnonUserWiFiProfile(-1, wifiProfile.get(), anonUser);
+                    streamingProfileService.add(anonUserWiFiProfile);
                 }
             }
         };

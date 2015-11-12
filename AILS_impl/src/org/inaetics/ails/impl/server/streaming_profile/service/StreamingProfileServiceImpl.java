@@ -7,7 +7,7 @@ import java.util.TimerTask;
 import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.AnonUser;
-import org.inaetics.ails.api.common.model.UserWiFiProfile;
+import org.inaetics.ails.api.common.model.AnonUserWiFiProfile;
 import org.inaetics.ails.api.common.model.WiFiProfile;
 import org.inaetics.ails.api.server.buffer.BufferService;
 import org.inaetics.ails.api.server.streaming_profile.service.StreamingProfileService;
@@ -25,7 +25,7 @@ import com.google.common.base.Preconditions;
 public class StreamingProfileServiceImpl implements StreamingProfileService {
 
     // Injected by Dependency Manager
-    private volatile BufferService<UserWiFiProfile> buffer;
+    private volatile BufferService<AnonUserWiFiProfile> buffer;
     
     // TODO Remove this, it is just a test to add some profiles to the buffer to be used by the miner
     public void start() {
@@ -36,8 +36,8 @@ public class StreamingProfileServiceImpl implements StreamingProfileService {
                 for (int i = 0; i < 10; i++) {
                     WiFiProfile wifiProfile = new WiFiProfile(Instant.now(), new ArrayList<>());
                     AnonUser user = new AnonUser(UUID.randomUUID(), "Some name");
-                    UserWiFiProfile userWiFiProfile = new UserWiFiProfile(0, wifiProfile, user);
-                    buffer.add(userWiFiProfile);
+                    AnonUserWiFiProfile anonUserWiFiProfile = new AnonUserWiFiProfile(0, wifiProfile, user);
+                    buffer.add(anonUserWiFiProfile);
                 }
             }
             
@@ -45,9 +45,9 @@ public class StreamingProfileServiceImpl implements StreamingProfileService {
     }
     
     @Override
-    public void add(UserWiFiProfile userWiFiProfile) {
+    public void add(AnonUserWiFiProfile anonUserWiFiProfile) {
         // Simply store the received UserWiFiProfile in the Buffer.
-        buffer.add(Preconditions.checkNotNull(userWiFiProfile));
+        buffer.add(Preconditions.checkNotNull(anonUserWiFiProfile));
     }
 
 }

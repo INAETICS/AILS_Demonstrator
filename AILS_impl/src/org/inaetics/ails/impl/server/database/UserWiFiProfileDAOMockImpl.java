@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.inaetics.ails.api.common.model.UserWiFiProfile;
+import org.inaetics.ails.api.common.model.AnonUserWiFiProfile;
 import org.inaetics.ails.api.server.database.DAO;
-import org.inaetics.ails.api.server.database.UserWiFiProfileDAO;
+import org.inaetics.ails.api.server.database.AnonUserWiFiProfileDAO;
 
 import com.google.common.base.Preconditions;
 
@@ -16,22 +16,22 @@ import com.google.common.base.Preconditions;
  * Mock implementation for a {@link UserWiFiProfile} {@link DAO}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 1.0.0
  * @since 11-11-2015
  */
-public class UserWiFiProfileDAOMockImpl implements UserWiFiProfileDAO {
+public class UserWiFiProfileDAOMockImpl implements AnonUserWiFiProfileDAO {
 
-    private final Map<Integer, UserWiFiProfile> storage;
+    private final Map<Integer, AnonUserWiFiProfile> storage;
 
     public UserWiFiProfileDAOMockImpl() {
         storage = new HashMap<>();
     }
 
     @Override
-    public Integer store(UserWiFiProfile userWiFiProfile) {
+    public Integer store(AnonUserWiFiProfile anonUserWiFiProfile) {
         int key = storage.size();
-        Preconditions.checkNotNull(userWiFiProfile, "user wifi profile is not set");
-        storage.put(key, userWiFiProfile);
+        Preconditions.checkNotNull(anonUserWiFiProfile, "user wifi profile is not set");
+        storage.put(key, anonUserWiFiProfile);
         return key;
     }
 
@@ -41,20 +41,20 @@ public class UserWiFiProfileDAOMockImpl implements UserWiFiProfileDAO {
     }
 
     @Override
-    public void update(UserWiFiProfile userWiFiProfile) {
-        Preconditions.checkNotNull(userWiFiProfile, "user wifi profile is not set");
-        Preconditions.checkArgument(userWiFiProfile.getKey() > -1, "key is not set");
-        storage.put(userWiFiProfile.getKey(), userWiFiProfile);
+    public void update(AnonUserWiFiProfile anonUserWiFiProfile) {
+        Preconditions.checkNotNull(anonUserWiFiProfile, "user wifi profile is not set");
+        Preconditions.checkArgument(anonUserWiFiProfile.getKey() > -1, "key is not set");
+        storage.put(anonUserWiFiProfile.getKey(), anonUserWiFiProfile);
     }
 
     @Override
-    public Optional<UserWiFiProfile> find(Integer key) {
+    public Optional<AnonUserWiFiProfile> find(Integer key) {
         Preconditions.checkArgument(key > -1, "key is not set");
         return Optional.ofNullable(storage.get(key));
     }
 
     @Override
-    public List<UserWiFiProfile> getAll() {
+    public List<AnonUserWiFiProfile> getAll() {
         return new ArrayList<>(storage.values());
     }
 
