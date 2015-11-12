@@ -1,10 +1,10 @@
-package org.inaetics.ails.impl.server.location_profile;
+package org.inaetics.ails.impl.server.location_profile.service;
 
 import org.osgi.framework.BundleContext;
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
 import org.inaetics.ails.api.server.buffer.BufferService;
-import org.inaetics.ails.api.server.location_profile.LocationProfileService;
+import org.inaetics.ails.api.server.location_profile.service.LocationProfileService;
 
 /**
  * The LocationProfileServiceActivator starts the {@link LocationProfileService

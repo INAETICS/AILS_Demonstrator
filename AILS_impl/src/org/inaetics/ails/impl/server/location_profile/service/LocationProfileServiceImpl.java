@@ -1,8 +1,8 @@
-package org.inaetics.ails.impl.server.location_profile;
+package org.inaetics.ails.impl.server.location_profile.service;
 
 import org.inaetics.ails.api.common.model.RawLocationProfile;
 import org.inaetics.ails.api.server.buffer.BufferService;
-import org.inaetics.ails.api.server.location_profile.LocationProfileService;
+import org.inaetics.ails.api.server.location_profile.service.LocationProfileService;
 
 import com.google.common.base.Preconditions;
 
