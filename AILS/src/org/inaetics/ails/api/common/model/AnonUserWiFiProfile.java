@@ -10,7 +10,7 @@ import com.google.common.base.Preconditions;
  * @version 1.0.0
  * @since 28-10-2015
  */
-public class UserWiFiProfile implements Key<Integer> {
+public class AnonUserWiFiProfile implements Key<Integer> {
 
     // Used to reference the object in persistence
     private final int storageIndex;
@@ -27,7 +27,7 @@ public class UserWiFiProfile implements Key<Integer> {
      * @param user @NotNull User data.
      * @since 1.0.0
      */
-    public UserWiFiProfile(int storageIndex, WiFiProfile wifiProfile, AnonUser user) {
+    public AnonUserWiFiProfile(int storageIndex, WiFiProfile wifiProfile, AnonUser user) {
         super();
         Preconditions.checkArgument(storageIndex > -2, "storage index must be -1 or higher");
         this.storageIndex = storageIndex;

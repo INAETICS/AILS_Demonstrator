@@ -7,7 +7,7 @@ import org.inaetics.ails.api.server.database.LocationProfileDAO;
 import org.inaetics.ails.api.server.database.RawLocationProfileDAO;
 import org.inaetics.ails.api.server.database.UserDAO;
 import org.inaetics.ails.api.server.database.UserLocationDAO;
-import org.inaetics.ails.api.server.database.UserWiFiProfileDAO;
+import org.inaetics.ails.api.server.database.AnonUserWiFiProfileDAO;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -28,7 +28,7 @@ public class DAOActivator extends DependencyActivatorBase {
         manager.add(createComponent().setInterface(UserLocationDAO.class.getName(), null)
                 .setImplementation(UserLocationDAOMockImpl.class));
 
-        manager.add(createComponent().setInterface(UserWiFiProfileDAO.class.getName(), null)
+        manager.add(createComponent().setInterface(AnonUserWiFiProfileDAO.class.getName(), null)
                 .setImplementation(UserWiFiProfileDAOMockImpl.class));
 
         manager.add(createComponent().setInterface(LocationProfileDAO.class.getName(), null)
