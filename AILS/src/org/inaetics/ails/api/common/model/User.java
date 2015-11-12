@@ -25,7 +25,7 @@ public class User extends AnonUser {
     /**
      * Anonymizes this object to not have a Mac
      */
-    public AnonUser getAnonUser() {
+    public AnonUser asAnonUser() {
         return new AnonUser(this.getUuid(), this.getName());
     }
 

@@ -26,18 +26,23 @@ public class UserServiceImpl implements UserService {
     private volatile UserDataStore userDataStore;
 
     @Override
-    public void add(User user) {
+    public AnonUser add(String name, byte[] mac) {
+    	UUID uuid = UUID.randomUUID();
+    	User user = new User(uuid, name, mac);
+    	
         userDataStore.storeUser(user);
+        
+        return user.asAnonUser();
     }
 
     @Override
     public List<AnonUser> getAll() {
-    	return userDataStore.getAllUsers().stream().map(x -> x.getAnonUser()).collect(Collectors.toList());
+    	return userDataStore.getAllUsers().stream().map(x -> x.asAnonUser()).collect(Collectors.toList());
     }
 
     @Override
     public Optional<AnonUser> find(UUID uuid) {
-        return userDataStore.getUser(uuid).map(x -> x.getAnonUser());
+        return userDataStore.getUser(uuid).map(x -> x.asAnonUser());
     }
 
     @Override

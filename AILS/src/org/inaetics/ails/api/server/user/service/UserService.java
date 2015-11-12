@@ -21,9 +21,9 @@ public interface UserService {
      * Add a new User, so it can be retrieved later.
      * 
      * @param user @NotNull The new MacUser to add.
-     * @since 1.1.0
+     * @since 2.0.0
      */
-    void add(User user);
+    AnonUser add(String name, byte[] mac);
 
     /**
      * Retrieve a List of all Users known by this service.
