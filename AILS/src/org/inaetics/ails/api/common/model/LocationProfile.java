@@ -3,42 +3,43 @@ package org.inaetics.ails.api.common.model;
 import com.google.common.base.Preconditions;
 
 /**
- * A UserWiFiProfile can used to store a {@link WiFiProfile} that specifically belongs to a
- * {@link User}.
+ * Representation of a location profile, the processed version of a {@link RawLocationProfile}. For
+ * now its similar to the RawLocationProfile, but it could contain extra information that is vital
+ * for matching it to WiFiProfiles that have not yet had a Location appointed to it.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 1.0.0
- * @since 28-10-2015
+ * @version 0.1.0
+ * @since 12-11-2015
  */
-public class UserWiFiProfile implements Key<Integer> {
+public class LocationProfile implements Key<Integer> {
 
     // Used to reference the object in persistence
     private final int storageIndex;
-    
+
     private final WiFiProfile wifiProfile;
-    private final User user;
+    private final Location location;
 
     /**
-     * Constructor for UserWiFiProfile.
+     * Constructor for LocationProfile.
      * 
      * @param storageIndex Index for this object in persistence. Can be either -1 (not yet set) or a
      *        higher value (index of stored object).
      * @param wifiProfile @NotNull WiFiProfile describing the distance to access points.
-     * @param user @NotNull User data.
+     * @param location @NotNull Location data.
      * @since 1.0.0
      */
-    public UserWiFiProfile(int storageIndex, WiFiProfile wifiProfile, User user) {
+    public LocationProfile(int storageIndex, WiFiProfile wifiProfile, Location location) {
         super();
         Preconditions.checkArgument(storageIndex > -2, "storage index must be -1 or higher");
         this.storageIndex = storageIndex;
-        this.wifiProfile = Preconditions.checkNotNull(wifiProfile, "wifi profile is not set");
-        this.user = Preconditions.checkNotNull(user, "user is not set");
+        this.wifiProfile = Preconditions.checkNotNull(wifiProfile, "wifiProfile is not set");
+        this.location = Preconditions.checkNotNull(location, "location is not set");
     }
 
     /**
      * Retrieve WiFi Profile.
      * 
-     * @return the wifiProfile.
+     * @return the wifiProfile
      * @since 0.1.0
      */
     public WiFiProfile getWifiProfile() {
@@ -46,13 +47,13 @@ public class UserWiFiProfile implements Key<Integer> {
     }
 
     /**
-     * Retrieve the User.
+     * Retrieve the Location.
      * 
-     * @return the user.
+     * @return the location
      * @since 0.1.0
      */
-    public User getUser() {
-        return user;
+    public Location getLocation() {
+        return location;
     }
 
     /**

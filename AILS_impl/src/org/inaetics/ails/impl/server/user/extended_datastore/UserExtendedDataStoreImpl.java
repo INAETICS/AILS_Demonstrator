@@ -7,7 +7,8 @@ import java.util.UUID;
 import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.User;
 import org.inaetics.ails.api.common.model.UserLocation;
-import org.inaetics.ails.api.server.database.DAO;
+import org.inaetics.ails.api.server.database.UserDAO;
+import org.inaetics.ails.api.server.database.UserLocationDAO;
 import org.inaetics.ails.api.server.user.datastore.UserDataStore;
 import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStore;
 
@@ -19,14 +20,14 @@ import com.google.common.base.Preconditions;
  * information.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
+ * @version 0.1.2
  * @since 04-11-2015
  */
 public class UserExtendedDataStoreImpl implements UserDataStore, UserLocationDataStore {
 
     // Injected by Dependency Manager
-    private volatile DAO<UUID, User> userDAO;
-    private volatile DAO<UUID, UserLocation> userLocationDAO;
+    private volatile UserDAO userDAO;
+    private volatile UserLocationDAO userLocationDAO;
 
     @Override
     public Optional<User> getUser(UUID uuid) {
