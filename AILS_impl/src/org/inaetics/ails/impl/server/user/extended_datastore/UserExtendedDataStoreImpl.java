@@ -1,5 +1,6 @@
 package org.inaetics.ails.impl.server.user.extended_datastore;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -47,4 +48,10 @@ public class UserExtendedDataStoreImpl implements UserDataStore, UserLocationDat
     public void storeUserLocation(UserLocation userLocation) {
         userLocationDAO.store(userLocation);
     }
+
+	@Override
+	public List<User> getAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
