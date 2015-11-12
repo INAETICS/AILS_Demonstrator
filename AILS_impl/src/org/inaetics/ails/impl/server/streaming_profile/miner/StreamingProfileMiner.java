@@ -5,13 +5,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import org.inaetics.ails.api.common.model.Location;
-import org.inaetics.ails.api.common.model.RawLocationProfile;
+import org.inaetics.ails.api.common.model.LocationProfile;
 import org.inaetics.ails.api.common.model.User;
 import org.inaetics.ails.api.common.model.UserLocation;
 import org.inaetics.ails.api.common.model.UserWiFiProfile;
 import org.inaetics.ails.api.common.model.WiFiProfile;
 import org.inaetics.ails.api.server.buffer.BufferService;
-import org.inaetics.ails.api.server.database.RawLocationProfileDAO;
+import org.inaetics.ails.api.server.database.LocationProfileDAO;
 import org.inaetics.ails.api.server.database.UserWiFiProfileDAO;
 import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStore;
 
@@ -20,11 +20,11 @@ import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStor
  * {@link BufferService}.
  * 
  * New UserWiFiProfiles arriving from the buffer will be stored. Stored UserWiFiProfiles will be
- * combined with {@link RawLocationProfile RawLocationProfiles} to gather new information about the
+ * combined with {@link LocationProfile LocationProfiles} to gather new information about the
  * {@link Location} of a {@link User}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.2
+ * @version 0.1.3
  * @since 10-11-2015
  */
 public class StreamingProfileMiner {
@@ -32,7 +32,7 @@ public class StreamingProfileMiner {
     // Injected by Dependency Manager
     private volatile BufferService<UserWiFiProfile> incomingUserWiFiProfileBuffer;
     private volatile UserWiFiProfileDAO oldUserWiFiProfileDAO;
-    private volatile RawLocationProfileDAO rawLocationProfileDAO;
+    private volatile LocationProfileDAO locationProfileDAO;
     private volatile UserLocationDataStore userLocationDataStore; 
 
     private final Timer timer;
@@ -62,10 +62,10 @@ public class StreamingProfileMiner {
                 // Store the newly found UserWiFiProfile for possible later use
                 oldUserWiFiProfileDAO.store(userWiFiProfile.get());
 
-                // Compare newly found UserWiFiProfile with existing RawLocationProfiles to find a
+                // Compare newly found UserWiFiProfile with existing LocationProfiles to find a
                 // Location for the User
-                // TODO: rawLocationProfileDAO.getAll() can probably be done more efficiently
-                for (RawLocationProfile locationProfile : rawLocationProfileDAO.getAll()) {
+                // TODO: locationProfileDAO.getAll() can probably be done more efficiently
+                for (LocationProfile locationProfile : locationProfileDAO.getAll()) {
                     
                     WiFiProfile newWiFiProfile = userWiFiProfile.get().getWifiProfile();
                     if (newWiFiProfile.match(locationProfile.getWifiProfile())) {

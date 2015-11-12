@@ -41,7 +41,7 @@ public class StreamingProfileServiceImpl implements StreamingProfileService {
                 }
             }
             
-        }, 15 * 1000);
+        }, 5 * 1000);
     }
     
     @Override

@@ -3,7 +3,7 @@ package org.inaetics.ails.impl.server.streaming_profile.miner;
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
 import org.inaetics.ails.api.server.buffer.BufferService;
-import org.inaetics.ails.api.server.database.RawLocationProfileDAO;
+import org.inaetics.ails.api.server.database.LocationProfileDAO;
 import org.inaetics.ails.api.server.database.UserWiFiProfileDAO;
 import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStore;
 import org.osgi.framework.BundleContext;
@@ -12,7 +12,7 @@ import org.osgi.framework.BundleContext;
  * The StreamingProfileMinerActivator starts a {@link StreamingProfileMiner}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
+ * @version 0.1.2
  * @since 10-11-2015
  */
 public class StreamingProfileMinerActivator extends DependencyActivatorBase {
@@ -23,7 +23,7 @@ public class StreamingProfileMinerActivator extends DependencyActivatorBase {
                 .add(createServiceDependency()
                         .setService(BufferService.class, "(type=UserWiFiProfile)")
                         .setRequired(true))
-                .add(createServiceDependency().setService(RawLocationProfileDAO.class)
+                .add(createServiceDependency().setService(LocationProfileDAO.class)
                         .setRequired(true))
                 .add(createServiceDependency().setService(UserWiFiProfileDAO.class)
                         .setRequired(true))
