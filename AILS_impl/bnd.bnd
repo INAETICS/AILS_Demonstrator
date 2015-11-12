@@ -19,5 +19,6 @@
 	AILS.server_location_provider_api;version=latest,\
 	AILS.server_buffer_api;version=latest,\
 	AILS.server_dao_api;version=latest,\
-	AILS.client_dao_device_api;version=latest
+	AILS.client_dao_device_api;version=latest,\
+	AILS.client_streaming_controller_api;version=latest
 -sub: *.bnd

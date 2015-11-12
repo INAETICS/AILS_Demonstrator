@@ -6,7 +6,7 @@ import org.inaetics.ails.api.common.model.Device;
  * Device Factory
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 22-10-2015
  */
 public interface DeviceDAO {
@@ -14,7 +14,7 @@ public interface DeviceDAO {
     /**
      * Create a new device.
      * 
-     * @return
+     * @return A new device.
      */
     public Device createDevice();
 

@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.inaetics.ails.api.client.dao.device.DeviceDAO;
 import org.inaetics.ails.api.common.model.Device;
+import org.inaetics.ails.api.common.model.User;
 
 /**
  * The DeviceFactoryImpl class provides an implementation of the {@link DeviceFactory DeviceFactory}
@@ -18,11 +19,14 @@ public class DeviceDAOImpl implements DeviceDAO {
 
     @Override
     public Device createDevice() {
+        // TODO: Should receive UUID from the server.
         String name = "AILS";
         UUID uuid = UUID.randomUUID();
         byte[] mac = {(byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF};
 
-        return device = new Device(name, mac, uuid, null);
+        User user = new User(uuid, name, mac);
+
+        return device = new Device(user, null);
     }
 
     @Override

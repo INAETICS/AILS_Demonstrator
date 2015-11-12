@@ -1,8 +1,7 @@
 package org.inaetics.ails.api.client.factory;
 
 import java.util.Optional;
-
-import org.inaetics.ails.api.common.model.RawLocationProfile;
+import org.inaetics.ails.api.common.model.WiFiProfile;
 
 /**
  * Profile Factory
@@ -11,7 +10,7 @@ import org.inaetics.ails.api.common.model.RawLocationProfile;
  * @version 0.1.0
  * @since 22-10-2015
  */
-public interface RawLocationProfileFactory {
+public interface WiFiProfileFactory {
 
     /**
      * Get the current WiFi profile of the device.
@@ -19,5 +18,5 @@ public interface RawLocationProfileFactory {
      * @return An optional containing the current WiFi profile of the device if the operation
      *         succeeded, otherwise returns an empty optional.
      */
-    public Optional<RawLocationProfile> getProfile();
+    public Optional<WiFiProfile> getProfile();
 }
