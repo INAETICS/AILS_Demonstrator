@@ -3,6 +3,7 @@ package org.inaetics.ails.impl.server.user.service;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.User;
@@ -31,9 +32,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<AnonUser> getAll() {
-    	
-    	
-        throw new UnsupportedOperationException("UserServiceImpl.getAll() not yet implemented.");
+    	return userDataStore.getAllUsers().stream().map(x -> x.getAnonUser()).collect(Collectors.toList());
     }
 
     @Override
