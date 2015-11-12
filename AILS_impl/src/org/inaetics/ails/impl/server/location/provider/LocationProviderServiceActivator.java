@@ -2,10 +2,8 @@ package org.inaetics.ails.impl.server.location.provider;
 
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
-import org.inaetics.ails.api.server.buffer.BufferService;
 import org.inaetics.ails.api.server.location.provider.LocationProvider;
 import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStore;
-import org.inaetics.ails.impl.server.user.extended_datastore.UserExtendedDataStoreImpl;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -13,7 +11,7 @@ import org.osgi.framework.BundleContext;
  * {@link LocationProvider}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
+ * @version 0.1.2
  * @since 10-11-2015
  */
 public class LocationProviderServiceActivator extends DependencyActivatorBase {
