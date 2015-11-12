@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.UserLocation;
 import org.inaetics.ails.api.server.database.DAO;
+import org.inaetics.ails.api.server.database.UserLocationDAO;
 
 import com.google.common.base.Preconditions;
 
@@ -16,19 +17,20 @@ import com.google.common.base.Preconditions;
  * Mock implementation for a {@link UserLocation} {@link DAO}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 10-11-2015
  */
-public class UserLocationDAOMockImpl implements DAO<UUID, UserLocation> {
-    
+public class UserLocationDAOMockImpl implements UserLocationDAO {
+
     private final Map<UUID, UserLocation> storage;
-    
+
     public UserLocationDAOMockImpl() {
         storage = new HashMap<>();
     }
 
     @Override
     public UUID store(UserLocation userLocation) {
+        System.out.println("storing new user location");
         Preconditions.checkNotNull(userLocation, "user location is not set");
         UUID uuid = userLocation.getUser().getUuid();
         storage.put(uuid, userLocation);
@@ -43,12 +45,13 @@ public class UserLocationDAOMockImpl implements DAO<UUID, UserLocation> {
     @Override
     public void update(UserLocation userLocation) {
         Preconditions.checkNotNull(userLocation, "user location is not set");
-        storage.put(userLocation.getUser().getUuid(), userLocation);
+        storage.put(userLocation.getKey(), userLocation);
     }
 
     @Override
     public Optional<UserLocation> find(UUID uuid) {
-        return Optional.ofNullable(storage.get(Preconditions.checkNotNull(uuid, "uuid is not set")));
+        Preconditions.checkNotNull(uuid, "uuid is not set");
+        return Optional.ofNullable(storage.get(uuid));
     }
 
     @Override
