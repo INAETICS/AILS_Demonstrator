@@ -18,7 +18,7 @@ import org.inaetics.ails.api.common.model.WiFiProfile;
  * ProfileFactory}
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.2.0
+ * @version 0.2.1
  * @since 05-11-2015
  */
 public class RawLocationProfileFactoryImpl implements RawLocationProfileFactory {
@@ -39,7 +39,7 @@ public class RawLocationProfileFactoryImpl implements RawLocationProfileFactory 
         if (shouldReturnOptional()) {
             return Optional.empty();
         } else {
-            return Optional.of(new RawLocationProfile(wifiProfile, randomLocation()));
+            return Optional.of(new RawLocationProfile(-1, wifiProfile, randomLocation()));
         }        
     }
 
