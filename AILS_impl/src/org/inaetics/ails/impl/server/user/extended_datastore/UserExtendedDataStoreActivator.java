@@ -12,7 +12,7 @@ import org.osgi.framework.BundleContext;
  * Activator for UserExtendedDataStore.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.3
+ * @version 1.0.0
  * @since 04-11-2015
  */
 public class UserExtendedDataStoreActivator extends DependencyActivatorBase {

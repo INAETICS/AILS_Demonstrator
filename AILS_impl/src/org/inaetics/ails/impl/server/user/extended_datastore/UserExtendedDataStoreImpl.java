@@ -20,7 +20,7 @@ import com.google.common.base.Preconditions;
  * information.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.2
+ * @version 1.0.0
  * @since 04-11-2015
  */
 public class UserExtendedDataStoreImpl implements UserDataStore, UserLocationDataStore {
@@ -52,7 +52,6 @@ public class UserExtendedDataStoreImpl implements UserDataStore, UserLocationDat
 
 	@Override
 	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		return userDAO.getAll();
 	}
 }
