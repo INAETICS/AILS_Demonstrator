@@ -1,0 +1,4 @@
+Bundle-Version: 0.0.0.${tstamp}
+Private-Package: org.inaetics.ails.impl.client.streaming_controller
+Bundle-Activator: org.inaetics.ails.impl.client.streaming_controller.StreamingServiceActivator
+Export-Package: org.inaetics.ails.api.client.streaming_controller

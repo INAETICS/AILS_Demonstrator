@@ -1,4 +1,0 @@
-Private-Package: org.inaetics.ails.impl.client.factory.raw_location_profile
-Bundle-Version: 0.0.0.${tstamp}
-Bundle-Activator: org.inaetics.ails.impl.client.factory.raw_location_profile.ProfileFactoryActivator
-Export-Package: org.inaetics.ails.impl.client.factory.raw_location_profile

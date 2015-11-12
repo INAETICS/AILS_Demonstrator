@@ -1,68 +1,41 @@
 package org.inaetics.ails.api.common.model;
 
-import java.util.UUID;
-
 import com.google.common.base.Preconditions;
 
 /**
  * Representation of a Device.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.2
+ * @version 0.2.0
  * @since 22-10-2015
  */
 public class Device {
 
     private static final Accuracy DEFAULT_ACCURACY = Accuracy.AREA;
 
-    private final String name;
-    private final byte[] mac;
-    private final UUID uuid;
+    private final User user;
     private final Accuracy accuracy;
 
     /**
      * Constructor for Device.
      * 
-     * @param name @NotNull The device's name.
-     * @param mac @NotNull The device's uniquely identifying MAC-address.
-     * @param uuid @NotNull Universally unique identifier identifying the {@link User} of this
-     *        device.
+     * @param user @NotNull The user's information.
      * @param accuracy The accuracy with which this device is allowed to be located. Will use a
      *        default of Device.DEFAULT_ACCURACY if null is provided.
      */
-    public Device(String name, byte[] mac, UUID uuid, Accuracy accuracy) {
+    public Device(User user, Accuracy accuracy) {
         super();
-        this.name = Preconditions.checkNotNull(name, "name is not set");
-        this.mac = Preconditions.checkNotNull(mac, "mac is not set");
-        this.uuid = Preconditions.checkNotNull(uuid, "uuid is not set");
+        this.user = Preconditions.checkNotNull(user, "name is not set");
         this.accuracy = accuracy != null ? accuracy : DEFAULT_ACCURACY;
     }
 
     /**
-     * Retrieve the name of this Device.
+     * Retrieve the user of this Device.
      * 
-     * @return The User's name.
+     * @return The {@link User Uses}'s information.
      */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Retrieve the MAC-address of this Device.
-     * 
-     * @return A byte[] representation of the MAC-address of this Device.
-     */
-    public byte[] getMac() {
-        return mac;
-    }
-
-    /**
-     * Retrieve the UUID of this Device.
-     * 
-     * @return This User's UUID.
-     */
-    public UUID getUuid() {
-        return uuid;
+    public User getUser() {
+        return user;
     }
 
     /**
