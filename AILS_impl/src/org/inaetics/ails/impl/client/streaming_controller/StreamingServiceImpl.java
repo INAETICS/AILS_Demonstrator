@@ -17,7 +17,7 @@ import org.inaetics.ails.api.server.streaming_profile.service.StreamingProfileSe
  * UserWiFiProfiles} to the {@link StreamingProfileService StreamingProfileService}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 11-11-2015
  */
 public class StreamingServiceImpl implements StreamingService {
@@ -27,11 +27,16 @@ public class StreamingServiceImpl implements StreamingService {
     private volatile StreamingProfileService streamingProfileService;
 
     private final Timer timer;
-    private final TimerTask task;
 
-    public StreamingServiceImpl(AnonUser anonUser) {
+    public StreamingServiceImpl() {
         timer = new Timer();
-        task = new TimerTask() {
+    }
+    
+    @Override
+    public void startStreaming(AnonUser anonUser) {
+        System.out.println("Streaming Profile Service started");
+
+        TimerTask task = new TimerTask() {
 
             @Override
             public void run() {
@@ -43,28 +48,14 @@ public class StreamingServiceImpl implements StreamingService {
                 }
             }
         };
-    }
-
-    // Called by the Dependency Manager
-    public void start() {
-        System.out.println("Streaming Profile Service started");
-        startStreaming();
-    }
-
-    // Called by the Dependency Manager
-    public void stop() {
-        System.out.println("Streaming Profile Service stopped");
-        stopStreaming();
-    }
-
-    @Override
-    public void startStreaming() {
+        
         timer.schedule(task, 0, 60000);
     }
 
     @Override
     public void stopStreaming() {
-        task.cancel();
+        System.out.println("Streaming Profile Service stopped");
+
         timer.cancel();
     }
 }

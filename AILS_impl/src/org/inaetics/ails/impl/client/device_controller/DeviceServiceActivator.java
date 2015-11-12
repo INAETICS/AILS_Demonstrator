@@ -5,6 +5,7 @@ import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
 import org.inaetics.ails.api.client.dao.device.DeviceDAO;
 import org.inaetics.ails.api.client.device_controller.DeviceService;
+import org.inaetics.ails.api.client.streaming_controller.StreamingService;
 
 /**
  * The DeviceServiceActivator starts the {@link DeviceService DeviceService}.
@@ -18,8 +19,10 @@ public class DeviceServiceActivator extends DependencyActivatorBase {
     @Override
     public void init(BundleContext context, DependencyManager dm) throws Exception {
         dm.add(createComponent().setInterface(DeviceService.class.getName(), null)
-                .setImplementation(DeviceServiceImpl.class).add(createServiceDependency()
-                        .setService(DeviceDAO.class).setRequired(true)));
+                .setImplementation(DeviceServiceImpl.class)
+                .add(createServiceDependency().setService(DeviceDAO.class).setRequired(true))
+                .add(createServiceDependency().setService(StreamingService.class)
+                        .setRequired(true)));
     }
 
 }
