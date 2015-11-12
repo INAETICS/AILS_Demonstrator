@@ -15,9 +15,9 @@ import com.google.common.base.Preconditions;
 
 /**
  * Mock implementation for a {@link UserLocation} {@link DAO}.
- * 
+ *
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
+ * @version 0.1.2
  * @since 10-11-2015
  */
 public class UserLocationDAOMockImpl implements UserLocationDAO {
@@ -30,7 +30,6 @@ public class UserLocationDAOMockImpl implements UserLocationDAO {
 
     @Override
     public UUID store(UserLocation userLocation) {
-        System.out.println("storing new user location");
         Preconditions.checkNotNull(userLocation, "user location is not set");
         UUID uuid = userLocation.getUser().getUuid();
         storage.put(uuid, userLocation);

@@ -18,13 +18,13 @@ import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStor
 /**
  * The Streaming Profile Miner will process {@link UserWiFiProfile UserWiFiProfiles} from the
  * {@link BufferService}.
- * 
+ *
  * New UserWiFiProfiles arriving from the buffer will be stored. Stored UserWiFiProfiles will be
  * combined with {@link LocationProfile LocationProfiles} to gather new information about the
  * {@link Location} of a {@link User}.
- * 
+ *
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.3
+ * @version 0.1.4
  * @since 10-11-2015
  */
 public class StreamingProfileMiner {
@@ -33,7 +33,7 @@ public class StreamingProfileMiner {
     private volatile BufferService<UserWiFiProfile> incomingUserWiFiProfileBuffer;
     private volatile UserWiFiProfileDAO oldUserWiFiProfileDAO;
     private volatile LocationProfileDAO locationProfileDAO;
-    private volatile UserLocationDataStore userLocationDataStore; 
+    private volatile UserLocationDataStore userLocationDataStore;
 
     private final Timer timer;
 
@@ -66,10 +66,12 @@ public class StreamingProfileMiner {
                 // Location for the User
                 // TODO: locationProfileDAO.getAll() can probably be done more efficiently
                 for (LocationProfile locationProfile : locationProfileDAO.getAll()) {
-                    
+
                     WiFiProfile newWiFiProfile = userWiFiProfile.get().getWifiProfile();
                     if (newWiFiProfile.match(locationProfile.getWifiProfile())) {
-                        
+
+                        System.out.println("A Location is found for this User");
+
                         // Match found! Update UserLocation data store
                         User user = userWiFiProfile.get().getUser();
                         Location location = locationProfile.getLocation();
@@ -78,6 +80,8 @@ public class StreamingProfileMiner {
                         break;
                     }
                 }
+
+                // TODO: What if no match was found? Ask user for location, right?
             }
 
             System.out.println("StreamingProfileMiner finished mining");
