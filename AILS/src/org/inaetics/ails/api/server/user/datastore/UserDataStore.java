@@ -1,5 +1,6 @@
 package org.inaetics.ails.api.server.user.datastore;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -9,7 +10,7 @@ import org.inaetics.ails.api.common.model.User;
  * The UserDataStore can be used to store {@link User Users}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 1.0.0
  * @since 29-10-2015
  */
 public interface UserDataStore {
@@ -26,7 +27,16 @@ public interface UserDataStore {
      * 
      * @param uuid @NotNull Universally unique identifier identifying the User to retrieve.
      * @return An Optional containing the User object if found, or an empty Optional if not.
+     * @since 0.1.0
      */
     Optional<User> getUser(UUID uuid);
+    
+    /**
+     * Retrieve a list of all User's known in the system.
+     * 
+     * @return List of all users known to the system.
+     * @since 1.0.0
+     */    
+    List<User> getAllUsers();
  
 }

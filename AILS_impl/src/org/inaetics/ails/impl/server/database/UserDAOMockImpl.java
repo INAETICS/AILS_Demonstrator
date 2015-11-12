@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.User;
 import org.inaetics.ails.api.server.database.DAO;
+import org.inaetics.ails.api.server.database.UserDAO;
 
 import com.google.common.base.Preconditions;
 
@@ -16,10 +17,10 @@ import com.google.common.base.Preconditions;
  * Mock implementation for a {@link User} {@link DAO}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 10-11-2015
  */
-public class UserDAOMockImpl implements DAO<UUID, User> {
+public class UserDAOMockImpl implements UserDAO {
 
     private final Map<UUID, User> storage;
     
@@ -43,7 +44,7 @@ public class UserDAOMockImpl implements DAO<UUID, User> {
     @Override
     public void update(User user) {
         Preconditions.checkNotNull(user, "user is not set");
-        storage.put(user.getUuid(), user);
+        storage.put(user.getKey(), user);
     }
 
     @Override

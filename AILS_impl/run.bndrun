@@ -18,13 +18,17 @@
 	osgi.identity;filter:='(osgi.identity=AILS_impl.server_buffer)',\
 	osgi.identity;filter:='(osgi.identity=AILS_impl.server_streaming_profile_service_impl)',\
 	osgi.identity;filter:='(osgi.identity=AILS_impl.server_streaming_profile_miner)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_dao)'
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_dao)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_location_profile_miner)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_location_profile_service_impl)'
 -resolve: auto
 -runbundles: \
 	AILS.common_model;version=snapshot,\
 	AILS.server_user_datastore_api;version=snapshot,\
 	AILS_impl.server_buffer;version=snapshot,\
 	AILS_impl.server_dao;version=snapshot,\
+	AILS_impl.server_location_profile_miner;version=snapshot,\
+	AILS_impl.server_location_profile_service_impl;version=snapshot,\
 	AILS_impl.server_location_provider_service_impl;version=snapshot,\
 	AILS_impl.server_streaming_profile_miner;version=snapshot,\
 	AILS_impl.server_streaming_profile_service_impl;version=snapshot,\

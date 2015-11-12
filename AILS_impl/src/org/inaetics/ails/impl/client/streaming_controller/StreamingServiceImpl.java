@@ -38,7 +38,7 @@ public class StreamingServiceImpl implements StreamingService {
                 Optional<WiFiProfile> wifiProfile = wifiProfileFactory.getProfile();
 
                 if (wifiProfile.isPresent()) {
-                    UserWiFiProfile userWiFiProfile = new UserWiFiProfile(wifiProfile.get(), user);
+                    UserWiFiProfile userWiFiProfile = new UserWiFiProfile(-1, wifiProfile.get(), user);
                     streamingProfileService.add(userWiFiProfile);
                 }
             }

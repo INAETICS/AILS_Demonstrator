@@ -1,4 +1,4 @@
-package org.inaetics.ails.api.server.location_profile;
+package org.inaetics.ails.api.server.location_profile.service;
 
 import org.inaetics.ails.api.common.model.RawLocationProfile;
 

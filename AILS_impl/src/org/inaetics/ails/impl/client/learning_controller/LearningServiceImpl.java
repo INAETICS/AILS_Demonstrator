@@ -9,7 +9,7 @@ import org.inaetics.ails.api.client.learning_controller.LearningService;
 import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.RawLocationProfile;
 import org.inaetics.ails.api.common.model.WiFiProfile;
-import org.inaetics.ails.api.server.location_profile.LocationProfileService;
+import org.inaetics.ails.api.server.location_profile.service.LocationProfileService;
 
 /**
  * The LearningServiceImpl provides an implementation of the {@link LearningService LearningService}
@@ -42,7 +42,7 @@ public class LearningServiceImpl implements LearningService {
 
                 if (wifiProfile.isPresent()) {
                     RawLocationProfile rawLocationProfile =
-                            new RawLocationProfile(wifiProfile.get(), location);
+                            new RawLocationProfile(-1, wifiProfile.get(), location);
                     locationProfileService.add(rawLocationProfile);
                 }
             }

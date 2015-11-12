@@ -20,7 +20,6 @@
 -runbundles: \
 	AILS.client_learning_controller_api;version=snapshot,\
 	AILS.client_location_controller_api;version=snapshot,\
-	AILS.client_profile_factory_api;version=snapshot,\
 	AILS.common_model;version=snapshot,\
 	AILS_impl.client_dao_device;version=snapshot,\
 	AILS_impl.client_device_controller;version=snapshot,\

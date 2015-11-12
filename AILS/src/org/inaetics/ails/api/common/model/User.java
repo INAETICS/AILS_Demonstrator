@@ -8,10 +8,10 @@ import com.google.common.base.Preconditions;
  * Representation of a User.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.3
+ * @version 0.2.0
  * @since 20-10-2015
  */
-public class User {
+public class User implements Key<UUID> {
 
     private final UUID uuid;
     private final String name;
@@ -23,6 +23,7 @@ public class User {
      * @param uuid @NotNull Universally unique identifier identifying this User.
      * @param name The name of this User.
      * @param mac A byte[] representation of the MAC-address of this User's device.
+     * @since 0.1.0
      */
     public User(UUID uuid, String name, byte[] mac) {
         super();
@@ -35,6 +36,7 @@ public class User {
      * Retrieve the UUID of this User.
      * 
      * @return This User's UUID.
+     * @since 0.1.0
      */
     public UUID getUuid() {
         return uuid;
@@ -44,6 +46,7 @@ public class User {
      * Retrieve the Name of this User.
      * 
      * @return This User's name.
+     * @since 0.1.0
      */
     public String getName() {
         return name;
@@ -53,9 +56,18 @@ public class User {
      * Retrieve the MAC-address of this User.
      * 
      * @return A byte[] representation of the MAC-address of this User's device.
+     * @since 0.1.0
      */
     public byte[] getMac() {
         return mac;
+    }
+
+    /**
+     * @since 0.2.0
+     */
+    @Override
+    public UUID getKey() {
+        return uuid;
     }
 
     /**
@@ -63,6 +75,7 @@ public class User {
      * 
      * @return a hash code value for this object.
      * @see Object#hashCode()
+     * @since 0.1.0
      */
     @Override
     public int hashCode() {
@@ -78,6 +91,7 @@ public class User {
      * @param obj the reference object with which to compare.
      * @return true if this object is the same as the obj argument; false otherwise.
      * @see java.lang.Object#equals(java.lang.Object)
+     * @since 0.1.0
      */
     @Override
     public boolean equals(Object obj) {
