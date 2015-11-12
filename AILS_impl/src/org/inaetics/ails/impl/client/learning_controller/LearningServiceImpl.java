@@ -29,12 +29,14 @@ public class LearningServiceImpl implements LearningService {
     private volatile LocationProfileService locationProfileService;
 
     private final Timer timer;
-    private final TimerTask task;
 
-    public LearningServiceImpl(Location location) {
-
+    public LearningServiceImpl() {
         timer = new Timer();
-        task = new TimerTask() {
+    }
+
+    @Override
+    public void startLearningMode(Location location) {
+        TimerTask task = new TimerTask() {
 
             @Override
             public void run() {
@@ -47,16 +49,12 @@ public class LearningServiceImpl implements LearningService {
                 }
             }
         };
-    }
-
-    @Override
-    public void startLearningMode() {
+        
         timer.schedule(task, 0, 50000);
     }
 
     @Override
     public void stopLearningMode() {
-        task.cancel();
-        timer.cancel();
+        timer.cancel();        
     }
 }
