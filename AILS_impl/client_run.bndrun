@@ -8,25 +8,30 @@
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.client_device_controller)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.client_factory_profile_impl)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.client_learning_controller)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.client_location_controller)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.dependencymanager)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.dependencymanager.runtime)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.dependencymanager.shell)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.client_dao_device)'
+	osgi.identity;filter:='(osgi.identity=AILS_impl.client_dao_device)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.client_device_controller_impl)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.client_factory_wifi_profile_impl)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.client_learning_controller_impl)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.client_location_controller_impl)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.client_streaming_controller_impl)'
 -resolve: auto
 -runbundles: \
-	AILS.client_learning_controller_api;version=snapshot,\
 	AILS.client_location_controller_api;version=snapshot,\
 	AILS.common_model;version=snapshot,\
+	AILS.server_location_profile_api;version=snapshot,\
+	AILS.server_streaming_profile_api;version=snapshot,\
+	AILS.server_user_service_api;version=snapshot,\
 	AILS_impl.client_dao_device;version=snapshot,\
-	AILS_impl.client_device_controller;version=snapshot,\
-	AILS_impl.client_factory_profile_impl;version=snapshot,\
-	AILS_impl.client_learning_controller;version=snapshot,\
-	AILS_impl.client_location_controller;version=snapshot,\
+	AILS_impl.client_device_controller_impl;version=snapshot,\
+	AILS_impl.client_factory_wifi_profile_impl;version=snapshot,\
+	AILS_impl.client_learning_controller_impl;version=snapshot,\
+	AILS_impl.client_location_controller_impl;version=snapshot,\
+	AILS_impl.client_streaming_controller_impl;version=snapshot,\
 	com.google.guava;version='[13.0.1,13.0.2)',\
+	com.google.guava;version='[18.0.0,18.0.1)',\
 	org.apache.felix.configadmin;version='[1.8.8,1.8.9)',\
 	org.apache.felix.dependencymanager;version='[4.1.0,4.1.1)',\
 	org.apache.felix.dependencymanager.runtime;version='[4.0.1,4.0.2)',\
