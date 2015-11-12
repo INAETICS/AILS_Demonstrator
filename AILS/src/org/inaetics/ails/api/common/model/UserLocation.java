@@ -1,17 +1,18 @@
 package org.inaetics.ails.api.common.model;
 
+import java.util.UUID;
+
 import com.google.common.base.Preconditions;
 
 /**
- * A UserLocation can used to store a {@link Location Locations} that specifically belong to a
- * {@link User}. For example, when we know for certain the Location of a User we can store that in
- * this class.
+ * UserLocation can be used to store a {@link Location} that specifically belong to a {@link User}.
+ * For example, when we know the Location of a User for certain, we can store that in this class.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.2.0
  * @since 28-10-2015
  */
-public class UserLocation {
+public class UserLocation implements Key<UUID> {
 
     private final User user;
     private final Location location;
@@ -21,6 +22,7 @@ public class UserLocation {
      * 
      * @param user @NotNull The user the location belongs to.
      * @param location @NotNull The location belonging to the user.
+     * @since 0.1.0
      */
     public UserLocation(User user, Location location) {
         super();
@@ -32,6 +34,7 @@ public class UserLocation {
      * Retrieve the user.
      * 
      * @return the user
+     * @since 0.1.0
      */
     public User getUser() {
         return user;
@@ -41,9 +44,18 @@ public class UserLocation {
      * Retrieve the location.
      * 
      * @return the location
+     * @since 0.1.0
      */
     public Location getLocation() {
         return location;
+    }
+
+    /**
+     * @since 0.2.0
+     */
+    @Override
+    public UUID getKey() {
+        return user.getUuid();
     }
 
 }

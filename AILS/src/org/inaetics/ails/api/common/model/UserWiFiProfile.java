@@ -7,23 +7,31 @@ import com.google.common.base.Preconditions;
  * {@link User}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.2
+ * @version 1.0.0
  * @since 28-10-2015
  */
-public class UserWiFiProfile {
+public class UserWiFiProfile implements Key<Integer> {
 
+    // Used to reference the object in persistence
+    private final int storageIndex;
+    
     private final WiFiProfile wifiProfile;
     private final User user;
 
     /**
      * Constructor for UserWiFiProfile.
      * 
+     * @param storageIndex Index for this object in persistence. Can be either -1 (not yet set) or a
+     *        higher value (index of stored object).
      * @param wifiProfile @NotNull WiFiProfile describing the distance to access points.
      * @param user @NotNull User data.
+     * @since 1.0.0
      */
-    public UserWiFiProfile(WiFiProfile wifiProfile, User user) {
+    public UserWiFiProfile(int storageIndex, WiFiProfile wifiProfile, User user) {
         super();
-        this.wifiProfile = Preconditions.checkNotNull(wifiProfile, "wifiProfile is not set");
+        Preconditions.checkArgument(storageIndex > -2, "storage index must be -1 or higher");
+        this.storageIndex = storageIndex;
+        this.wifiProfile = Preconditions.checkNotNull(wifiProfile, "wifi profile is not set");
         this.user = Preconditions.checkNotNull(user, "user is not set");
     }
 
@@ -31,6 +39,7 @@ public class UserWiFiProfile {
      * Retrieve WiFi Profile.
      * 
      * @return the wifiProfile.
+     * @since 0.1.0
      */
     public WiFiProfile getWifiProfile() {
         return wifiProfile;
@@ -40,8 +49,18 @@ public class UserWiFiProfile {
      * Retrieve the User.
      * 
      * @return the user.
+     * @since 0.1.0
      */
     public User getUser() {
         return user;
     }
+
+    /**
+     * @since 1.0.0
+     */
+    @Override
+    public Integer getKey() {
+        return storageIndex;
+    }
+
 }
