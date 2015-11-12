@@ -6,6 +6,8 @@ import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
 
 import org.inaetics.ails.api.client.location_controller.LocationService;
+import org.inaetics.ails.api.server.database.UserLocationDAO;
+import org.inaetics.ails.api.server.user.service.UserService;
 
 /**
  * The LocationServiceActivator starts the {@link LocationService LocationService}.
@@ -19,7 +21,10 @@ public class LocationServiceActivator extends DependencyActivatorBase {
     @Override
     public void init(BundleContext context, DependencyManager dm) throws Exception {
         dm.add(createComponent().setInterface(LocationService.class.getName(), null)
-                .setImplementation(LocationServiceImpl.class));
+                .setImplementation(LocationServiceImpl.class)
+                .add(createServiceDependency()
+                		.setService(UserService.class)
+                        .setRequired(true)));
     }
 
 }

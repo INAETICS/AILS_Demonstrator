@@ -22,12 +22,6 @@ public interface LocationService {
      */
     public List<AnonUser> getUsers();
 
-    /**
-     * Display a list of users.
-     * 
-     * @param users List of users
-     */
-    public void displayUserlist(List<AnonUser> users);
 
     /**
      * Get the location of a given {@link AnonUser}.
@@ -39,10 +33,4 @@ public interface LocationService {
      */
     public Optional<Location> queryUserLocation(AnonUser user);
 
-    /**
-     * Display a {@link Location}.
-     * 
-     * @param location {@link Location} to be displayed.
-     */
-    public void displayLocation(Location location);
 }

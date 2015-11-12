@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.inaetics.ails.api.client.location_controller.LocationService;
 import org.inaetics.ails.api.common.model.Location;
+import org.inaetics.ails.api.server.user.service.UserService;
 import org.inaetics.ails.api.common.model.AnonUser;
 
 /**
@@ -16,29 +17,17 @@ import org.inaetics.ails.api.common.model.AnonUser;
  * @since 05-11-2015
  */
 public class LocationServiceImpl implements LocationService {
+	// Injected by the DM
+	private volatile UserService userService;
 
     @Override
     public List<AnonUser> getUsers() {
-        throw new UnsupportedOperationException(
-                "LocationServiceImpl.getUsers() not yet implemented.");
-    }
-
-    @Override
-    public void displayUserlist(List<AnonUser> users) {
-        throw new UnsupportedOperationException(
-                "LocationServiceImpl.displayUserlist(List<User> user) not yet implemented.");
+    	return userService.getAll();
     }
 
     @Override
     public Optional<Location> queryUserLocation(AnonUser user) {
-        throw new UnsupportedOperationException(
-                "LocationServiceImpl.queryUserLocation(User user) not yet implemented.");
-    }
-
-    @Override
-    public void displayLocation(Location location) {
-        throw new UnsupportedOperationException(
-                "LocationServiceImpl.displayLocation(Location location) not yet implemented.");
+        return userService.locate(user.getUuid());
     }
 
 }
