@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.inaetics.ails.api.client.location_controller.LocationService;
 import org.inaetics.ails.api.common.model.Location;
-import org.inaetics.ails.api.common.model.User;
+import org.inaetics.ails.api.common.model.AnonUser;
 
 /**
  * The LocationServiceImpl class provides an implementation of the {@link LocationService
@@ -18,19 +18,19 @@ import org.inaetics.ails.api.common.model.User;
 public class LocationServiceImpl implements LocationService {
 
     @Override
-    public List<User> getUsers() {
+    public List<AnonUser> getUsers() {
         throw new UnsupportedOperationException(
                 "LocationServiceImpl.getUsers() not yet implemented.");
     }
 
     @Override
-    public void displayUserlist(List<User> users) {
+    public void displayUserlist(List<AnonUser> users) {
         throw new UnsupportedOperationException(
                 "LocationServiceImpl.displayUserlist(List<User> user) not yet implemented.");
     }
 
     @Override
-    public Optional<Location> queryUserLocation(User user) {
+    public Optional<Location> queryUserLocation(AnonUser user) {
         throw new UnsupportedOperationException(
                 "LocationServiceImpl.queryUserLocation(User user) not yet implemented.");
     }

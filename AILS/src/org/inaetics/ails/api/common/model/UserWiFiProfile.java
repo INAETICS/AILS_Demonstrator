@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 
 /**
  * A UserWiFiProfile can used to store a {@link WiFiProfile} that specifically belongs to a
- * {@link User}.
+ * {@link AnonUser}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
  * @version 1.0.0
@@ -16,7 +16,7 @@ public class UserWiFiProfile implements Key<Integer> {
     private final int storageIndex;
     
     private final WiFiProfile wifiProfile;
-    private final User user;
+    private final AnonUser user;
 
     /**
      * Constructor for UserWiFiProfile.
@@ -27,7 +27,7 @@ public class UserWiFiProfile implements Key<Integer> {
      * @param user @NotNull User data.
      * @since 1.0.0
      */
-    public UserWiFiProfile(int storageIndex, WiFiProfile wifiProfile, User user) {
+    public UserWiFiProfile(int storageIndex, WiFiProfile wifiProfile, AnonUser user) {
         super();
         Preconditions.checkArgument(storageIndex > -2, "storage index must be -1 or higher");
         this.storageIndex = storageIndex;
@@ -51,7 +51,7 @@ public class UserWiFiProfile implements Key<Integer> {
      * @return the user.
      * @since 0.1.0
      */
-    public User getUser() {
+    public AnonUser getUser() {
         return user;
     }
 

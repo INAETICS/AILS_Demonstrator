@@ -5,9 +5,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.User;
+import org.inaetics.ails.api.common.model.AnonUser;
 
 /**
- * The UserDataStore can be used to store {@link User Users}.
+ * The UserDataStore can be used to store {@link AnonUser Users}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
  * @version 1.0.0

@@ -5,7 +5,7 @@ import java.util.UUID;
 import com.google.common.base.Preconditions;
 
 /**
- * UserLocation can be used to store a {@link Location} that specifically belong to a {@link User}.
+ * UserLocation can be used to store a {@link Location} that specifically belong to a {@link AnonUser}.
  * For example, when we know the Location of a User for certain, we can store that in this class.
  * 
  * @author L. Buit, N. Korthout, J. Naus
@@ -14,7 +14,7 @@ import com.google.common.base.Preconditions;
  */
 public class UserLocation implements Key<UUID> {
 
-    private final User user;
+    private final AnonUser user;
     private final Location location;
 
     /**
@@ -24,7 +24,7 @@ public class UserLocation implements Key<UUID> {
      * @param location @NotNull The location belonging to the user.
      * @since 0.1.0
      */
-    public UserLocation(User user, Location location) {
+    public UserLocation(AnonUser user, Location location) {
         super();
         this.user = Preconditions.checkNotNull(user, "user is not set");
         this.location = Preconditions.checkNotNull(location, "location is not set");
@@ -36,7 +36,7 @@ public class UserLocation implements Key<UUID> {
      * @return the user
      * @since 0.1.0
      */
-    public User getUser() {
+    public AnonUser getUser() {
         return user;
     }
 

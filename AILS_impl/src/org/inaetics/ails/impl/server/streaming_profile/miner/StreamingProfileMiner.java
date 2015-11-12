@@ -6,7 +6,7 @@ import java.util.TimerTask;
 
 import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.LocationProfile;
-import org.inaetics.ails.api.common.model.User;
+import org.inaetics.ails.api.common.model.AnonUser;
 import org.inaetics.ails.api.common.model.UserLocation;
 import org.inaetics.ails.api.common.model.UserWiFiProfile;
 import org.inaetics.ails.api.common.model.WiFiProfile;
@@ -21,7 +21,7 @@ import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStor
  *
  * New UserWiFiProfiles arriving from the buffer will be stored. Stored UserWiFiProfiles will be
  * combined with {@link LocationProfile LocationProfiles} to gather new information about the
- * {@link Location} of a {@link User}.
+ * {@link Location} of a {@link AnonUser}.
  *
  * @author L. Buit, N. Korthout, J. Naus
  * @version 0.1.4
@@ -73,7 +73,7 @@ public class StreamingProfileMiner {
                         System.out.println("A Location is found for this User");
 
                         // Match found! Update UserLocation data store
-                        User user = userWiFiProfile.get().getUser();
+                        AnonUser user = userWiFiProfile.get().getUser();
                         Location location = locationProfile.getLocation();
                         UserLocation userLocation = new UserLocation(user, location);
                         userLocationDataStore.storeUserLocation(userLocation);

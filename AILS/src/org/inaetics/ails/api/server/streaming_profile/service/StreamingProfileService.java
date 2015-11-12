@@ -4,7 +4,7 @@ import org.inaetics.ails.api.common.model.UserWiFiProfile;
 
 /**
  * This service provides functions to add new {@link UserWiFiProfile UserWiFiProfiles} to the system. These
- * UserWiFiProfiles can be used to find the {@link Location} of a {@link User} via a {@link WiFiProfile}.
+ * UserWiFiProfiles can be used to find the {@link Location} of a {@link AnonUser} via a {@link WiFiProfile}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
  * @version 0.1.1

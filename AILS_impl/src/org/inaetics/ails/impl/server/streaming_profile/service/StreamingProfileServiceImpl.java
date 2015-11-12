@@ -6,7 +6,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
 
-import org.inaetics.ails.api.common.model.User;
+import org.inaetics.ails.api.common.model.AnonUser;
 import org.inaetics.ails.api.common.model.UserWiFiProfile;
 import org.inaetics.ails.api.common.model.WiFiProfile;
 import org.inaetics.ails.api.server.buffer.BufferService;
@@ -35,7 +35,7 @@ public class StreamingProfileServiceImpl implements StreamingProfileService {
             public void run() {
                 for (int i = 0; i < 10; i++) {
                     WiFiProfile wifiProfile = new WiFiProfile(Instant.now(), new ArrayList<>());
-                    User user = new User(UUID.randomUUID(), "Some name", "Some mac".getBytes());
+                    AnonUser user = new AnonUser(UUID.randomUUID(), "Some name");
                     UserWiFiProfile userWiFiProfile = new UserWiFiProfile(0, wifiProfile, user);
                     buffer.add(userWiFiProfile);
                 }

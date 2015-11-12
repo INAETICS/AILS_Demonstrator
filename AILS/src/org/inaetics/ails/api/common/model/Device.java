@@ -25,7 +25,7 @@ public class Device {
      * 
      * @param name @NotNull The device's name.
      * @param mac @NotNull The device's uniquely identifying MAC-address.
-     * @param uuid @NotNull Universally unique identifier identifying the {@link User} of this
+     * @param uuid @NotNull Universally unique identifier identifying the {@link AnonUser} of this
      *        device.
      * @param accuracy The accuracy with which this device is allowed to be located. Will use a
      *        default of Device.DEFAULT_ACCURACY if null is provided.

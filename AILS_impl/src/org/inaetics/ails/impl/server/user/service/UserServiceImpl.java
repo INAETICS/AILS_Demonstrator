@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.User;
+import org.inaetics.ails.api.common.model.AnonUser;
 import org.inaetics.ails.api.server.location.provider.LocationProvider;
 import org.inaetics.ails.api.server.user.datastore.UserDataStore;
 import org.inaetics.ails.api.server.user.service.UserService;
@@ -29,13 +30,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAll() {
+    public List<AnonUser> getAll() {
+    	
+    	
         throw new UnsupportedOperationException("UserServiceImpl.getAll() not yet implemented.");
     }
 
     @Override
-    public Optional<User> find(UUID uuid) {
-        return userDataStore.getUser(uuid);
+    public Optional<AnonUser> find(UUID uuid) {
+        return userDataStore.getUser(uuid).map(x -> x.getAnonUser());
     }
 
     @Override

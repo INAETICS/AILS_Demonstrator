@@ -3,9 +3,11 @@ package org.inaetics.ails.impl.server.user.extended_datastore;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.User;
+import org.inaetics.ails.api.common.model.AnonUser;
 import org.inaetics.ails.api.common.model.UserLocation;
 import org.inaetics.ails.api.server.database.UserDAO;
 import org.inaetics.ails.api.server.database.UserLocationDAO;
