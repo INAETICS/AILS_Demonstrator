@@ -10,7 +10,7 @@ import org.osgi.framework.BundleContext;
  * The StreamingProfileServiceActivator starts a {@link StreamingProfileService} implementation.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
+ * @version 0.1.2
  * @since 04-11-2015
  */
 public class StreamingProfileServiceActivator extends DependencyActivatorBase {
@@ -20,7 +20,7 @@ public class StreamingProfileServiceActivator extends DependencyActivatorBase {
         manager.add(createComponent().setInterface(StreamingProfileService.class.getName(), null)
                 .setImplementation(StreamingProfileServiceImpl.class)
                 .add(createServiceDependency()
-                        .setService(BufferService.class, "(type=UserWiFiProfile)")
+                        .setService(BufferService.class, "(type=AnonUserWiFiProfile)")
                         .setRequired(true)));
     }
 

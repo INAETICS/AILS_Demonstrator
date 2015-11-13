@@ -12,7 +12,7 @@ import org.osgi.framework.BundleContext;
  * The StreamingProfileMinerActivator starts a {@link StreamingProfileMiner}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.2
+ * @version 0.1.3
  * @since 10-11-2015
  */
 public class StreamingProfileMinerActivator extends DependencyActivatorBase {
@@ -21,7 +21,7 @@ public class StreamingProfileMinerActivator extends DependencyActivatorBase {
     public void init(BundleContext context, DependencyManager manager) throws Exception {
         manager.add(createComponent().setImplementation(StreamingProfileMiner.class)
                 .add(createServiceDependency()
-                        .setService(BufferService.class, "(type=UserWiFiProfile)")
+                        .setService(BufferService.class, "(type=AnonUserWiFiProfile)")
                         .setRequired(true))
                 .add(createServiceDependency().setService(LocationProfileDAO.class)
                         .setRequired(true))
