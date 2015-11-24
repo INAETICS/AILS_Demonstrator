@@ -1,2 +1,2 @@
 Bundle-Version: 0.1.0.${tstamp}
-Export-Package: org.inaetics.ails.api.client.location_controller
+Export-Package: org.inaetics.ails.api.client.controllers.location
