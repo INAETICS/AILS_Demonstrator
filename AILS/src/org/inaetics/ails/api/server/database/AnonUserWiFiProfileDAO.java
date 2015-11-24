@@ -1,6 +1,6 @@
 package org.inaetics.ails.api.server.database;
 
-import org.inaetics.ails.api.common.model.AnonUserWiFiProfile;
+import org.inaetics.ails.api.common.model.UUIDWiFiProfile;
 
 /**
  * DAO for {@link UserWiFiProfile} objects.
@@ -9,6 +9,6 @@ import org.inaetics.ails.api.common.model.AnonUserWiFiProfile;
  * @version 1.0.0
  * @since 12-12-2015
  */
-public interface AnonUserWiFiProfileDAO extends DAO<Integer, AnonUserWiFiProfile> {
+public interface AnonUserWiFiProfileDAO extends DAO<Integer, UUIDWiFiProfile> {
 
 }
