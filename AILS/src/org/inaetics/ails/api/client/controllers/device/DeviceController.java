@@ -1,15 +1,15 @@
-package org.inaetics.ails.api.client.device_controller;
+package org.inaetics.ails.api.client.controllers.device;
 
 import org.inaetics.ails.api.common.model.Accuracy;
 
 /**
- * Device services
+ * The Device Controller Service provides a way to register a new user and to set a user's accuracy.
  * 
  * @author L. Buit, N. Korthout, J. Naus
  * @version 0.1.0
- * @since 20-10-2015
+ * @since 24-11-2015
  */
-public interface DeviceService {
+public interface DeviceController {
     /**
      * Sets the accuracy with which a location is send back.
      * 
@@ -22,5 +22,5 @@ public interface DeviceService {
      * 
      * @param name @NotNull The user's display name.
      */
-    public void setName(String name);
+    public void registerUser(String name);
 }
