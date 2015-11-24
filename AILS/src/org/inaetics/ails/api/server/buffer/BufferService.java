@@ -7,7 +7,7 @@ import java.util.Optional;
  * add and remove elements and to check its size.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 2.0.0
+ * @version 2.1.0
  * @since 28-10-2015
  * @param <E> The type of elements this buffer can handle.
  */
@@ -33,5 +33,13 @@ public interface BufferService<E> {
      * @return the number of elements in this buffer.
      */
     int size();
+    
+    /**
+     * Retrieve the class type of the objects that are buffered by this buffer.
+     *  
+     * @return The class of the type for this buffer.
+     * @since 2.1.0
+     */
+    Class<E> forType();
 
 }

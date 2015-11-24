@@ -29,10 +29,53 @@ Test-Cases: ${classes;CONCRETE;EXTENDS;junit.framework.TestCase}
 -resolve: auto
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=biz.aQute.junit)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_dao)'
+	osgi.identity;filter:='(osgi.identity=AILS.client_dao_device_api)',\
+	osgi.identity;filter:='(osgi.identity=AILS.client_device_controller_api)',\
+	osgi.identity;filter:='(osgi.identity=AILS.client_learning_controller_api)',\
+	osgi.identity;filter:='(osgi.identity=AILS.client_location_controller_api)',\
+	osgi.identity;filter:='(osgi.identity=AILS.client_profile_factory_api)',\
+	osgi.identity;filter:='(osgi.identity=AILS.client_streaming_controller_api)',\
+	osgi.identity;filter:='(osgi.identity=AILS.common_model)',\
+	osgi.identity;filter:='(osgi.identity=AILS.server_buffer_api)',\
+	osgi.identity;filter:='(osgi.identity=AILS.server_dao_api)',\
+	osgi.identity;filter:='(osgi.identity=AILS.server_location_api)',\
+	osgi.identity;filter:='(osgi.identity=AILS.server_location_profile_api)',\
+	osgi.identity;filter:='(osgi.identity=AILS.server_location_provider_api)',\
+	osgi.identity;filter:='(osgi.identity=AILS.server_streaming_profile_api)',\
+	osgi.identity;filter:='(osgi.identity=AILS.server_user_datastore_api)',\
+	osgi.identity;filter:='(osgi.identity=AILS.server_user_extendeddatastore_api)',\
+	osgi.identity;filter:='(osgi.identity=AILS.server_user_service_api)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_dao)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_buffer)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_location_profile_service_impl)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_location_provider_service_impl)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_streaming_profile_service_impl)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_user_extendeddatastore_impl)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.service_user_service_impl)'
 -runbundles: \
+	AILS.client_dao_device_api;version=snapshot,\
+	AILS.client_device_controller_api;version=snapshot,\
+	AILS.client_learning_controller_api;version=snapshot,\
+	AILS.client_location_controller_api;version=snapshot,\
+	AILS.client_profile_factory_api;version=snapshot,\
+	AILS.client_streaming_controller_api;version=snapshot,\
 	AILS.common_model;version=snapshot,\
+	AILS.server_buffer_api;version=snapshot,\
+	AILS.server_dao_api;version=snapshot,\
+	AILS.server_location_api;version=snapshot,\
+	AILS.server_location_profile_api;version=snapshot,\
+	AILS.server_location_provider_api;version=snapshot,\
+	AILS.server_streaming_profile_api;version=snapshot,\
+	AILS.server_user_datastore_api;version=snapshot,\
+	AILS.server_user_extendeddatastore_api;version=snapshot,\
+	AILS.server_user_service_api;version=snapshot,\
+	AILS_impl.server_buffer;version=snapshot,\
 	AILS_impl.server_dao;version=snapshot,\
+	AILS_impl.server_location_profile_service_impl;version=snapshot,\
+	AILS_impl.server_location_provider_service_impl;version=snapshot,\
+	AILS_impl.server_streaming_profile_service_impl;version=snapshot,\
+	AILS_impl.server_user_extendeddatastore_impl;version=snapshot,\
+	AILS_impl.service_user_service_impl;version=snapshot,\
 	biz.aQute.junit;version='[3.0.0,3.0.1)',\
 	com.google.guava;version='[13.0.1,13.0.2)',\
 	com.google.guava;version='[18.0.0,18.0.1)',\

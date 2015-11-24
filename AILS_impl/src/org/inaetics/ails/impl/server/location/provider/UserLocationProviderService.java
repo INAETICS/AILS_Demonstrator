@@ -3,8 +3,8 @@ package org.inaetics.ails.impl.server.location.provider;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.AnonUser;
+import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.server.location.provider.LocationProvider;
 import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStore;
 
