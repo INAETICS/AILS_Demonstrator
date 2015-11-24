@@ -7,7 +7,7 @@ import org.inaetics.ails.api.common.model.User;
 
 /**
  * The Device Data Store provides methods to check whether a User already exists, and if so get and
- * set his/her accuracy and get his/her UUID.
+ * store his/her accuracy and get his/her UUID.
  * 
  * @author L. Buit, N. Korthout, J. Naus
  * @version 0.1.0
@@ -30,18 +30,18 @@ public interface DeviceDataStore {
     UUID getUUID();
 
     /**
-     * Set the device's User.
+     * Store the device's User.
      * 
      * @param user The device's user.
      */
-    void setUser(User user);
+    void storeUser(User user);
 
     /**
-     * Set the device's {@link Accuracy}.
+     * Store the device's {@link Accuracy}.
      * 
      * @param accuracy The device's {@link Accuracy}.
      */
-    void setAccuracy(Accuracy accuracy);
+    void storeAccuracy(Accuracy accuracy);
 
     /**
      * Check if the device has a registered user.
