@@ -3,10 +3,10 @@ package org.inaetics.ails.api.server.database;
 import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.User;
-import org.inaetics.ails.api.common.model.AnonUser;
+import org.inaetics.ails.api.common.model.User;
 
 /**
- * DAO for {@link AnonUser} objects.
+ * DAO for {@link User} objects.
  * 
  * @author L. Buit, N. Korthout, J. Naus
  * @version 0.1.0

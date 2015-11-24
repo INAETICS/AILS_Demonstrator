@@ -1,7 +1,6 @@
 package org.inaetics.ails.api.client.view;
 
 import org.inaetics.ails.api.common.model.Location;
-import org.inaetics.ails.api.common.model.User;
 
 /**
  * The View provides a way to ask the {@link User} for his/her current location.

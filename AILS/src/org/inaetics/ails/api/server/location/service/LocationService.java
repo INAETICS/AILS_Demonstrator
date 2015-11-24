@@ -4,10 +4,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.Location;
-import org.inaetics.ails.api.common.model.AnonUser;
+import org.inaetics.ails.api.common.model.User;
 
 /**
- * This service provides functions to find {@link Location Locations} of {@link AnonUser Users}.
+ * This service provides functions to find {@link Location Locations} of {@link User Users}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
  * @version 1.0.0
@@ -16,7 +16,7 @@ import org.inaetics.ails.api.common.model.AnonUser;
 public interface LocationService {
 
     /**
-     * Find the Location of a {@link AnonUser}.
+     * Find the Location of a {@link User}.
      * 
      * @param uuid @NotNull Universally unique identifier identifying the User of which to find the
      *        Location.

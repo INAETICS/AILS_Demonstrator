@@ -3,7 +3,7 @@ package org.inaetics.ails.api.client.controllers.users;
 import java.util.List;
 import java.util.UUID;
 
-import org.inaetics.ails.api.common.model.AnonUser;
+import org.inaetics.ails.api.common.model.User;
 import org.inaetics.ails.api.common.model.Location;
 
 /**
@@ -21,7 +21,7 @@ public interface UsersController {
      * 
      * @return A List containing all the Users.
      */
-    List<AnonUser> getAll();
+    List<User> getAll();
 
     /**
      * Get a location for an user given his/her UUID.

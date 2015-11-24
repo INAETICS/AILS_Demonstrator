@@ -1,7 +1,7 @@
 package org.inaetics.ails.api.common.model;
 
 /**
- * Accuracy describes the accuracy with which a {@link AnonUser} can be located.
+ * Accuracy describes the accuracy with which a {@link User} can be located.
  * 
  * @author L. Buit, N. Korthout, J. Naus
  * @version 0.2.0

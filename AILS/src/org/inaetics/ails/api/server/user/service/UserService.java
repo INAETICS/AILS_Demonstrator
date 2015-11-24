@@ -6,10 +6,10 @@ import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.User;
-import org.inaetics.ails.api.common.model.AnonUser;
+import org.inaetics.ails.api.common.model.User;
 
 /**
- * This service provides functions to add and get {@link AnonUser Users}.
+ * This service provides functions to add and get {@link User Users}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
  * @version 1.1.0
@@ -23,14 +23,14 @@ public interface UserService {
      * @param user @NotNull The new MacUser to add.
      * @since 2.0.0
      */
-    AnonUser add(String name, byte[] mac);
+    User add(String name, byte[] mac);
 
     /**
      * Retrieve a List of all Users known by this service.
      * 
      * @return A List containing all the Users.
      */
-    List<AnonUser> getAll();
+    List<User> getAll();
 
     /**
      * Retrieve a specific User known by this service, identified by its UUID.
@@ -38,10 +38,10 @@ public interface UserService {
      * @param uuid @NotNull Universally unique identifier identifying the User to retrieve.
      * @return An Optional containing the User object if found, or an empty Optional if not.
      */
-    Optional<AnonUser> find(UUID uuid);
+    Optional<User> find(UUID uuid);
 
     /**
-     * Find the Location of a {@link AnonUser}.
+     * Find the Location of a {@link User}.
      * 
      * @param uuid @NotNull Universally unique identifier identifying the User of which to find the
      *        Location.
