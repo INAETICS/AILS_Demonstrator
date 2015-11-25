@@ -13,8 +13,6 @@ import com.google.common.base.Preconditions;
  */
 public class User implements Key<UUID> {
 
-    private static final Accuracy ACCURACY_DEFAULT = Accuracy.AREA;
-
     private final UUID uuid;
     private final String name;
     private final Accuracy accuracy;
@@ -31,17 +29,6 @@ public class User implements Key<UUID> {
         this.uuid = Preconditions.checkNotNull(uuid, "uuid is not set");
         this.name = Preconditions.checkNotNull(name, "name is not set");
         this.accuracy = accuracy;
-    }
-
-    /**
-     * Constructor for User with a default value of Area for the accuracy.
-     * 
-     * @param uuid @NotNull Universally unique identifier identifying this User.
-     * @param name @NotNull The name of this User.
-     * @since 2.0.0
-     */
-    public User(UUID uuid, String name) {
-        this(uuid, name, ACCURACY_DEFAULT);
     }
 
     /**
