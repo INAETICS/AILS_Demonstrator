@@ -9,18 +9,18 @@
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
 	osgi.identity;filter:='(osgi.identity=com.google.guava)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.service_user_service_impl)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.dependencymanager)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.dependencymanager.runtime)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.dependencymanager.shell)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_location_provider_service_impl)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_user_extendeddatastore_impl)',\
 	osgi.identity;filter:='(osgi.identity=AILS_impl.server_buffer)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_streaming_profile_service_impl)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_streaming_profile_miner)',\
 	osgi.identity;filter:='(osgi.identity=AILS_impl.server_dao)',\
 	osgi.identity;filter:='(osgi.identity=AILS_impl.server_location_profile_miner)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_location_profile_service_impl)'
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_location_profile_service_impl)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_location_provider_service_impl)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_streaming_profile_miner)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_streaming_profile_service_impl)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_user_extendeddatastore_impl)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.server_user_service_impl)'
 -resolve: auto
 -runbundles: \
 	AILS.common_model;version=snapshot,\
@@ -33,7 +33,7 @@
 	AILS_impl.server_streaming_profile_miner;version=snapshot,\
 	AILS_impl.server_streaming_profile_service_impl;version=snapshot,\
 	AILS_impl.server_user_extendeddatastore_impl;version=snapshot,\
-	AILS_impl.service_user_service_impl;version=snapshot,\
+	AILS_impl.server_user_service_impl;version=snapshot,\
 	com.google.guava;version='[13.0.1,13.0.2)',\
 	com.google.guava;version='[18.0.0,18.0.1)',\
 	org.apache.felix.configadmin;version='[1.8.8,1.8.9)',\

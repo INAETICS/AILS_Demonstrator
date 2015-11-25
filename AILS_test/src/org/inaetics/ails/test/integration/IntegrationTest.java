@@ -9,6 +9,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.inaetics.ails.api.client.controllers.device.DeviceController;
+import org.inaetics.ails.api.client.controllers.learning.LearningController;
+import org.inaetics.ails.api.client.controllers.location.LocationController;
+import org.inaetics.ails.api.client.controllers.streaming_wifi_profiles.StreamingWiFiProfilesController;
+import org.inaetics.ails.api.client.controllers.users.UsersController;
+import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
+import org.inaetics.ails.api.client.model.wifi_profile_factory.WiFiProfileFactory;
+import org.inaetics.ails.api.client.view.View;
 import org.inaetics.ails.api.common.model.RawLocationProfile;
 import org.inaetics.ails.api.common.model.UUIDWiFiProfile;
 import org.inaetics.ails.api.server.buffer.BufferService;
@@ -131,6 +139,25 @@ public class IntegrationTest {
                     || (buffers.get(0).forType().equals(RawLocationProfile.class)
                             && buffers.get(1).forType().equals(UUID.class)));
         }
+    }
+    
+    @Test
+    public void testClientsideServicesAvailable() {
+        // Test model
+        assertTrue(service(DeviceDataStore.class).isPresent());
+        assertTrue(service(WiFiProfileFactory.class).isPresent());
+        
+        // Test controller
+        assertTrue(service(DeviceController.class).isPresent());
+        assertTrue(service(LearningController.class).isPresent());
+        assertTrue(service(LocationController.class).isPresent());
+        assertTrue(service(StreamingWiFiProfilesController.class).isPresent());
+        assertTrue(service(UsersController.class).isPresent());
+        
+        // Test view
+        assertTrue(service(View.class).isPresent());
+        
+        System.out.println("yay");
     }
 
 }

@@ -16,10 +16,10 @@
 	osgi.identity;filter:='(osgi.identity=AILS_impl.client_learning_controller_impl)',\
 	osgi.identity;filter:='(osgi.identity=AILS_impl.client_location_controller_impl)',\
 	osgi.identity;filter:='(osgi.identity=AILS_impl.client_streaming_wifi_profiles_controller_impl)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.client_wifi_profile_factory_impl)'
+	osgi.identity;filter:='(osgi.identity=AILS_impl.client_wifi_profile_factory_impl)',\
+	osgi.identity;filter:='(osgi.identity=AILS_impl.client_view_impl)'
 -resolve: auto
 -runbundles: \
-	AILS.client_view_api;version=snapshot,\
 	AILS.common_model;version=snapshot,\
 	AILS.server_location_profile_api;version=snapshot,\
 	AILS.server_streaming_profile_api;version=snapshot,\
@@ -29,6 +29,7 @@
 	AILS_impl.client_learning_controller_impl;version=snapshot,\
 	AILS_impl.client_location_controller_impl;version=snapshot,\
 	AILS_impl.client_streaming_wifi_profiles_controller_impl;version=snapshot,\
+	AILS_impl.client_view_impl;version=snapshot,\
 	AILS_impl.client_wifi_profile_factory_impl;version=snapshot,\
 	com.google.guava;version='[13.0.1,13.0.2)',\
 	org.apache.felix.configadmin;version='[1.8.8,1.8.9)',\
