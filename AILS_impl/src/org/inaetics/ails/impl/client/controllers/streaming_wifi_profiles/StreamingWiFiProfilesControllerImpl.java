@@ -1,13 +1,13 @@
-package org.inaetics.ails.impl.client.streaming_controller;
+package org.inaetics.ails.impl.client.controllers.streaming_wifi_profiles;
 
 import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.inaetics.ails.api.client.factory.WiFiProfileFactory;
-import org.inaetics.ails.api.client.streaming_controller.StreamingService;
-import org.inaetics.ails.api.common.model.AnonUser;
-import org.inaetics.ails.api.common.model.AnonUserWiFiProfile;
+import org.inaetics.ails.api.client.controllers.streaming_wifi_profiles.StreamingWiFiProfilesController;
+import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
+import org.inaetics.ails.api.client.model.wifi_profile_factory.WiFiProfileFactory;
+import org.inaetics.ails.api.common.model.UUIDWiFiProfile;
 import org.inaetics.ails.api.common.model.WiFiProfile;
 import org.inaetics.ails.api.server.streaming_profile.service.StreamingProfileService;
 
@@ -20,20 +20,21 @@ import org.inaetics.ails.api.server.streaming_profile.service.StreamingProfileSe
  * @version 0.1.1
  * @since 11-11-2015
  */
-public class StreamingServiceImpl implements StreamingService {
+public class StreamingWiFiProfilesControllerImpl implements StreamingWiFiProfilesController {
 
     // Injected by Dependency Manager
     private volatile WiFiProfileFactory wifiProfileFactory;
+    private volatile DeviceDataStore deviceDataStore;
     private volatile StreamingProfileService streamingProfileService;
 
     private final Timer timer;
 
-    public StreamingServiceImpl() {
+    public StreamingWiFiProfilesControllerImpl() {
         timer = new Timer();
     }
     
     @Override
-    public void startStreaming(AnonUser anonUser) {
+    public void startStreaming() {
         System.out.println("Streaming Profile Service started");
 
         TimerTask task = new TimerTask() {
@@ -43,8 +44,8 @@ public class StreamingServiceImpl implements StreamingService {
                 Optional<WiFiProfile> wifiProfile = wifiProfileFactory.getProfile();
 
                 if (wifiProfile.isPresent()) {
-                    AnonUserWiFiProfile anonUserWiFiProfile = new AnonUserWiFiProfile(-1, wifiProfile.get(), anonUser);
-                    streamingProfileService.add(anonUserWiFiProfile);
+                    UUIDWiFiProfile uuidWiFiProfile = new UUIDWiFiProfile(-1, wifiProfile.get(), deviceDataStore.getUUID());
+                    streamingProfileService.add(uuidWiFiProfile);
                 }
             }
         };

@@ -1,10 +1,10 @@
-package org.inaetics.ails.impl.client.factory;
+package org.inaetics.ails.impl.client.model.wifi_profile_factory;
 
 import org.osgi.framework.BundleContext;
 
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
-import org.inaetics.ails.api.client.factory.WiFiProfileFactory;
+import org.inaetics.ails.api.client.model.wifi_profile_factory.WiFiProfileFactory;
 
 /**
  * The DeviceFactoryActivator starts the {@link DeviceFactory DeviceFactory}.

@@ -1,4 +1,4 @@
-package org.inaetics.ails.impl.client.factory;
+package org.inaetics.ails.impl.client.model.wifi_profile_factory;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-import org.inaetics.ails.api.client.factory.WiFiProfileFactory;
+import org.inaetics.ails.api.client.model.wifi_profile_factory.WiFiProfileFactory;
 import org.inaetics.ails.api.common.model.AccessPoint;
 import org.inaetics.ails.api.common.model.AccessPointMeasurement;
 import org.inaetics.ails.api.common.model.WiFiProfile;

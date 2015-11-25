@@ -1,18 +1,18 @@
-package org.inaetics.ails.impl.client.learning_controller;
+package org.inaetics.ails.impl.client.controllers.learning;
 
 import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.inaetics.ails.api.client.factory.WiFiProfileFactory;
-import org.inaetics.ails.api.client.learning_controller.LearningService;
+import org.inaetics.ails.api.client.controllers.learning.LearningController;
+import org.inaetics.ails.api.client.model.wifi_profile_factory.WiFiProfileFactory;
 import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.RawLocationProfile;
 import org.inaetics.ails.api.common.model.WiFiProfile;
 import org.inaetics.ails.api.server.location_profile.service.LocationProfileService;
 
 /**
- * The LearningServiceImpl provides an implementation of the {@link LearningService LearningService}
+ * The LearningControllerImpl provides an implementation of the {@link LearningController LearningController}
  * . When started, the learning mode queries the device for {@link WiFiProfile WiFiProfiles} and
  * decorates them with a {@link Location Location} provided by the constructor. The resulting
  * {@link RawLocationProfile RawLocationProfile} is send to the {@link LocationProfileService
@@ -22,7 +22,7 @@ import org.inaetics.ails.api.server.location_profile.service.LocationProfileServ
  * @version 0.2.0
  * @since 05-11-2015
  */
-public class LearningServiceImpl implements LearningService {
+public class LearningControllerImpl implements LearningController {
 
     // Injected by Dependency Manager
     private volatile WiFiProfileFactory wifiProfileFactory;
@@ -30,7 +30,7 @@ public class LearningServiceImpl implements LearningService {
 
     private final Timer timer;
 
-    public LearningServiceImpl() {
+    public LearningControllerImpl() {
         timer = new Timer();
     }
 

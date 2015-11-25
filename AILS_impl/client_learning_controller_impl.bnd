@@ -1,4 +1,6 @@
 Bundle-Version: 0.0.0.${tstamp}
-Bundle-Activator: org.inaetics.ails.impl.client.learning_controller.LearningServiceActivator
-Export-Package: org.inaetics.ails.api.client.learning_controller
-Private-Package: org.inaetics.ails.impl.client.learning_controller
+Bundle-Activator: org.inaetics.ails.impl.client.controllers.learning.LearningControllerActivator
+Export-Package: org.inaetics.ails.api.client.controllers.learning
+Private-Package: \
+	org.inaetics.ails.impl.client.learning_controller,\
+	org.inaetics.ails.impl.client.controllers.learning

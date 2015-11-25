@@ -1,0 +1,6 @@
+Bundle-Version: 0.0.0.${tstamp}
+Private-Package: \
+	org.inaetics.ails.impl.client.streaming_controller,\
+	org.inaetics.ails.impl.client.controllers.streaming_wifi_profiles
+Bundle-Activator: org.inaetics.ails.impl.client.controllers.streaming_wifi_profiles.StreamingWiFiProfilesControllerActivator
+Export-Package: org.inaetics.ails.api.client.controllers.streaming_wifi_profiles

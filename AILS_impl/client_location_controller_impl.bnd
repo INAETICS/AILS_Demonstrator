@@ -1,4 +1,6 @@
-Private-Package: org.inaetics.ails.impl.client.location_controller
+Private-Package: \
+	org.inaetics.ails.impl.client.location_controller,\
+	org.inaetics.ails.impl.client.controllers.location
 Bundle-Version: 0.0.0.${tstamp}
-Bundle-Activator: org.inaetics.ails.impl.client.location_controller.LocationServiceActivator
-Export-Package: org.inaetics.ails.api.client.learning_controller
+Bundle-Activator: org.inaetics.ails.impl.client.controllers.location.LocationControllerActivator
+Export-Package: org.inaetics.ails.api.client.controllers.location
