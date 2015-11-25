@@ -19,6 +19,7 @@
 	osgi.identity;filter:='(osgi.identity=AILS_impl.client_wifi_profile_factory_impl)'
 -resolve: auto
 -runbundles: \
+	AILS.client_view_api;version=snapshot,\
 	AILS.common_model;version=snapshot,\
 	AILS.server_location_profile_api;version=snapshot,\
 	AILS.server_streaming_profile_api;version=snapshot,\
