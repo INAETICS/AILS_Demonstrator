@@ -4,6 +4,8 @@ import org.osgi.framework.BundleContext;
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
 import org.inaetics.ails.api.client.controllers.device.DeviceController;
+import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
+import org.inaetics.ails.api.server.user.service.UserService;
 
 /**
  * The DeviceControllerActivator starts the {@link DeviceController DeviceController}.
@@ -17,9 +19,9 @@ public class DeviceControllerActivator extends DependencyActivatorBase {
     @Override
     public void init(BundleContext context, DependencyManager dm) throws Exception {
         dm.add(createComponent().setInterface(DeviceController.class.getName(), null)
-                .setImplementation(DeviceControllerImpl.class));
-
-        // TODO: Add dependency injections
+                .setImplementation(DeviceControllerImpl.class)
+                .add(createServiceDependency().setService(UserService.class).setRequired(true))
+                .add(createServiceDependency().setService(DeviceDataStore.class)
+                        .setRequired(true)));
     }
-
 }
