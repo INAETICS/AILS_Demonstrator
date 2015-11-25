@@ -1,6 +1,7 @@
 package org.inaetics.ails.api.client.controllers.users;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.User;
@@ -24,11 +25,12 @@ public interface UsersController {
     List<User> getAll();
 
     /**
-     * Get a location for an user given his/her UUID.
+     * Get a location for an user given his/her UUID if known.
      * 
      * @param uuid The user's UUID.
      * 
-     * @return A location for the given user.
+     * @return An optional containing the last known location for the given user, else an empty
+     *         optional.
      */
-    Location getLocationForUser(UUID uuid);
+    Optional<Location> getLocationForUser(UUID uuid);
 }
