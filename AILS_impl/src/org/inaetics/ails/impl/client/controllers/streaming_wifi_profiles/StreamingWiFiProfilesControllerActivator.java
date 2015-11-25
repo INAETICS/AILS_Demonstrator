@@ -11,7 +11,7 @@ import org.inaetics.ails.api.server.streaming_profile.service.StreamingProfileSe
 
 /**
  * The StreamingWiFiProfilesControllerActivator starts the {@link StreamingWiFiProfileController
- * StreamingWiFiProfileController} bundle and starts the streaming service automatically.
+ * StreamingWiFiProfileController} bundle.
  * 
  * @author L. Buit, N. Korthout, J. Naus
  * @version 0.1.0

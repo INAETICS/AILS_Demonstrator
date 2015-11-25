@@ -6,7 +6,14 @@ import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
 import org.inaetics.ails.api.common.model.Accuracy;
 import org.inaetics.ails.api.common.model.User;
 
-public class DeviceDatStoreImpl implements DeviceDataStore {
+/**
+ * The DeviceDatStoreImpl class provides a way to store a user in-memory.
+ * 
+ * @author L. Buit, N. Korthout, J. Naus
+ * @version 0.1.0
+ * @since 25-11-2015
+ */
+public class DeviceDataStoreImpl implements DeviceDataStore {
 
     User user;
     

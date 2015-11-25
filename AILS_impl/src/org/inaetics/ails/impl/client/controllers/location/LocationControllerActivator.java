@@ -5,7 +5,7 @@ import org.osgi.framework.BundleContext;
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
 import org.inaetics.ails.api.client.controllers.location.LocationController;
-import org.inaetics.ails.api.server.user.service.UserService;
+import org.inaetics.ails.api.client.view.View;
 
 /**
  * The LocationControllerActivator starts the {@link LocationController LocationController}.
@@ -21,7 +21,7 @@ public class LocationControllerActivator extends DependencyActivatorBase {
         dm.add(createComponent().setInterface(LocationController.class.getName(), null)
                 .setImplementation(LocationControllerImpl.class)
                 .add(createServiceDependency()
-                		.setService(UserService.class)
+                		.setService(View.class)
                         .setRequired(true)));
     }
 

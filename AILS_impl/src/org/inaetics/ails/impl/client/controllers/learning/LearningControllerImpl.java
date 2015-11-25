@@ -12,11 +12,11 @@ import org.inaetics.ails.api.common.model.WiFiProfile;
 import org.inaetics.ails.api.server.location_profile.service.LocationProfileService;
 
 /**
- * The LearningControllerImpl provides an implementation of the {@link LearningController LearningController}
- * . When started, the learning mode queries the device for {@link WiFiProfile WiFiProfiles} and
- * decorates them with a {@link Location Location} provided by the constructor. The resulting
- * {@link RawLocationProfile RawLocationProfile} is send to the {@link LocationProfileService
- * LocationProfileService} of the server.
+ * The LearningControllerImpl provides an implementation of the {@link LearningController
+ * LearningController} . When started, the learning mode queries the device for {@link WiFiProfile
+ * WiFiProfiles} and decorates them with a {@link Location Location} provided by the constructor.
+ * The resulting {@link RawLocationProfile RawLocationProfile} is send to the
+ * {@link LocationProfileService LocationProfileService} of the server.
  * 
  * @author L. Buit, N. Korthout, J. Naus
  * @version 0.2.0
@@ -49,12 +49,12 @@ public class LearningControllerImpl implements LearningController {
                 }
             }
         };
-        
+
         timer.schedule(task, 0, 50000);
     }
 
     @Override
     public void stopLearningMode() {
-        timer.cancel();        
+        timer.cancel();
     }
 }
