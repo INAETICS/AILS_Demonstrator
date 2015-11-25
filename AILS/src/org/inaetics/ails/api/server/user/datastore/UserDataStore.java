@@ -5,13 +5,12 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.User;
-import org.inaetics.ails.api.common.model.User;
 
 /**
  * The UserDataStore can be used to store {@link User Users}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 1.0.0
+ * @version 2.0.0
  * @since 29-10-2015
  */
 public interface UserDataStore {
@@ -20,8 +19,10 @@ public interface UserDataStore {
      * Store a new User.
      * 
      * @param user @NotNull The User to store.
+     * @return UUID belonging to new user.
+     * @since 2.0.0
      */
-    void storeUser(User user);
+    UUID storeUser(User user);
 
     /**
      * Retrieve a specific User known by this data store, identified by its UUID.

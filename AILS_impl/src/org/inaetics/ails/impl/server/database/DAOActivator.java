@@ -6,15 +6,15 @@ import org.inaetics.ails.api.server.database.DAO;
 import org.inaetics.ails.api.server.database.LocationProfileDAO;
 import org.inaetics.ails.api.server.database.RawLocationProfileDAO;
 import org.inaetics.ails.api.server.database.UserDAO;
-import org.inaetics.ails.api.server.database.UserLocationDAO;
-import org.inaetics.ails.api.server.database.AnonUserWiFiProfileDAO;
+import org.inaetics.ails.api.server.database.UUIDLocationDAO;
+import org.inaetics.ails.api.server.database.UUIDWiFiProfileDAO;
 import org.osgi.framework.BundleContext;
 
 /**
  * Activates the {@link DAO DAOs}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.3
+ * @version 0.1.4
  * @since 10-11-2015
  */
 public class DAOActivator extends DependencyActivatorBase {
@@ -25,11 +25,11 @@ public class DAOActivator extends DependencyActivatorBase {
         manager.add(createComponent().setInterface(UserDAO.class.getName(), null)
                 .setImplementation(UserDAOMockImpl.class));
 
-        manager.add(createComponent().setInterface(UserLocationDAO.class.getName(), null)
-                .setImplementation(UserLocationDAOMockImpl.class));
+        manager.add(createComponent().setInterface(UUIDLocationDAO.class.getName(), null)
+                .setImplementation(UUIDLocationDAOMockImpl.class));
 
-        manager.add(createComponent().setInterface(AnonUserWiFiProfileDAO.class.getName(), null)
-                .setImplementation(UserWiFiProfileDAOMockImpl.class));
+        manager.add(createComponent().setInterface(UUIDWiFiProfileDAO.class.getName(), null)
+                .setImplementation(UUIDWiFiProfileDAOMockImpl.class));
 
         manager.add(createComponent().setInterface(LocationProfileDAO.class.getName(), null)
                 .setImplementation(LocationProfileDAOMockImpl.class));

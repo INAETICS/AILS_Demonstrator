@@ -3,14 +3,12 @@ package org.inaetics.ails.impl.server.user.extended_datastore;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.User;
-import org.inaetics.ails.api.common.model.AnonUser;
-import org.inaetics.ails.api.common.model.UserLocation;
+import org.inaetics.ails.api.common.model.UUIDLocation;
 import org.inaetics.ails.api.server.database.UserDAO;
-import org.inaetics.ails.api.server.database.UserLocationDAO;
+import org.inaetics.ails.api.server.database.UUIDLocationDAO;
 import org.inaetics.ails.api.server.user.datastore.UserDataStore;
 import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStore;
 
@@ -29,7 +27,7 @@ public class UserExtendedDataStoreImpl implements UserDataStore, UserLocationDat
 
     // Injected by Dependency Manager
     private volatile UserDAO userDAO;
-    private volatile UserLocationDAO userLocationDAO;
+    private volatile UUIDLocationDAO userLocationDAO;
 
     @Override
     public Optional<User> getUser(UUID uuid) {
@@ -37,18 +35,18 @@ public class UserExtendedDataStoreImpl implements UserDataStore, UserLocationDat
     }
 
     @Override
-    public void storeUser(User user) {
-        userDAO.store(Preconditions.checkNotNull(user, "user is not set"));
+    public UUID storeUser(User user) {
+        return userDAO.store(Preconditions.checkNotNull(user, "user is not set"));
     }
 
     @Override
     public Optional<Location> getLocation(UUID uuid) {
         Preconditions.checkNotNull(uuid, "uuid is not set");
-        return userLocationDAO.find(uuid).map(UserLocation::getLocation);
+        return userLocationDAO.find(uuid).map(UUIDLocation::getLocation);
     }
 
     @Override
-    public void storeUserLocation(UserLocation userLocation) {
+    public void storeUserLocation(UUIDLocation userLocation) {
         userLocationDAO.store(userLocation);
     }
 
