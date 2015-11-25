@@ -1,6 +1,4 @@
-Private-Package: \
-	org.inaetics.ails.impl.client.device_controller,\
-	org.inaetics.ails.impl.client.controllers.device
 Bundle-Version: 0.0.0.${tstamp}
 Bundle-Activator: org.inaetics.ails.impl.client.controllers.device.DeviceControllerActivator
-Export-Package: org.inaetics.ails.api.client.model.device_data_store
+Export-Package: org.inaetics.ails.api.client.controllers.device
+Private-Package: org.inaetics.ails.impl.client.controllers.device
