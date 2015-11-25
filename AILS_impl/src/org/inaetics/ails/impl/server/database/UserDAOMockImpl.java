@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.inaetics.ails.api.common.model.AnonUser;
 import org.inaetics.ails.api.common.model.User;
 import org.inaetics.ails.api.server.database.DAO;
 import org.inaetics.ails.api.server.database.UserDAO;
@@ -18,7 +17,7 @@ import com.google.common.base.Preconditions;
  * Mock implementation for a {@link AnonUser} {@link DAO}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
+ * @version 0.1.2
  * @since 10-11-2015
  */
 public class UserDAOMockImpl implements UserDAO {

@@ -8,13 +8,13 @@ import com.google.common.base.Preconditions;
  * Representation of everything a client should know about users.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 1.0.0
+ * @version 2.0.0
  * @since 24-11-2015
  */
 public class User implements Key<UUID> {
 
     private static final Accuracy ACCURACY_DEFAULT = Accuracy.AREA;
-    
+
     private final UUID uuid;
     private final String name;
     private final Accuracy accuracy;
@@ -23,12 +23,13 @@ public class User implements Key<UUID> {
      * Constructor for User.
      * 
      * @param uuid @NotNull Universally unique identifier identifying this User.
-     * @param name The name of this User.
+     * @param name @NotNull The name of this User.
      * @param accuracy The {@link Accuracy} of this User.
+     * @since 2.0.0
      */
     public User(UUID uuid, String name, Accuracy accuracy) {
         this.uuid = Preconditions.checkNotNull(uuid, "uuid is not set");
-        this.name = name;
+        this.name = Preconditions.checkNotNull(name, "name is not set");
         this.accuracy = accuracy;
     }
 
@@ -36,17 +37,17 @@ public class User implements Key<UUID> {
      * Constructor for User with a default value of Area for the accuracy.
      * 
      * @param uuid @NotNull Universally unique identifier identifying this User.
-     * @param name The name of this User.
+     * @param name @NotNull The name of this User.
+     * @since 2.0.0
      */
     public User(UUID uuid, String name) {
         this(uuid, name, ACCURACY_DEFAULT);
     }
-    
+
     /**
      * Retrieve the UUID of this User.
      * 
      * @return This User's UUID.
-     * @since 0.1.0
      */
     public UUID getUuid() {
         return uuid;
@@ -56,25 +57,20 @@ public class User implements Key<UUID> {
      * Retrieve the Name of this User.
      * 
      * @return This User's name.
-     * @since 0.1.0
      */
     public String getName() {
         return name;
     }
-    
+
     /**
      * Retrieve the {@link Accuracy} of this User.
      * 
      * @return This User's accuracy.
-     * @since 1.0.0
      */
     public Accuracy getAccuracy() {
         return accuracy;
     }
 
-    /**
-     * @since 0.1.0
-     */
     @Override
     public UUID getKey() {
         return uuid;
@@ -85,7 +81,6 @@ public class User implements Key<UUID> {
      * 
      * @return a hash code value for this object.
      * @see Object#hashCode()
-     * @since 0.1.0
      */
     @Override
     public int hashCode() {
@@ -101,7 +96,6 @@ public class User implements Key<UUID> {
      * @param obj the reference object with which to compare.
      * @return true if this object is the same as the obj argument; false otherwise.
      * @see java.lang.Object#equals(java.lang.Object)
-     * @since 0.1.0
      */
     @Override
     public boolean equals(Object obj) {

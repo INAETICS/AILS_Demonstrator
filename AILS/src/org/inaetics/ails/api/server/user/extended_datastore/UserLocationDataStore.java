@@ -4,15 +4,15 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.Location;
-import org.inaetics.ails.api.common.model.UserLocation;
+import org.inaetics.ails.api.common.model.UUIDLocation;
 
 /**
- * The UserLocationDataStore can be used to store {@link UserLocation UserLocations}. This enhances
+ * The UserLocationDataStore can be used to store {@link UUIDLocation UUIDLocations}. This enhances
  * Users with Location information. This information can then be used to retrieve the Location of a
  * {@link User}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 1.0.0
  * @since 29-10-2015
  */
 public interface UserLocationDataStore {
@@ -21,8 +21,9 @@ public interface UserLocationDataStore {
      * Store a UserLocation in the data store.
      * 
      * @param userLocation @NotNull The UserLocation to store.
+     * @since 1.0.0
      */
-    void storeUserLocation(UserLocation userLocation);
+    void storeUserLocation(UUIDLocation userLocation);
 
     /**
      * Retrieve a specific User's Location known by this data store.
