@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.inaetics.ails.api.common.model.AnonUserWiFiProfile;
 import org.inaetics.ails.api.common.model.RawLocationProfile;
+import org.inaetics.ails.api.common.model.UUIDWiFiProfile;
 import org.inaetics.ails.api.server.buffer.BufferService;
-import org.inaetics.ails.api.server.database.AnonUserWiFiProfileDAO;
 import org.inaetics.ails.api.server.database.LocationProfileDAO;
 import org.inaetics.ails.api.server.database.RawLocationProfileDAO;
+import org.inaetics.ails.api.server.database.UUIDLocationDAO;
+import org.inaetics.ails.api.server.database.UUIDWiFiProfileDAO;
 import org.inaetics.ails.api.server.database.UserDAO;
-import org.inaetics.ails.api.server.database.UserLocationDAO;
 import org.inaetics.ails.api.server.location.provider.LocationProvider;
 import org.inaetics.ails.api.server.location.service.LocationService;
 import org.inaetics.ails.api.server.location_profile.service.LocationProfileService;
@@ -107,17 +107,17 @@ public class IntegrationTest {
         if (service(UserLocationDataStore.class).isPresent()) {
 
             // This is the streaming wifi profiles option
-            assertTrue(service(AnonUserWiFiProfileDAO.class).isPresent());
-            assertTrue(service(UserLocationDAO.class).isPresent());
+            assertTrue(service(UUIDWiFiProfileDAO.class).isPresent());
+            assertTrue(service(UUIDLocationDAO.class).isPresent());
             assertTrue(service(StreamingProfileService.class).isPresent());
 
             // Check the buffers
             List<BufferService> buffers = services(BufferService.class);
             assertEquals(2, buffers.size());
-            assertTrue((buffers.get(0).forType().equals(AnonUserWiFiProfile.class)
+            assertTrue((buffers.get(0).forType().equals(UUIDWiFiProfile.class)
                     && buffers.get(1).forType().equals(RawLocationProfile.class))
                     || (buffers.get(0).forType().equals(RawLocationProfile.class)
-                            && buffers.get(1).forType().equals(AnonUserWiFiProfile.class)));
+                            && buffers.get(1).forType().equals(UUIDWiFiProfile.class)));
 
         } else {
             // This is the query location option

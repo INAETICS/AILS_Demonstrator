@@ -4,8 +4,8 @@ import java.util.Properties;
 
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
-import org.inaetics.ails.api.common.model.AnonUserWiFiProfile;
 import org.inaetics.ails.api.common.model.RawLocationProfile;
+import org.inaetics.ails.api.common.model.UUIDWiFiProfile;
 import org.inaetics.ails.api.server.buffer.BufferService;
 import org.osgi.framework.BundleContext;
 
@@ -21,10 +21,10 @@ public class BufferServiceActivator extends DependencyActivatorBase {
     @Override
     public void init(BundleContext context, DependencyManager manager) throws Exception {
         Properties props = new Properties();
-        props.put("type", "AnonUserWiFiProfile");
+        props.put("type", "UUIDWiFiProfile");
 
         manager.add(createComponent().setInterface(BufferService.class.getName(), props)
-                .setImplementation(new BufferServiceFIFOImpl<>(AnonUserWiFiProfile.class)));
+                .setImplementation(new BufferServiceFIFOImpl<>(UUIDWiFiProfile.class)));
 
         Properties props2 = new Properties();
         props2.put("type", "RawLocationProfile");

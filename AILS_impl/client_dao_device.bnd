@@ -1,4 +1,0 @@
-Bundle-Version: 0.1.0.${tstamp}
-Private-Package: org.inaetics.ails.impl.client.dao.device
-Export-Package: org.inaetics.ails.api.client.dao.device
-Bundle-Activator: org.inaetics.ails.impl.client.dao.device.DeviceDAOActivator

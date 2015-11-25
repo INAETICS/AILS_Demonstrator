@@ -20,7 +20,7 @@ public class StreamingProfileServiceActivator extends DependencyActivatorBase {
         manager.add(createComponent().setInterface(StreamingProfileService.class.getName(), null)
                 .setImplementation(StreamingProfileServiceImpl.class)
                 .add(createServiceDependency()
-                        .setService(BufferService.class, "(type=AnonUserWiFiProfile)")
+                        .setService(BufferService.class, "(type=UUIDWiFiProfile)")
                         .setRequired(true)));
     }
 

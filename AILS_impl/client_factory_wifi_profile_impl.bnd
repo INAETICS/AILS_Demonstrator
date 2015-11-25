@@ -1,4 +1,0 @@
-Private-Package: org.inaetics.ails.impl.client.factory
-Bundle-Version: 0.0.0.${tstamp}
-Bundle-Activator: org.inaetics.ails.impl.client.factory.WiFiProfileFactoryActivator
-Export-Package: org.inaetics.ails.api.client.factory

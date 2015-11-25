@@ -3,12 +3,6 @@
 	osgi.cmpn,\
 	${junit},\
 	org.mockito.mockito-all,\
-	AILS.client_dao_device_api;version=latest,\
-	AILS.client_device_controller_api;version=latest,\
-	AILS.client_learning_controller_api;version=latest,\
-	AILS.client_location_controller_api;version=latest,\
-	AILS.client_profile_factory_api;version=latest,\
-	AILS.client_streaming_controller_api;version=latest,\
 	AILS.common_model;version=latest,\
 	AILS.server_buffer_api;version=latest,\
 	AILS.server_dao_api;version=latest,\
@@ -18,7 +12,15 @@
 	AILS.server_streaming_profile_api;version=latest,\
 	AILS.server_user_datastore_api;version=latest,\
 	AILS.server_user_extendeddatastore_api;version=latest,\
-	AILS.server_user_service_api;version=latest
+	AILS.server_user_service_api;version=latest,\
+	AILS.client_device_controller_api;version=latest,\
+	AILS.client_device_data_store_api;version=latest,\
+	AILS.client_learning_controller_api;version=latest,\
+	AILS.client_location_controller_api;version=latest,\
+	AILS.client_profile_factory_api;version=latest,\
+	AILS.client_streaming_wifi_profiles_controller_api;version=latest,\
+	AILS.client_users_controller_api;version=latest,\
+	AILS.client_view_api;version=latest
 -runee: JavaSE-1.8
 -runfw: org.apache.felix.framework
 -runsystempackages: sun.reflect
@@ -29,12 +31,6 @@ Test-Cases: ${classes;CONCRETE;EXTENDS;junit.framework.TestCase}
 -resolve: auto
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=biz.aQute.junit)',\
-	osgi.identity;filter:='(osgi.identity=AILS.client_dao_device_api)',\
-	osgi.identity;filter:='(osgi.identity=AILS.client_device_controller_api)',\
-	osgi.identity;filter:='(osgi.identity=AILS.client_learning_controller_api)',\
-	osgi.identity;filter:='(osgi.identity=AILS.client_location_controller_api)',\
-	osgi.identity;filter:='(osgi.identity=AILS.client_profile_factory_api)',\
-	osgi.identity;filter:='(osgi.identity=AILS.client_streaming_controller_api)',\
 	osgi.identity;filter:='(osgi.identity=AILS.common_model)',\
 	osgi.identity;filter:='(osgi.identity=AILS.server_buffer_api)',\
 	osgi.identity;filter:='(osgi.identity=AILS.server_dao_api)',\
@@ -53,12 +49,6 @@ Test-Cases: ${classes;CONCRETE;EXTENDS;junit.framework.TestCase}
 	osgi.identity;filter:='(osgi.identity=AILS_impl.server_user_extendeddatastore_impl)',\
 	osgi.identity;filter:='(osgi.identity=AILS_impl.service_user_service_impl)'
 -runbundles: \
-	AILS.client_dao_device_api;version=snapshot,\
-	AILS.client_device_controller_api;version=snapshot,\
-	AILS.client_learning_controller_api;version=snapshot,\
-	AILS.client_location_controller_api;version=snapshot,\
-	AILS.client_profile_factory_api;version=snapshot,\
-	AILS.client_streaming_controller_api;version=snapshot,\
 	AILS.common_model;version=snapshot,\
 	AILS.server_buffer_api;version=snapshot,\
 	AILS.server_dao_api;version=snapshot,\

@@ -4,7 +4,7 @@ import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
 import org.inaetics.ails.api.server.buffer.BufferService;
 import org.inaetics.ails.api.server.database.LocationProfileDAO;
-import org.inaetics.ails.api.server.database.AnonUserWiFiProfileDAO;
+import org.inaetics.ails.api.server.database.UUIDWiFiProfileDAO;
 import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStore;
 import org.osgi.framework.BundleContext;
 
@@ -21,11 +21,11 @@ public class StreamingProfileMinerActivator extends DependencyActivatorBase {
     public void init(BundleContext context, DependencyManager manager) throws Exception {
         manager.add(createComponent().setImplementation(StreamingProfileMiner.class)
                 .add(createServiceDependency()
-                        .setService(BufferService.class, "(type=AnonUserWiFiProfile)")
+                        .setService(BufferService.class, "(type=UUIDWiFiProfile)")
                         .setRequired(true))
                 .add(createServiceDependency().setService(LocationProfileDAO.class)
                         .setRequired(true))
-                .add(createServiceDependency().setService(AnonUserWiFiProfileDAO.class)
+                .add(createServiceDependency().setService(UUIDWiFiProfileDAO.class)
                         .setRequired(true))
                 .add(createServiceDependency().setService(UserLocationDataStore.class)
                         .setRequired(true)));

@@ -4,7 +4,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.Location;
-import org.inaetics.ails.api.common.model.AnonUser;
+import org.inaetics.ails.api.common.model.User;
 
 /**
  * A LocationProvider provides a way to find a {@link Location}.
@@ -16,7 +16,7 @@ import org.inaetics.ails.api.common.model.AnonUser;
 public interface LocationProvider {
 
     /**
-     * Find the Location of a {@link AnonUser}.
+     * Find the Location of a {@link User}.
      * 
      * @param uuid @NotNull Universally unique identifier identifying the User of which to find the
      *        Location.

@@ -1,0 +1,2 @@
+Export-Package: org.inaetics.ails.api.client.model.device_data_store
+Bundle-Version: 0.1.0.${tstamp}

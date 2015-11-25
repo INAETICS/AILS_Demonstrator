@@ -1,10 +1,10 @@
 package org.inaetics.ails.api.server.streaming_profile.service;
 
-import org.inaetics.ails.api.common.model.AnonUserWiFiProfile;
+import org.inaetics.ails.api.common.model.UUIDWiFiProfile;
 
 /**
- * This service provides functions to add new {@link UserWiFiProfile UserWiFiProfiles} to the system. These
- * UserWiFiProfiles can be used to find the {@link Location} of a {@link AnonUser} via a {@link WiFiProfile}.
+ * This service provides functions to add new {@link UUIDWiFiProfile UUIDWiFiProfiles} to the system. These
+ * UUIDWiFiProfiles can be used to find the {@link Location} of a {@link User} via a {@link WiFiProfile}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
  * @version 0.1.2
@@ -13,10 +13,10 @@ import org.inaetics.ails.api.common.model.AnonUserWiFiProfile;
 public interface StreamingProfileService {
 
     /**
-     * Add a new AnonUserWiFiProfile to the system.
+     * Add a new UUIDUserWiFiProfile to the system.
      * 
-     * @param anonUserWiFiProfile @NotNull The AnonUserWiFiProfile to add.
+     * @param uuidUserWiFiProfile @NotNull The UUIDWiFiProfile to add.
      */
-    void add(AnonUserWiFiProfile anonUserWiFiProfile);
+    void add(UUIDWiFiProfile uuidUserWiFiProfile);
 
 }

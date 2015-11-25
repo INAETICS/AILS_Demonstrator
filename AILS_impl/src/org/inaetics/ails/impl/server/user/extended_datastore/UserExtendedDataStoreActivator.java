@@ -3,7 +3,7 @@ package org.inaetics.ails.impl.server.user.extended_datastore;
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
 import org.inaetics.ails.api.server.database.UserDAO;
-import org.inaetics.ails.api.server.database.UserLocationDAO;
+import org.inaetics.ails.api.server.database.UUIDLocationDAO;
 import org.inaetics.ails.api.server.user.datastore.UserDataStore;
 import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStore;
 import org.osgi.framework.BundleContext;
@@ -24,7 +24,7 @@ public class UserExtendedDataStoreActivator extends DependencyActivatorBase {
                         UserLocationDataStore.class.getName()}, null)
                 .setImplementation(UserExtendedDataStoreImpl.class)
                 .add(createServiceDependency().setService(UserDAO.class).setRequired(true))
-                .add(createServiceDependency().setService(UserLocationDAO.class)
+                .add(createServiceDependency().setService(UUIDLocationDAO.class)
                         .setRequired(true)));
     }
 

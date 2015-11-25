@@ -3,35 +3,35 @@ package org.inaetics.ails.impl.server.streaming_profile.miner;
 import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.LocationProfile;
-import org.inaetics.ails.api.common.model.AnonUser;
-import org.inaetics.ails.api.common.model.UserLocation;
-import org.inaetics.ails.api.common.model.AnonUserWiFiProfile;
+import org.inaetics.ails.api.common.model.UUIDWiFiProfile;
+import org.inaetics.ails.api.common.model.UUIDLocation;
 import org.inaetics.ails.api.common.model.WiFiProfile;
 import org.inaetics.ails.api.server.buffer.BufferService;
 import org.inaetics.ails.api.server.database.LocationProfileDAO;
-import org.inaetics.ails.api.server.database.AnonUserWiFiProfileDAO;
+import org.inaetics.ails.api.server.database.UUIDWiFiProfileDAO;
 import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStore;
 
 /**
- * The Streaming Profile Miner will process {@link AnonUserWiFiProfile AnonUserWiFiProfiles} from the
- * {@link BufferService}.
+ * The Streaming Profile Miner will process {@link UUIDWiFiProfile UUIDWiFiProfiles} from
+ * the {@link BufferService}.
  *
- * New UserWiFiProfiles arriving from the buffer will be stored. Stored UserWiFiProfiles will be
+ * New UserWiFiProfiles arriving from the buffer will be stored. Stored UUIDWiFiProfiles will be
  * combined with {@link LocationProfile LocationProfiles} to gather new information about the
- * {@link Location} of a {@link AnonUser}.
+ * {@link Location} of a {@link User}.
  *
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.4
+ * @version 0.1.5
  * @since 10-11-2015
  */
 public class StreamingProfileMiner {
 
     // Injected by Dependency Manager
-    private volatile BufferService<AnonUserWiFiProfile> incomingUserWiFiProfileBuffer;
-    private volatile AnonUserWiFiProfileDAO oldUserWiFiProfileDAO;
+    private volatile BufferService<UUIDWiFiProfile> incomingUUIDWiFiProfileBuffer;
+    private volatile UUIDWiFiProfileDAO oldUUIDWiFiProfileDAO;
     private volatile LocationProfileDAO locationProfileDAO;
     private volatile UserLocationDataStore userLocationDataStore;
 
@@ -54,32 +54,29 @@ public class StreamingProfileMiner {
         public void run() {
             System.out.println("StreamingProfileMiner started mining");
 
-            Optional<AnonUserWiFiProfile> anonUserWiFiProfile;
-            while ((anonUserWiFiProfile = incomingUserWiFiProfileBuffer.remove()).isPresent()) {
+            Optional<UUIDWiFiProfile> uuidWiFiProfile;
+            while ((uuidWiFiProfile = incomingUUIDWiFiProfileBuffer.remove()).isPresent()) {
 
-                System.out.println("StreamingProfileMiner found a UserWiFiProfile in the buffer");
+                System.out.println("StreamingProfileMiner found a UUIDWiFiProfile in the buffer");
 
                 // Store the newly found UserWiFiProfile for possible later use
-                oldUserWiFiProfileDAO.store(anonUserWiFiProfile.get());
+                oldUUIDWiFiProfileDAO.store(uuidWiFiProfile.get());
 
-                // Compare newly found UserWiFiProfile with existing LocationProfiles to find a
+                UUID uuid = uuidWiFiProfile.get().getUuid();
+                WiFiProfile newWiFiProfile = uuidWiFiProfile.get().getWifiProfile();
+
+                // Compare the newly found UUIDWiFiProfile with existing LocationProfiles to find a
                 // Location for the User
                 // TODO: locationProfileDAO.getAll() can probably be done more efficiently
-                for (LocationProfile locationProfile : locationProfileDAO.getAll()) {
-
-                    WiFiProfile newWiFiProfile = anonUserWiFiProfile.get().getWifiProfile();
-                    if (newWiFiProfile.match(locationProfile.getWifiProfile())) {
-
-                        System.out.println("A Location is found for this User");
-
-                        // Match found! Update UserLocation data store
-                        AnonUser user = anonUserWiFiProfile.get().getUser();
-                        Location location = locationProfile.getLocation();
-                        UserLocation userLocation = new UserLocation(user, location);
-                        userLocationDataStore.storeUserLocation(userLocation);
-                        break;
-                    }
-                }
+                locationProfileDAO.getAll().stream()
+                        .filter(locationProfile -> newWiFiProfile
+                                .match(locationProfile.getWifiProfile()))
+                        .forEach(locationProfile -> {
+                            System.out.println("A Location is found for this User");
+                            Location location = locationProfile.getLocation();
+                            UUIDLocation uuidLocation = new UUIDLocation(uuid, location);
+                            userLocationDataStore.storeUserLocation(uuidLocation);
+                        });
 
                 // TODO: What if no match was found? Ask user for location, right?
             }
