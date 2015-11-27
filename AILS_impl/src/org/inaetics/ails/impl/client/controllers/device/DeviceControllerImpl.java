@@ -8,12 +8,14 @@ import org.inaetics.ails.api.common.model.Accuracy;
 import org.inaetics.ails.api.common.model.User;
 import org.inaetics.ails.api.server.user.service.UserService;
 
+import com.google.common.base.Preconditions;
+
 /**
  * The DeviceControllerImpl class provides a way to register a new user on the server and on its
  * local storage and to set his/her accuracy.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
+ * @version 0.1.2
  * @since 05-11-2015
  */
 public class DeviceControllerImpl implements DeviceController {
@@ -29,12 +31,19 @@ public class DeviceControllerImpl implements DeviceController {
 
     @Override
     public void registerUser(String name) {
+        if (deviceDataStore.hasUser()) {
+            throw new IllegalStateException("Registered user on device, while user already exists");
+        }
+        Preconditions.checkNotNull(name, "name is not set");
         UUID uuid = userService.add(name, ACCURACY_DEFAULT);
         deviceDataStore.storeUser(new User(uuid, name, ACCURACY_DEFAULT));
     }
 
     @Override
     public void setAccuracy(Accuracy accuracy) {
-        deviceDataStore.storeAccuracy(accuracy);
+        if (!deviceDataStore.hasUser()) {
+            throw new IllegalStateException("Userless device cannot have accuracy set");
+        }
+        deviceDataStore.storeAccuracy(Preconditions.checkNotNull(accuracy, "accuracy is not set"));
     }
 }
