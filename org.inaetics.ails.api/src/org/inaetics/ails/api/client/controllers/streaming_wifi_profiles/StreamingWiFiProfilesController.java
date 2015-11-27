@@ -5,15 +5,19 @@ package org.inaetics.ails.api.client.controllers.streaming_wifi_profiles;
  * server.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 1.0.0
  * @since 24-11-2015
  */
 public interface StreamingWiFiProfilesController {
 
     /**
      * Starts streaming {@link UserWiFiProfile UserWiFiProfiles} to the server.
+     * 
+     * @param period The period the learning mode should wait in between sending WiFiProfiles. Must
+     *        be positive.
+     * @since 1.0.0
      */
-    void startStreaming();
+    void startStreaming(int period);
 
     /**
      * Stops streaming {@link UserWiFiProfile UserWiFiProfiles} to the server.

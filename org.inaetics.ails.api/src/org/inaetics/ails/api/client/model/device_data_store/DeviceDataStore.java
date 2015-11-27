@@ -1,5 +1,6 @@
 package org.inaetics.ails.api.client.model.device_data_store;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.Accuracy;
@@ -10,7 +11,7 @@ import org.inaetics.ails.api.common.model.User;
  * store his/her accuracy and get his/her UUID.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 1.0.0
  * @since 24-11-2015
  */
 public interface DeviceDataStore {
@@ -25,9 +26,10 @@ public interface DeviceDataStore {
     /**
      * Get the device's UUID.
      * 
-     * @return The device's UUID.
+     * @return An optional containing device's UUID if a user exists, or empty optional if not.
+     * @since 1.0.0
      */
-    UUID getUUID();
+    Optional<UUID> getUUID();
 
     /**
      * Store the device's User.
