@@ -156,8 +156,6 @@ public class IntegrationTest {
         
         // Test view
         assertTrue(service(View.class).isPresent());
-        
-        System.out.println("yay");
     }
 
 }

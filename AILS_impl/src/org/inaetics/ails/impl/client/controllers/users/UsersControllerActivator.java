@@ -18,6 +18,7 @@ public class UsersControllerActivator extends DependencyActivatorBase {
     @Override
     public void init(BundleContext context, DependencyManager manager) throws Exception {
         manager.add(createComponent().setInterface(UsersController.class.getName(), null)
+                .setImplementation(UsersControllerImpl.class)
                 .add(createServiceDependency().setService(UserService.class).setRequired(true)));
     }
 
