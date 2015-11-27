@@ -29,15 +29,18 @@ public class StreamingWiFiProfilesControllerImpl implements StreamingWiFiProfile
 
     private final Timer timer;
 
+    // The get WiFiProfiles task
+    private TimerTask task;
+    
     public StreamingWiFiProfilesControllerImpl() {
         timer = new Timer();
     }
     
     @Override
     public void startStreaming() {
-        System.out.println("Streaming Profile Service started");
+        System.out.println("Streaming WiFi Profiles started");
 
-        TimerTask task = new TimerTask() {
+        task = new TimerTask() {
 
             @Override
             public void run() {
@@ -55,8 +58,8 @@ public class StreamingWiFiProfilesControllerImpl implements StreamingWiFiProfile
 
     @Override
     public void stopStreaming() {
-        System.out.println("Streaming Profile Service stopped");
+        System.out.println("Streaming WiFi Profiles stopped");
 
-        timer.cancel();
+        task.cancel();
     }
 }

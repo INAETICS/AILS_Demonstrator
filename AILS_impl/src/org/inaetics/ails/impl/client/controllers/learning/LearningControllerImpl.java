@@ -29,6 +29,9 @@ public class LearningControllerImpl implements LearningController {
     private volatile LocationProfileService locationProfileService;
 
     private final Timer timer;
+    
+    // The get WiFiProfiles task
+    private TimerTask task;
 
     public LearningControllerImpl() {
         timer = new Timer();
@@ -36,7 +39,9 @@ public class LearningControllerImpl implements LearningController {
 
     @Override
     public void startLearningMode(Location location) {
-        TimerTask task = new TimerTask() {
+        System.out.println("Learning Mode started");
+
+        task = new TimerTask() {
 
             @Override
             public void run() {
@@ -50,11 +55,13 @@ public class LearningControllerImpl implements LearningController {
             }
         };
 
-        timer.schedule(task, 0, 50000);
+        timer.schedule(task, 0, 5000);
     }
 
     @Override
     public void stopLearningMode() {
-        timer.cancel();
+        System.out.println("Learning Mode stopped");
+
+        task.cancel();
     }
 }

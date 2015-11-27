@@ -13,6 +13,7 @@ import org.inaetics.ails.api.common.model.Location;
  * @since 05-11-2015
  */
 public class LocationControllerImpl implements LocationController {
+
     // Injected by the DM
     private volatile View view;
 
