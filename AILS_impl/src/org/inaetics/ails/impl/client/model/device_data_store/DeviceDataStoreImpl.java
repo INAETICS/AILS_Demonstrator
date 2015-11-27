@@ -15,7 +15,7 @@ import org.inaetics.ails.api.common.model.User;
  */
 public class DeviceDataStoreImpl implements DeviceDataStore {
 
-    User user;
+    private User user;
     
     @Override
     public Accuracy getAccuracy() {

@@ -2,7 +2,6 @@ package org.inaetics.ails.impl.client.model.device_data_store;
 
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
-import org.inaetics.ails.api.client.controllers.users.UsersController;
 import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
 import org.osgi.framework.BundleContext;
 

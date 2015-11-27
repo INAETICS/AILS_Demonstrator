@@ -2,6 +2,11 @@ package org.inaetics.ails.impl.client.view;
 
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
+import org.inaetics.ails.api.client.controllers.device.DeviceController;
+import org.inaetics.ails.api.client.controllers.learning.LearningController;
+import org.inaetics.ails.api.client.controllers.streaming_wifi_profiles.StreamingWiFiProfilesController;
+import org.inaetics.ails.api.client.controllers.users.UsersController;
+import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
 import org.inaetics.ails.api.client.view.View;
 import org.osgi.framework.BundleContext;
 
@@ -16,8 +21,17 @@ public class ViewActivator extends DependencyActivatorBase {
 
     @Override
     public void init(BundleContext context, DependencyManager manager) throws Exception {
-        manager.add(createComponent().setInterface(View.class.getName(), null)
-                .setImplementation(ViewImpl.class));
+        manager.add(
+                createComponent().setInterface(View.class.getName(), null)
+                        .setImplementation(ViewImpl.class)
+                        .add(createServiceDependency().setService(DeviceDataStore.class).setRequired(true))
+                        .add(createServiceDependency().setService(DeviceController.class)
+                                .setRequired(true))
+                .add(createServiceDependency().setService(UsersController.class).setRequired(true))
+                .add(createServiceDependency().setService(StreamingWiFiProfilesController.class)
+                        .setRequired(true))
+                .add(createServiceDependency().setService(LearningController.class)
+                        .setRequired(true)));
     }
 
 }

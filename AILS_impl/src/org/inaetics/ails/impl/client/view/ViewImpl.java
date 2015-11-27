@@ -1,5 +1,10 @@
 package org.inaetics.ails.impl.client.view;
 
+import org.inaetics.ails.api.client.controllers.device.DeviceController;
+import org.inaetics.ails.api.client.controllers.learning.LearningController;
+import org.inaetics.ails.api.client.controllers.streaming_wifi_profiles.StreamingWiFiProfilesController;
+import org.inaetics.ails.api.client.controllers.users.UsersController;
+import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
 import org.inaetics.ails.api.client.view.View;
 import org.inaetics.ails.api.common.model.Location;
 
@@ -13,6 +18,13 @@ import org.inaetics.ails.api.common.model.Location;
  */
 public class ViewImpl implements View {
 
+    // Injected by the dependency manager
+    private volatile DeviceDataStore deviceDataStore;
+    private volatile DeviceController deviceController;
+    private volatile UsersController usersController;
+    private volatile StreamingWiFiProfilesController streamingWiFiProfilesController;
+    private volatile LearningController learningController;
+        
     // TODO: Need to implement views for client.
 
     @Override
