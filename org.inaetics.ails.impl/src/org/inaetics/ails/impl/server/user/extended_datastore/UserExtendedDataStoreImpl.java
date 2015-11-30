@@ -20,7 +20,7 @@ import com.google.common.base.Preconditions;
  * information.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 1.0.0
+ * @version 1.0.1
  * @since 04-11-2015
  */
 public class UserExtendedDataStoreImpl implements UserDataStore, UserLocationDataStore {
@@ -47,11 +47,12 @@ public class UserExtendedDataStoreImpl implements UserDataStore, UserLocationDat
 
     @Override
     public void storeUserLocation(UUIDLocation userLocation) {
-        userLocationDAO.store(userLocation);
+        userLocationDAO.store(Preconditions.checkNotNull(userLocation, "user location is not set"));
     }
 
-	@Override
-	public List<User> getAllUsers() {
-		return userDAO.getAll();
-	}
+    @Override
+    public List<User> getAllUsers() {
+        return userDAO.getAll();
+    }
+
 }
