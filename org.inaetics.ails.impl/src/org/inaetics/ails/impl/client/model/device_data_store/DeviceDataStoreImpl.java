@@ -1,5 +1,6 @@
 package org.inaetics.ails.impl.client.model.device_data_store;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
@@ -10,21 +11,21 @@ import org.inaetics.ails.api.common.model.User;
  * The DeviceDatStoreImpl class provides a way to store a user in-memory.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 1.0.0
  * @since 25-11-2015
  */
 public class DeviceDataStoreImpl implements DeviceDataStore {
 
     private User user;
-    
+
     @Override
     public Accuracy getAccuracy() {
         return user.getAccuracy();
     }
 
     @Override
-    public UUID getUUID() {
-        return user.getUuid();
+    public Optional<UUID> getUUID() {
+        return user == null ? Optional.empty() : Optional.of(user.getUuid());
     }
 
     @Override

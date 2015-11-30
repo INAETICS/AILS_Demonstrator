@@ -3,6 +3,7 @@ package org.inaetics.ails.impl.client.controllers.streaming_wifi_profiles;
 import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.UUID;
 
 import org.inaetics.ails.api.client.controllers.streaming_wifi_profiles.StreamingWiFiProfilesController;
 import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
@@ -11,13 +12,15 @@ import org.inaetics.ails.api.common.model.UUIDWiFiProfile;
 import org.inaetics.ails.api.common.model.WiFiProfile;
 import org.inaetics.ails.api.server.streaming_profile.service.StreamingProfileService;
 
+import com.google.common.base.Preconditions;
+
 /**
  * The StreamingServiceImpl provides an implementation for the {@link StreamingService
  * StreamingService}. It will generate and send on a regular bases {@link UserWiFiProfile
  * UserWiFiProfiles} to the {@link StreamingProfileService StreamingProfileService}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
+ * @version 1.0.0
  * @since 11-11-2015
  */
 public class StreamingWiFiProfilesControllerImpl implements StreamingWiFiProfilesController {
@@ -31,29 +34,31 @@ public class StreamingWiFiProfilesControllerImpl implements StreamingWiFiProfile
 
     // The get WiFiProfiles task
     private TimerTask task;
-    
+
     public StreamingWiFiProfilesControllerImpl() {
         timer = new Timer();
     }
-    
+
     @Override
-    public void startStreaming() {
+    public void startStreaming(int period) {
+        Preconditions.checkArgument(period > 0, "period must be positive");
         System.out.println("Streaming WiFi Profiles started");
 
         task = new TimerTask() {
-
             @Override
             public void run() {
                 Optional<WiFiProfile> wifiProfile = wifiProfileFactory.getProfile();
 
                 if (wifiProfile.isPresent()) {
-                    UUIDWiFiProfile uuidWiFiProfile = new UUIDWiFiProfile(-1, wifiProfile.get(), deviceDataStore.getUUID());
+                    UUID uuid = deviceDataStore.getUUID().get();
+                    UUIDWiFiProfile uuidWiFiProfile =
+                            new UUIDWiFiProfile(-1, wifiProfile.get(), uuid);
                     streamingProfileService.add(uuidWiFiProfile);
                 }
             }
         };
-        
-        timer.schedule(task, 0, 60000);
+
+        timer.schedule(task, 0, period);
     }
 
     @Override
