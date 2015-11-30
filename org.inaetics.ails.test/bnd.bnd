@@ -1,7 +1,9 @@
 -buildpath: \
-	osgi.core;version='[4.2,5)',\
+	biz.aQute.junit,\
+	osgi.core;version=5.0,\
 	osgi.cmpn,\
-	${junit},\
+	org.amdatu.testing.configurator;version='[3.1,4)',\
+	org.apache.felix.dependencymanager;version='[4,5)',\
 	org.mockito.mockito-all,\
 	org.inaetics.ails.api.client.controllers.device;version=latest,\
 	org.inaetics.ails.api.client.controllers.learning;version=latest,\
@@ -48,11 +50,13 @@ Test-Cases: ${classes;CONCRETE;EXTENDS;junit.framework.TestCase}
 	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.impl.server.streaming_profile.service)',\
 	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.impl.server.user.extended_datastore)',\
 	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.impl.server.users.service)',\
-	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.api.server.location.service)'
+	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.api.server.location.service)',\
+	osgi.identity;filter:='(osgi.identity=org.amdatu.testing.configurator)'
 -runbundles: \
 	biz.aQute.junit;version='[3.0.0,3.0.1)',\
 	com.google.guava;version='[13.0.1,13.0.2)',\
 	com.google.guava;version='[18.0.0,18.0.1)',\
+	org.amdatu.testing.configurator;version='[3.1.0,3.1.1)',\
 	org.apache.felix.configadmin;version='[1.8.8,1.8.9)',\
 	org.apache.felix.dependencymanager;version='[4.1.0,4.1.1)',\
 	org.apache.felix.log;version='[1.0.1,1.0.2)',\
