@@ -15,7 +15,7 @@ import com.google.common.base.Preconditions;
  * local storage and to set his/her accuracy.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.2
+ * @version 0.1.3
  * @since 05-11-2015
  */
 public class DeviceControllerImpl implements DeviceController {
@@ -41,9 +41,10 @@ public class DeviceControllerImpl implements DeviceController {
 
     @Override
     public void setAccuracy(Accuracy accuracy) {
+        Preconditions.checkNotNull(accuracy, "accuracy is not set");
         if (!deviceDataStore.hasUser()) {
             throw new IllegalStateException("Userless device cannot have accuracy set");
         }
-        deviceDataStore.storeAccuracy(Preconditions.checkNotNull(accuracy, "accuracy is not set"));
+        deviceDataStore.storeAccuracy(accuracy);
     }
 }
