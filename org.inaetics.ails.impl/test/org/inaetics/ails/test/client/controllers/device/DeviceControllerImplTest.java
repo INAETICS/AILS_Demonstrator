@@ -1,4 +1,4 @@
-package org.inaetics.ails.impl.client.controllers.device;
+package org.inaetics.ails.test.client.controllers.device;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.times;
@@ -12,6 +12,7 @@ import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
 import org.inaetics.ails.api.common.model.Accuracy;
 import org.inaetics.ails.api.common.model.User;
 import org.inaetics.ails.api.server.user.service.UserService;
+import org.inaetics.ails.impl.client.controllers.device.DeviceControllerImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

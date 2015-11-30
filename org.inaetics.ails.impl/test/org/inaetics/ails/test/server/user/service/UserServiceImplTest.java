@@ -1,4 +1,4 @@
-package org.inaetics.ails.impl.server.user.service;
+package org.inaetics.ails.test.server.user.service;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
@@ -17,6 +17,7 @@ import org.inaetics.ails.api.common.model.User;
 import org.inaetics.ails.api.server.location.provider.LocationProvider;
 import org.inaetics.ails.api.server.user.datastore.UserDataStore;
 import org.inaetics.ails.api.server.user.service.UserService;
+import org.inaetics.ails.impl.server.user.service.UserServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
