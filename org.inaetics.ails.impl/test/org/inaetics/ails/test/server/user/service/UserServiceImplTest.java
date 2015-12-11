@@ -60,6 +60,25 @@ public class UserServiceImplTest {
         verify(userDataStore, times(1)).storeUser(any(User.class));
         assertEquals(uuid, retrievedUUID);
     }
+    
+    @Test
+    public void testAddUserTwice() {
+        // Setup
+        UUID uuid1 = UUID.randomUUID();
+        UUID uuid2 = UUID.randomUUID();
+        when(userDataStore.storeUser(any(User.class))).thenReturn(uuid1, uuid2);
+        
+        // Execute (Should be possible to have people with the same name)
+        UUID retrievedUUID1 = userService.add("John Doe", Accuracy.AREA);
+        UUID retrievedUUID2 = userService.add("John Doe", Accuracy.AREA);
+        
+        // Verify
+        verify(userDataStore, times(2)).storeUser(any(User.class));
+        assertEquals(uuid1, retrievedUUID1);
+        assertEquals(uuid2, retrievedUUID2);
+        assertNotEquals(uuid1, uuid2);
+        assertNotEquals(retrievedUUID1, retrievedUUID2);
+    }
 
     @Test
     public void testGetAllEmpty() {

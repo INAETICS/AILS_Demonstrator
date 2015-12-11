@@ -16,13 +16,15 @@ import org.inaetics.ails.api.common.model.WiFiProfile;
  * ProfileFactory}
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.2.1
+ * @version 0.2.2
  * @since 05-11-2015
  */
 public class WiFiProfileFactoryImpl implements WiFiProfileFactory {
-    
+
+    // TODO: Implement creation of WiFiProfiles from real data instead of random
+
     private Random rand = new Random();
-    
+
     @Override
     public Optional<WiFiProfile> getProfile() {
         List<AccessPointMeasurement> accessPointMeasurement =
@@ -31,15 +33,14 @@ public class WiFiProfileFactoryImpl implements WiFiProfileFactory {
             accessPointMeasurement
                     .add(new AccessPointMeasurement(new AccessPoint(randomMac()), randomRSSI()));
         }
-                
+
         if (shouldReturnOptional()) {
             return Optional.empty();
         } else {
             return Optional.of(new WiFiProfile(Instant.now(), accessPointMeasurement));
-//            return Optional.of(new RawLocationProfile(-1, wifiProfile, randomLocation()));
-        }        
+        }
     }
-   
+
     /**
      * Generate a random RSSI value between 80 (inclusive) and 120 (exclusive).
      * 
