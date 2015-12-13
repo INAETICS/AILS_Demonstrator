@@ -1,5 +1,5 @@
 -runfw: org.apache.felix.framework;version='[4,5)'
--runee: JavaSE-1.8
+-runee: JavaSE-1.7
 -runsystemcapabilities: ${native_capability}
 
 -resolve.effective: active;skip:="osgi.service"
@@ -22,25 +22,3 @@
 	osgi.identity;filter:='(osgi.identity=AILS_impl.server_user_extendeddatastore_impl)',\
 	osgi.identity;filter:='(osgi.identity=AILS_impl.server_user_service_impl)'
 -resolve: auto
--runbundles: \
-	AILS.common_model;version=snapshot,\
-	AILS.server_user_datastore_api;version=snapshot,\
-	AILS_impl.server_buffer;version=snapshot,\
-	AILS_impl.server_dao;version=snapshot,\
-	AILS_impl.server_location_profile_miner;version=snapshot,\
-	AILS_impl.server_location_profile_service_impl;version=snapshot,\
-	AILS_impl.server_location_provider_service_impl;version=snapshot,\
-	AILS_impl.server_streaming_profile_miner;version=snapshot,\
-	AILS_impl.server_streaming_profile_service_impl;version=snapshot,\
-	AILS_impl.server_user_extendeddatastore_impl;version=snapshot,\
-	AILS_impl.server_user_service_impl;version=snapshot,\
-	com.google.guava;version='[13.0.1,13.0.2)',\
-	com.google.guava;version='[18.0.0,18.0.1)',\
-	org.apache.felix.configadmin;version='[1.8.8,1.8.9)',\
-	org.apache.felix.dependencymanager;version='[4.1.0,4.1.1)',\
-	org.apache.felix.dependencymanager.runtime;version='[4.0.1,4.0.2)',\
-	org.apache.felix.dependencymanager.shell;version='[4.0.2,4.0.3)',\
-	org.apache.felix.gogo.command;version='[0.14.0,0.14.1)',\
-	org.apache.felix.gogo.runtime;version='[0.16.2,0.16.3)',\
-	org.apache.felix.gogo.shell;version='[0.10.0,0.10.1)',\
-	org.apache.felix.metatype;version='[1.1.2,1.1.3)'

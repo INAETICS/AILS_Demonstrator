@@ -21,10 +21,10 @@ public interface LearningController {
      *        be positive.
      * @since 1.0.0
      */
-    public void startLearningMode(Location location, int period);
+    void startLearningMode(Location location, int period);
 
     /**
      * Stops learning mode on the device.
      */
-    public void stopLearningMode();
+    void stopLearningMode();
 }

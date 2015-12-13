@@ -1,7 +1,7 @@
 package org.inaetics.ails.api.server.database;
 
 import java.util.List;
-import java.util.Optional;
+import com.google.common.base.Optional;
 
 import org.inaetics.ails.api.common.model.Key;
 

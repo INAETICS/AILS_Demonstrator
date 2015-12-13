@@ -1,7 +1,6 @@
 package org.inaetics.ails.impl.server.user.extended_datastore;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.Location;
@@ -12,6 +11,7 @@ import org.inaetics.ails.api.server.database.UUIDLocationDAO;
 import org.inaetics.ails.api.server.user.datastore.UserDataStore;
 import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStore;
 
+import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 
 /**
@@ -20,7 +20,7 @@ import com.google.common.base.Preconditions;
  * information.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 1.0.1
+ * @version 1.0.2
  * @since 04-11-2015
  */
 public class UserExtendedDataStoreImpl implements UserDataStore, UserLocationDataStore {
@@ -42,7 +42,12 @@ public class UserExtendedDataStoreImpl implements UserDataStore, UserLocationDat
     @Override
     public Optional<Location> getLocation(UUID uuid) {
         Preconditions.checkNotNull(uuid, "uuid is not set");
-        return userLocationDAO.find(uuid).map(UUIDLocation::getLocation);
+        Optional<UUIDLocation> userLocation = userLocationDAO.find(uuid);
+        if (userLocation.isPresent()) {
+            return Optional.of(userLocation.get().getLocation());
+        } else {
+            return Optional.absent();
+        }
     }
 
     @Override

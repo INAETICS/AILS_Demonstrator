@@ -22,8 +22,10 @@
 	org.inaetics.ails.api.server.streaming_profile.service;version=latest,\
 	org.inaetics.ails.api.server.user.datastore;version=latest,\
 	org.inaetics.ails.api.server.user.extended_datastore;version=latest,\
-	org.inaetics.ails.api.server.user.service;version=latest
--runee: JavaSE-1.8
+	org.inaetics.ails.api.server.user.service;version=latest,\
+	com.google.guava,\
+	org.inaetics.ails.api.client.exceptions;version=latest
+-runee: JavaSE-1.7
 -runfw: org.apache.felix.framework
 -runsystempackages: sun.reflect
 -runvm: -ea
@@ -51,33 +53,5 @@ Test-Cases: ${classes;CONCRETE;EXTENDS;junit.framework.TestCase}
 	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.impl.server.user.extended_datastore)',\
 	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.impl.server.users.service)',\
 	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.api.server.location.service)',\
-	osgi.identity;filter:='(osgi.identity=org.amdatu.testing.configurator)'
--runbundles: \
-	biz.aQute.junit;version='[3.0.0,3.0.1)',\
-	com.google.guava;version='[13.0.1,13.0.2)',\
-	com.google.guava;version='[18.0.0,18.0.1)',\
-	org.amdatu.testing.configurator;version='[3.1.0,3.1.1)',\
-	org.apache.felix.configadmin;version='[1.8.8,1.8.9)',\
-	org.apache.felix.dependencymanager;version='[4.1.0,4.1.1)',\
-	org.apache.felix.log;version='[1.0.1,1.0.2)',\
-	org.apache.felix.metatype;version='[1.1.2,1.1.3)',\
-	org.inaetics.ails.api.common.model;version=snapshot,\
-	org.inaetics.ails.api.server.location.service;version=snapshot,\
-	org.inaetics.ails.api.server.user.datastore;version=snapshot,\
-	org.inaetics.ails.impl.client.controller.device;version=snapshot,\
-	org.inaetics.ails.impl.client.controllers.learning;version=snapshot,\
-	org.inaetics.ails.impl.client.controllers.location;version=snapshot,\
-	org.inaetics.ails.impl.client.controllers.streaming_wifi_profiles;version=snapshot,\
-	org.inaetics.ails.impl.client.controllers.users;version=snapshot,\
-	org.inaetics.ails.impl.client.model.device_data_store;version=snapshot,\
-	org.inaetics.ails.impl.client.model.wifi_profile_factory;version=snapshot,\
-	org.inaetics.ails.impl.client.view;version=snapshot,\
-	org.inaetics.ails.impl.server.buffer;version=snapshot,\
-	org.inaetics.ails.impl.server.database;version=snapshot,\
-	org.inaetics.ails.impl.server.location.provider;version=snapshot,\
-	org.inaetics.ails.impl.server.location_profile.miner;version=snapshot,\
-	org.inaetics.ails.impl.server.location_profile.service;version=snapshot,\
-	org.inaetics.ails.impl.server.streaming_profile.miner;version=snapshot,\
-	org.inaetics.ails.impl.server.streaming_profile.service;version=snapshot,\
-	org.inaetics.ails.impl.server.user.extended_datastore;version=snapshot,\
-	org.inaetics.ails.impl.server.users.service;version=snapshot
+	osgi.identity;filter:='(osgi.identity=org.amdatu.testing.configurator)',\
+	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.api.client.exceptions)'

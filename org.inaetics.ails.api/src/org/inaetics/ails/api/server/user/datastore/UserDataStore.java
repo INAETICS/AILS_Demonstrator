@@ -1,7 +1,7 @@
 package org.inaetics.ails.api.server.user.datastore;
 
 import java.util.List;
-import java.util.Optional;
+import com.google.common.base.Optional;
 import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.User;

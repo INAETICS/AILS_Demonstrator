@@ -1,6 +1,5 @@
 package org.inaetics.ails.impl.server.streaming_profile.miner;
 
-import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
@@ -15,6 +14,8 @@ import org.inaetics.ails.api.server.database.LocationProfileDAO;
 import org.inaetics.ails.api.server.database.UUIDWiFiProfileDAO;
 import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStore;
 
+import com.google.common.base.Optional;
+
 /**
  * The Streaming Profile Miner will process {@link UUIDWiFiProfile UUIDWiFiProfiles} from
  * the {@link BufferService}.
@@ -24,7 +25,7 @@ import org.inaetics.ails.api.server.user.extended_datastore.UserLocationDataStor
  * {@link Location} of a {@link User}.
  *
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.5
+ * @version 0.1.6
  * @since 10-11-2015
  */
 public class StreamingProfileMiner {
@@ -68,15 +69,25 @@ public class StreamingProfileMiner {
                 // Compare the newly found UUIDWiFiProfile with existing LocationProfiles to find a
                 // Location for the User
                 // TODO: locationProfileDAO.getAll() can probably be done more efficiently
-                locationProfileDAO.getAll().stream()
-                        .filter(locationProfile -> newWiFiProfile
-                                .match(locationProfile.getWifiProfile()))
-                        .forEach(locationProfile -> {
-                            System.out.println("A Location is found for this User");
-                            Location location = locationProfile.getLocation();
-                            UUIDLocation uuidLocation = new UUIDLocation(uuid, location);
-                            userLocationDataStore.storeUserLocation(uuidLocation);
-                        });
+                for (LocationProfile locationProfile : locationProfileDAO.getAll()) {
+                    if (newWiFiProfile.match(locationProfile.getWifiProfile())) {
+                        System.out.println("A Location is found for this User");
+                        Location location = locationProfile.getLocation();
+                        UUIDLocation uuidLocation = new UUIDLocation(uuid, location);
+                        userLocationDataStore.storeUserLocation(uuidLocation);
+                    }
+                }
+                
+//                // Pretty Java 8 code of the above
+//                locationProfileDAO.getAll().stream()
+//                        .filter(locationProfile -> newWiFiProfile
+//                                .match(locationProfile.getWifiProfile()))
+//                        .forEach(locationProfile -> {
+//                            System.out.println("A Location is found for this User");
+//                            Location location = locationProfile.getLocation();
+//                            UUIDLocation uuidLocation = new UUIDLocation(uuid, location);
+//                            userLocationDataStore.storeUserLocation(uuidLocation);
+//                        });
 
                 // TODO: What if no match was found? Ask user for location, right?
             }

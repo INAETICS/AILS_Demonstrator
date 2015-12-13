@@ -1,6 +1,4 @@
-Private-Package: \
-	org.inaetics.ails.impl.server.location_profile,\
-	org.inaetics.ails.impl.server.location_profile.service
+Private-Package: org.inaetics.ails.impl.server.location_profile.service
 Bundle-Version: 0.0.0.${tstamp}
 Bundle-Activator: org.inaetics.ails.impl.server.location_profile.service.LocationProfileServiceActivator
 Export-Package: org.inaetics.ails.api.server.location_profile.service

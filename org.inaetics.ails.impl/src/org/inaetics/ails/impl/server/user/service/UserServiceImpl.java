@@ -1,7 +1,6 @@
 package org.inaetics.ails.impl.server.user.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.Accuracy;
@@ -11,6 +10,7 @@ import org.inaetics.ails.api.server.location.provider.LocationProvider;
 import org.inaetics.ails.api.server.user.datastore.UserDataStore;
 import org.inaetics.ails.api.server.user.service.UserService;
 
+import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 
 /**

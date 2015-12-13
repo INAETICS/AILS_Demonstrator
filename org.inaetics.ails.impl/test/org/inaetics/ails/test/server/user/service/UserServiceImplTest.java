@@ -8,7 +8,6 @@ import static org.mockito.Mockito.verify;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.Accuracy;
@@ -23,6 +22,8 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import com.google.common.base.Optional;
 
 /**
  * Some simple unit tests for {@link UserServiceImpl}.
@@ -109,8 +110,8 @@ public class UserServiceImplTest {
     @Test
     public void testFindUnknownUUID() {
         // Mocks need to return Optional.empty, not null (their default)
-        when(userDataStore.getUser(any(UUID.class))).thenReturn(Optional.empty());
-        assertEquals(Optional.empty(), userService.find(UUID.randomUUID()));
+        when(userDataStore.getUser(any(UUID.class))).thenReturn(Optional.absent());
+        assertEquals(Optional.absent(), userService.find(UUID.randomUUID()));
     }
 
     @Test
@@ -129,8 +130,8 @@ public class UserServiceImplTest {
     @Test
     public void testLocateUnknownUUID() {
         // Mocks need to return Optional.empty, not null (their default)
-        when(locationProvider.locate(any(UUID.class))).thenReturn(Optional.empty());
-        assertEquals(Optional.empty(), userService.locate(UUID.randomUUID()));
+        when(locationProvider.locate(any(UUID.class))).thenReturn(Optional.absent());
+        assertEquals(Optional.absent(), userService.locate(UUID.randomUUID()));
     }
 
     @Test

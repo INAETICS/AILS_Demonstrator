@@ -11,6 +11,7 @@ import org.inaetics.ails.api.client.controllers.device.DeviceController;
 import org.inaetics.ails.api.client.controllers.learning.LearningController;
 import org.inaetics.ails.api.client.controllers.streaming_wifi_profiles.StreamingWiFiProfilesController;
 import org.inaetics.ails.api.client.controllers.users.UsersController;
+import org.inaetics.ails.api.client.exceptions.ServerUnavailableException;
 import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
 import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.server.database.LocationProfileDAO;
@@ -68,9 +69,10 @@ public class SystemTest {
      * Test the systems services for availability and its general functionality.
      * 
      * @throws InterruptedException Thrown if a Thread sleep is interrupted.
+     * @throws ServerUnavailableException 
      */
     @Test(timeout = 60000)
-    public void testRegisterUser() throws InterruptedException {
+    public void testRegisterUser() throws InterruptedException, ServerUnavailableException {
         // Register a new user
         deviceController.registerUser("John Doe");
 

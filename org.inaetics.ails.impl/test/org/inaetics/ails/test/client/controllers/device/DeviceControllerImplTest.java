@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import java.util.UUID;
 
 import org.inaetics.ails.api.client.controllers.device.DeviceController;
+import org.inaetics.ails.api.client.exceptions.ServerUnavailableException;
 import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
 import org.inaetics.ails.api.common.model.Accuracy;
 import org.inaetics.ails.api.common.model.User;
@@ -38,12 +39,12 @@ public class DeviceControllerImplTest {
     private DeviceController deviceController = new DeviceControllerImpl();
 
     @Test(expected = NullPointerException.class)
-    public void testRegisterUserNull() {
+    public void testRegisterUserNull() throws ServerUnavailableException {
         deviceController.registerUser(null);
     }
 
     @Test
-    public void testRegisterUser() {
+    public void testRegisterUser() throws ServerUnavailableException {
         // Setup
         when(userService.add("John Doe", Accuracy.AREA)).thenReturn(UUID.randomUUID());
 
@@ -56,7 +57,7 @@ public class DeviceControllerImplTest {
     }
 
     @Test(expected = IllegalStateException.class)
-    public void testRegisterUserTwice() {
+    public void testRegisterUserTwice() throws ServerUnavailableException {
         when(deviceDataStore.hasUser()).thenReturn(true);
         deviceController.registerUser("John Doe");
     }
