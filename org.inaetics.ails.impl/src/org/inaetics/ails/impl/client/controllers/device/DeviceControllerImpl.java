@@ -3,6 +3,7 @@ package org.inaetics.ails.impl.client.controllers.device;
 import java.util.UUID;
 
 import org.inaetics.ails.api.client.controllers.device.DeviceController;
+import org.inaetics.ails.api.client.exceptions.ServerUnavailableException;
 import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
 import org.inaetics.ails.api.common.model.Accuracy;
 import org.inaetics.ails.api.common.model.User;
@@ -30,9 +31,12 @@ public class DeviceControllerImpl implements DeviceController {
     private volatile DeviceDataStore deviceDataStore;
 
     @Override
-    public void registerUser(String name) {
+    public void registerUser(String name) throws ServerUnavailableException {
         if (deviceDataStore.hasUser()) {
             throw new IllegalStateException("Registered user on device, while user already exists");
+        }
+        if (userService == null) {
+            throw new ServerUnavailableException("UserService unavailable during register user");
         }
         Preconditions.checkNotNull(name, "name is not set");
         UUID uuid = userService.add(name, ACCURACY_DEFAULT);

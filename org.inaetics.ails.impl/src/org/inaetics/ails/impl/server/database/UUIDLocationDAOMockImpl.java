@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.UUIDLocation;
 import org.inaetics.ails.api.server.database.DAO;
 import org.inaetics.ails.api.server.database.UUIDLocationDAO;
 
+import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 
 /**
@@ -50,7 +50,7 @@ public class UUIDLocationDAOMockImpl implements UUIDLocationDAO {
     @Override
     public Optional<UUIDLocation> find(UUID uuid) {
         Preconditions.checkNotNull(uuid, "uuid is not set");
-        return Optional.ofNullable(storage.get(uuid));
+        return Optional.fromNullable(storage.get(uuid));
     }
 
     @Override

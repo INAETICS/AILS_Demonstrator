@@ -1,9 +1,9 @@
 package org.inaetics.ails.impl.client.model.wifi_profile_factory;
 
-import java.time.Instant;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import com.google.common.base.Optional;
 import java.util.Random;
 
 import org.inaetics.ails.api.client.model.wifi_profile_factory.WiFiProfileFactory;
@@ -16,15 +16,13 @@ import org.inaetics.ails.api.common.model.WiFiProfile;
  * ProfileFactory}
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.2.2
+ * @version 0.2.1
  * @since 05-11-2015
  */
 public class WiFiProfileFactoryImpl implements WiFiProfileFactory {
-
-    // TODO: Implement creation of WiFiProfiles from real data instead of random
-
+    
     private Random rand = new Random();
-
+    
     @Override
     public Optional<WiFiProfile> getProfile() {
         List<AccessPointMeasurement> accessPointMeasurement =
@@ -33,14 +31,15 @@ public class WiFiProfileFactoryImpl implements WiFiProfileFactory {
             accessPointMeasurement
                     .add(new AccessPointMeasurement(new AccessPoint(randomMac()), randomRSSI()));
         }
-
+                
         if (shouldReturnOptional()) {
-            return Optional.empty();
+            return Optional.absent();
         } else {
-            return Optional.of(new WiFiProfile(Instant.now(), accessPointMeasurement));
-        }
+            return Optional.of(new WiFiProfile(new Date(), accessPointMeasurement));
+//            return Optional.of(new RawLocationProfile(-1, wifiProfile, randomLocation()));
+        }        
     }
-
+   
     /**
      * Generate a random RSSI value between 80 (inclusive) and 120 (exclusive).
      * 

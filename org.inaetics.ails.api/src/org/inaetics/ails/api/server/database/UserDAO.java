@@ -3,7 +3,6 @@ package org.inaetics.ails.api.server.database;
 import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.User;
-import org.inaetics.ails.api.common.model.User;
 
 /**
  * DAO for {@link User} objects.

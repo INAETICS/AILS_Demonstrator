@@ -1,6 +1,5 @@
 package org.inaetics.ails.impl.server.location_profile.miner;
 
-import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -11,6 +10,8 @@ import org.inaetics.ails.api.common.model.WiFiProfile;
 import org.inaetics.ails.api.server.buffer.BufferService;
 import org.inaetics.ails.api.server.database.LocationProfileDAO;
 import org.inaetics.ails.api.server.database.RawLocationProfileDAO;
+
+import com.google.common.base.Optional;
 
 /**
  * The Location Profile Miner processes newly found {@link RawLocationProfile RawLocationProfiles}

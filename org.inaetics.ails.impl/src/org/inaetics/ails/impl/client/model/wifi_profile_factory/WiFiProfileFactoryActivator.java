@@ -21,4 +21,9 @@ public class WiFiProfileFactoryActivator extends DependencyActivatorBase {
                 .setImplementation(WiFiProfileFactoryImpl.class));
     }
 
+    @Override
+    public void destroy(BundleContext bundleContext, DependencyManager dependencyManager) throws Exception {
+
+    }
+
 }

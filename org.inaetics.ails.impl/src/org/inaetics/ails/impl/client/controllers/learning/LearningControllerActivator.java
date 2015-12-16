@@ -11,7 +11,7 @@ import org.inaetics.ails.api.server.location_profile.service.LocationProfileServ
  * The LearningControllerActivator starts the {@link LearningController LearningController}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.2.1
+ * @version 0.2.2
  * @since 05-11-2015
  */
 public class LearningControllerActivator extends DependencyActivatorBase {
@@ -23,6 +23,11 @@ public class LearningControllerActivator extends DependencyActivatorBase {
                 .add(createServiceDependency().setService(WiFiProfileFactory.class)
                         .setRequired(true))
                 .add(createServiceDependency().setService(LocationProfileService.class)
-                        .setRequired(true)));
+                        .setRequired(false)));
+    }
+
+    @Override
+    public void destroy(BundleContext bundleContext, DependencyManager dependencyManager) throws Exception {
+
     }
 }

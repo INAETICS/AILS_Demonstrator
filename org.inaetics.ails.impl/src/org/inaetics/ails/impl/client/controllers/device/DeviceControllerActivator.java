@@ -20,8 +20,14 @@ public class DeviceControllerActivator extends DependencyActivatorBase {
     public void init(BundleContext context, DependencyManager dm) throws Exception {
         dm.add(createComponent().setInterface(DeviceController.class.getName(), null)
                 .setImplementation(DeviceControllerImpl.class)
-                .add(createServiceDependency().setService(UserService.class).setRequired(true))
+                .add(createServiceDependency().setService(UserService.class)
+                        .setRequired(false))
                 .add(createServiceDependency().setService(DeviceDataStore.class)
                         .setRequired(true)));
+    }
+
+    @Override
+    public void destroy(BundleContext bundleContext, DependencyManager dependencyManager) throws Exception {
+
     }
 }

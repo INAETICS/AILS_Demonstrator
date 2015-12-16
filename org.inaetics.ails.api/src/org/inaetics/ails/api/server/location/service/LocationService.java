@@ -1,6 +1,6 @@
 package org.inaetics.ails.api.server.location.service;
 
-import java.util.Optional;
+import com.google.common.base.Optional;
 import java.util.UUID;
 
 import org.inaetics.ails.api.common.model.Location;

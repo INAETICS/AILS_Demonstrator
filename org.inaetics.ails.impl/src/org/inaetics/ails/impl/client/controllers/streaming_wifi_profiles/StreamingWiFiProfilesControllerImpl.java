@@ -1,11 +1,12 @@
 package org.inaetics.ails.impl.client.controllers.streaming_wifi_profiles;
 
-import java.util.Optional;
+import com.google.common.base.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
 
 import org.inaetics.ails.api.client.controllers.streaming_wifi_profiles.StreamingWiFiProfilesController;
+import org.inaetics.ails.api.client.exceptions.ServerUnavailableException;
 import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
 import org.inaetics.ails.api.client.model.wifi_profile_factory.WiFiProfileFactory;
 import org.inaetics.ails.api.common.model.UUIDWiFiProfile;
@@ -20,7 +21,7 @@ import com.google.common.base.Preconditions;
  * UserWiFiProfiles} to the {@link StreamingProfileService StreamingProfileService}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 1.0.0
+ * @version 2.0.0
  * @since 11-11-2015
  */
 public class StreamingWiFiProfilesControllerImpl implements StreamingWiFiProfilesController {
@@ -40,8 +41,13 @@ public class StreamingWiFiProfilesControllerImpl implements StreamingWiFiProfile
     }
 
     @Override
-    public void startStreaming(int period) {
+    public void startStreaming(int period) throws ServerUnavailableException {
         Preconditions.checkArgument(period > 0, "period must be positive");
+        
+        if (streamingProfileService == null) {
+            throw new ServerUnavailableException("StreamingProfileService unavailable");
+        }
+        
         System.out.println("Streaming WiFi Profiles started");
 
         task = new TimerTask() {
@@ -53,7 +59,12 @@ public class StreamingWiFiProfilesControllerImpl implements StreamingWiFiProfile
                     UUID uuid = deviceDataStore.getUUID().get();
                     UUIDWiFiProfile uuidWiFiProfile =
                             new UUIDWiFiProfile(-1, wifiProfile.get(), uuid);
-                    streamingProfileService.add(uuidWiFiProfile);
+                    if (streamingProfileService != null) {
+                        streamingProfileService.add(uuidWiFiProfile);
+                    } else {
+                        // Nothing we can really do here.
+                        // TODO: make sure this is true.
+                    }
                 }
             }
         };
@@ -64,7 +75,6 @@ public class StreamingWiFiProfilesControllerImpl implements StreamingWiFiProfile
     @Override
     public void stopStreaming() {
         System.out.println("Streaming WiFi Profiles stopped");
-
         task.cancel();
     }
 }

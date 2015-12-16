@@ -1,5 +1,6 @@
 package org.inaetics.ails.api.client.controllers.learning;
 
+import org.inaetics.ails.api.client.exceptions.ServerUnavailableException;
 import org.inaetics.ails.api.common.model.Location;
 
 /**
@@ -7,7 +8,7 @@ import org.inaetics.ails.api.common.model.Location;
  * location.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 1.0.0
+ * @version 2.0.0
  * @since 24-11-2015
  */
 public interface LearningController {
@@ -19,12 +20,13 @@ public interface LearningController {
      * @param location @NotNull The location where the learning mode is started.
      * @param period The period the learning mode should wait in between sending WiFiProfiles. Must
      *        be positive.
-     * @since 1.0.0
+     * @throws ServerUnavailableException When the server is unavailable.
+     * @since 2.0.0
      */
-    public void startLearningMode(Location location, int period);
+    void startLearningMode(Location location, int period) throws ServerUnavailableException;
 
     /**
      * Stops learning mode on the device.
      */
-    public void stopLearningMode();
+    void stopLearningMode();
 }

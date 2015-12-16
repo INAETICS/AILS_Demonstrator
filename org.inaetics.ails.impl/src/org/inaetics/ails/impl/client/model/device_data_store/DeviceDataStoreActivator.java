@@ -20,4 +20,9 @@ public class DeviceDataStoreActivator extends DependencyActivatorBase {
                 .setImplementation(DeviceDataStoreImpl.class));
     }
 
+    @Override
+    public void destroy(BundleContext bundleContext, DependencyManager dependencyManager) throws Exception {
+
+    }
+
 }

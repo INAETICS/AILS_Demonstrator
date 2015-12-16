@@ -1,10 +1,11 @@
 package org.inaetics.ails.impl.client.controllers.learning;
 
-import java.util.Optional;
+import com.google.common.base.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import org.inaetics.ails.api.client.controllers.learning.LearningController;
+import org.inaetics.ails.api.client.exceptions.ServerUnavailableException;
 import org.inaetics.ails.api.client.model.wifi_profile_factory.WiFiProfileFactory;
 import org.inaetics.ails.api.common.model.Location;
 import org.inaetics.ails.api.common.model.RawLocationProfile;
@@ -21,7 +22,7 @@ import com.google.common.base.Preconditions;
  * {@link LocationProfileService LocationProfileService} of the server.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 1.0.0
+ * @version 2.0.0
  * @since 05-11-2015
  */
 public class LearningControllerImpl implements LearningController {
@@ -40,19 +41,28 @@ public class LearningControllerImpl implements LearningController {
     }
 
     @Override
-    public void startLearningMode(Location location, int period) {
+    public void startLearningMode(final Location location, int period)
+            throws ServerUnavailableException {
         Preconditions.checkNotNull(location, "location is not set");
         Preconditions.checkArgument(period > 0, "period must be positive");
+
+        if (locationProfileService == null) {
+            throw new ServerUnavailableException("LocationProfileService unavailable");
+        }
 
         task = new TimerTask() {
             @Override
             public void run() {
                 Optional<WiFiProfile> wifiProfile = wifiProfileFactory.getProfile();
-
                 if (wifiProfile.isPresent()) {
                     RawLocationProfile rawLocationProfile =
                             new RawLocationProfile(-1, wifiProfile.get(), location);
-                    locationProfileService.add(rawLocationProfile);
+                    if (locationProfileService != null) {
+                        locationProfileService.add(rawLocationProfile);
+                    } else {
+                        // Nothing we can really do here.
+                        // TODO: make sure this is true.
+                    }
                 }
             }
         };
