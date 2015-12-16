@@ -7,7 +7,6 @@ import org.apache.felix.dm.DependencyManager;
 import org.apache.felix.framework.Felix;
 import org.apache.felix.framework.util.FelixConstants;
 import org.inaetics.ails.android.wifi_factory.WiFiProfileFactoryActivatorAndroid;
-import org.inaetics.ails.impl.client.model.device_data_store.DeviceDataStoreActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
 import org.osgi.framework.Constants;
@@ -22,7 +21,7 @@ import java.util.Map;
  * It makes sure that the init, start, stop and destroy methods are called at the correct moments.
  *
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 09-12-2015
  */
 public abstract class OSGiActivity extends AppCompatActivity {
@@ -95,7 +94,6 @@ public abstract class OSGiActivity extends AppCompatActivity {
 
         // Bundle Activators
         config.put(FelixConstants.SYSTEMBUNDLE_ACTIVATORS_PROP, Arrays.asList(
-                new DeviceDataStoreActivator(),
                 new WiFiProfileFactoryActivatorAndroid(getApplicationContext())
         ));
 

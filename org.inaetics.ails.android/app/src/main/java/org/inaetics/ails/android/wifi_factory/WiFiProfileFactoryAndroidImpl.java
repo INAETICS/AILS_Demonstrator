@@ -22,14 +22,14 @@ import java.util.List;
  * WiFiProfileFactory}
  *
  * @author L. Buit, N. Korthout, J. Naus
- * @version 1.0.0
+ * @version 2.0.0
  * @since 05-11-2015
  */
-public class WiFiProfileFactoryImplAndroid extends WiFiProfileFactoryImpl {
+public class WiFiProfileFactoryAndroidImpl extends WiFiProfileFactoryImpl {
 
     private final Context context;
 
-    public WiFiProfileFactoryImplAndroid(Context context) {
+    public WiFiProfileFactoryAndroidImpl(Context context) {
         this.context = context;
     }
 
@@ -39,25 +39,18 @@ public class WiFiProfileFactoryImplAndroid extends WiFiProfileFactoryImpl {
     public Optional<WiFiProfile> getProfile() {
         WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
 
-        Optional<WiFiProfile> wiFiProfile;
-        if (wifiManager.getWifiState() == WifiManager.WIFI_STATE_ENABLED) {
-            List<ScanResult> scanResults = wifiManager.getScanResults();
-            Log.d("WIFI AP", scanResults.toString());
-
-            List<AccessPointMeasurement> accessPointMeasurements = new ArrayList<>();
-            for (ScanResult scanResult : scanResults) {
-                accessPointMeasurements.add(
-                        new AccessPointMeasurement(
-                                new AccessPoint(scanResult.BSSID.getBytes()),
-                                scanResult.level
-                        )
-                );
-            }
-            wiFiProfile = Optional.of(new WiFiProfile(new Date(), accessPointMeasurements));
-        } else {
-            wiFiProfile = Optional.absent();
+        if (wifiManager.getWifiState() != WifiManager.WIFI_STATE_ENABLED) {
+            return Optional.absent();
         }
 
-        return wiFiProfile;
+        List<AccessPointMeasurement> accessPointMeasurements = new ArrayList<>();
+        for (ScanResult scanResult : wifiManager.getScanResults()) {
+            accessPointMeasurements.add(
+                    new AccessPointMeasurement(
+                            new AccessPoint(scanResult.BSSID.getBytes()), scanResult.level
+                    )
+            );
+        }
+        return Optional.of(new WiFiProfile(new Date(), accessPointMeasurements));
     }
 }

@@ -12,7 +12,7 @@ import org.osgi.framework.BundleContext;
  * The WiFiProfileFactoryActivatorAndroid starts the {@link WiFiProfileFactory WiFiProfileFactory}.
  *
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 05-11-2015
  */
 public class WiFiProfileFactoryActivatorAndroid extends WiFiProfileFactoryActivator {
@@ -26,6 +26,6 @@ public class WiFiProfileFactoryActivatorAndroid extends WiFiProfileFactoryActiva
     @Override
     public void init(BundleContext bundleContext, DependencyManager manager) throws Exception {
         manager.add(createComponent().setInterface(WiFiProfileFactory.class.getName(), null)
-                .setImplementation(new WiFiProfileFactoryImplAndroid(context)));
+                .setImplementation(new WiFiProfileFactoryAndroidImpl(context)));
     }
 }
