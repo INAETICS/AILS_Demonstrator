@@ -42,5 +42,8 @@ dependencies {
     compile 'org.apache.felix:org.apache.felix.dependencymanager:4.2.0'
     compile 'org.apache.felix:org.apache.felix.framework:5.4.0'
 
-    compile fileTree(dir: '../../org.inaetics.ails.api/generated', include: '*.jar')
+    compile fileTree(dir: '../../org.inaetics.ails.api/generated',
+            include: 'org.inaetics.ails.api.common.model.jar')
+    compile fileTree(dir: '../../org.inaetics.ails.impl/generated',
+            include: 'org.inaetics.ails.impl.client.*.jar')
 }

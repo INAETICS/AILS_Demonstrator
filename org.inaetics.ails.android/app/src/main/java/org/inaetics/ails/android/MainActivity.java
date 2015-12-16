@@ -8,7 +8,14 @@ import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
 import org.osgi.framework.BundleContext;
 
 /**
- * Created by nicokorthout on 09/12/15.
+ * The main activity (i.e. Activity that is created at startup).
+ *
+ * This activity can use Apache Felix's dependency manager for dependency injections,
+ * due to its superclass OSGiActivity.
+ *
+ * @author L. Buit, N. Korthout, J. Naus
+ * @version 0.1.0
+ * @since 09-12-2015
  */
 public class MainActivity extends OSGiActivity {
 
@@ -22,13 +29,8 @@ public class MainActivity extends OSGiActivity {
                         .setImplementation(this)
                         .add(manager.createServiceDependency()
                                 .setService(DeviceDataStore.class)
-                                .setRequired(true))
+                                .setRequired(false))
         );
-    }
-
-    @Override
-    protected void destroy(BundleContext context, DependencyManager manager) {
-
     }
 
     @Override
@@ -36,16 +38,25 @@ public class MainActivity extends OSGiActivity {
         text = new TextView(this);
         setContentView(text);
 
-        if (deviceDataStore.hasUser()) {
-            text.setText("Welcome back");
+        if (deviceDataStore == null) {
+            text.setText("device data store is unavailable");
         } else {
-            text.setText("Welcome new user");
+            if (deviceDataStore.hasUser()) {
+                text.setText("Welcome back");
+            } else {
+                text.setText("Welcome new user");
+            }
         }
     }
 
     @Override
     void stop() {
         text.setText("Stopping....");
+    }
+
+    @Override
+    protected void destroy(BundleContext context, DependencyManager manager) {
+
     }
 
 }

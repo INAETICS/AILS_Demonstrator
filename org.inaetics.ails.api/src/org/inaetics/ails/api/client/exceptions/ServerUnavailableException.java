@@ -1,7 +1,11 @@
 package org.inaetics.ails.api.client.exceptions;
 
 /**
- * Created by nicokorthout on 09/12/15.
+ * This exception represents the unavailability of the server.
+ * 
+ * @author L. Buit, N. Korthout, J. Naus
+ * @version 0.1.0
+ * @since 09-12-2015
  */
 public class ServerUnavailableException extends Exception {
 
@@ -22,4 +26,5 @@ public class ServerUnavailableException extends Exception {
     public ServerUnavailableException(Throwable throwable) {
         super(throwable);
     }
+    
 }
