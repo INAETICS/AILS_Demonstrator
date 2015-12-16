@@ -3,8 +3,13 @@ package org.inaetics.ails.android;
 import android.app.Activity;
 import android.widget.TextView;
 
+import com.google.common.base.Optional;
+
 import org.apache.felix.dm.DependencyManager;
+import org.inaetics.ails.android.wifi_factory.WiFiProfileFactoryActivatorAndroid;
 import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
+import org.inaetics.ails.api.client.model.wifi_profile_factory.WiFiProfileFactory;
+import org.inaetics.ails.api.common.model.WiFiProfile;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -20,6 +25,8 @@ import org.osgi.framework.BundleContext;
 public class MainActivity extends OSGiActivity {
 
     private volatile DeviceDataStore deviceDataStore;
+    private volatile WiFiProfileFactory wiFiProfileFactory;
+
     private TextView text;
 
     @Override
@@ -29,6 +36,9 @@ public class MainActivity extends OSGiActivity {
                         .setImplementation(this)
                         .add(manager.createServiceDependency()
                                 .setService(DeviceDataStore.class)
+                                .setRequired(false))
+                        .add(manager.createServiceDependency()
+                                .setService(WiFiProfileFactory.class)
                                 .setRequired(false))
         );
     }
@@ -47,6 +57,18 @@ public class MainActivity extends OSGiActivity {
                 text.setText("Welcome new user");
             }
         }
+
+        if (wiFiProfileFactory != null) {
+            Optional<WiFiProfile> profile = wiFiProfileFactory.getProfile();
+            if (profile.isPresent())  {
+                text.setText("Total measurements" + profile.get().getAccessPointMeasurements().size());
+            } else {
+                text.setText("No WiFi Profile available.");
+            }
+        } else {
+            text.setText("WiFiProfileFactory is null");
+        }
+
     }
 
     @Override

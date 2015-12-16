@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import org.apache.felix.dm.DependencyManager;
 import org.apache.felix.framework.Felix;
 import org.apache.felix.framework.util.FelixConstants;
+import org.inaetics.ails.android.wifi_factory.WiFiProfileFactoryActivatorAndroid;
 import org.inaetics.ails.impl.client.model.device_data_store.DeviceDataStoreActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
@@ -94,7 +95,8 @@ public abstract class OSGiActivity extends AppCompatActivity {
 
         // Bundle Activators
         config.put(FelixConstants.SYSTEMBUNDLE_ACTIVATORS_PROP, Arrays.asList(
-                new DeviceDataStoreActivator()
+                new DeviceDataStoreActivator(),
+                new WiFiProfileFactoryActivatorAndroid(getApplicationContext())
         ));
 
         // Startup Felix
