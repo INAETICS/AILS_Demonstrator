@@ -1,2 +1,2 @@
 Export-Package: org.inaetics.ails.api.server.database
-Bundle-Version: 0.0.0.${tstamp}
+Bundle-Version: 0.0.0

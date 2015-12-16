@@ -1,6 +1,6 @@
 Private-Package: \
 	org.inaetics.ails.impl.server.buffer,\
 	org.inaetics.ails.impl.server.streaming_profile.service
-Bundle-Version: 0.0.0.${tstamp}
+Bundle-Version: 0.0.0
 Bundle-Activator: org.inaetics.ails.impl.server.streaming_profile.service.StreamingProfileServiceActivator
 Export-Package: org.inaetics.ails.api.server.streaming_profile.service

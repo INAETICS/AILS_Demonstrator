@@ -1,2 +1,2 @@
-Bundle-Version: 0.1.0.${tstamp}
+Bundle-Version: 0.1.0
 Export-Package: org.inaetics.ails.api.client.controllers.users

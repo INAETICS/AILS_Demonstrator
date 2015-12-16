@@ -1,4 +1,4 @@
-Bundle-Version: 0.0.0.${tstamp}
+Bundle-Version: 0.0.0
 Bundle-Activator: org.inaetics.ails.impl.client.controllers.location.LocationControllerActivator
 Export-Package: org.inaetics.ails.api.client.controllers.location
 Private-Package: org.inaetics.ails.impl.client.controllers.location

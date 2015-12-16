@@ -1,4 +1,4 @@
 Private-Package: org.inaetics.ails.impl.client.controllers.users
 Bundle-Activator: org.inaetics.ails.impl.client.controllers.users.UsersControllerActivator
 Export-Package: org.inaetics.ails.api.client.controllers.users
-Bundle-Version: 0.0.0.${tstamp}
+Bundle-Version: 0.0.0

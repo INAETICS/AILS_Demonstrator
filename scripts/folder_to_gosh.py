@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
         # Pattern that matches version numbers in jar names, the group <vnum> 
         # is the actual version number, the total match is dash versionnumber
-        pattern = re.compile('(-)?(?P<vnum>\d+(.\d+(.\d+)?)?)')
+        pattern = re.compile('(-)?(?P<vnum>\d+(.\d+(.\d+)?)?)\.jar')
 
         for jar in files:
             version = 0

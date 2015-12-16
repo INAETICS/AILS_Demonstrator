@@ -1,4 +1,4 @@
-Bundle-Version: 0.0.0.${tstamp}
+Bundle-Version: 0.0.0
 Private-Package: org.inaetics.ails.impl.server.user.service
 Export-Package: org.inaetics.ails.api.server.user.service
 Bundle-Activator: org.inaetics.ails.impl.server.user.service.UserServiceActivator

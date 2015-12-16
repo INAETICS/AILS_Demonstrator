@@ -22,7 +22,7 @@ public class StreamingProfileServiceImpl implements StreamingProfileService {
     @Override
     public void add(UUIDWiFiProfile uuidWiFiProfile) {
         // Simply store the received uuidWiFiProfile in the Buffer.
-        buffer.add(Preconditions.checkNotNull(uuidWiFiProfile));
+        buffer.add(Preconditions.checkNotNull(uuidWiFiProfile, "uuid wifi profile not set"));
     }
 
 }

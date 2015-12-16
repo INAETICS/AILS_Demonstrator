@@ -1,1 +1,2 @@
 Export-Package: org.inaetics.ails.api.server.user.extended_datastore
+Bundle-Version: 0.1.0

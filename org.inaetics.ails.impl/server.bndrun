@@ -8,33 +8,20 @@
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
-	osgi.identity;filter:='(osgi.identity=com.google.guava)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.dependencymanager)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.dependencymanager.runtime)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.dependencymanager.shell)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_buffer)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_dao)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_location_profile_miner)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_location_profile_service_impl)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_location_provider_service_impl)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_streaming_profile_miner)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_streaming_profile_service_impl)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_user_extendeddatastore_impl)',\
-	osgi.identity;filter:='(osgi.identity=AILS_impl.server_user_service_impl)'
+	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.impl.server.buffer)',\
+	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.impl.server.database)',\
+	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.impl.server.location.provider)',\
+	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.impl.server.location_profile.miner)',\
+	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.impl.server.location_profile.service)',\
+	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.impl.server.streaming_profile.miner)',\
+	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.impl.server.streaming_profile.service)',\
+	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.impl.server.user.extended_datastore)',\
+	osgi.identity;filter:='(osgi.identity=org.inaetics.ails.impl.server.users.service)'
 -resolve: auto
 -runbundles: \
-	AILS.common_model;version=snapshot,\
-	AILS.server_user_datastore_api;version=snapshot,\
-	AILS_impl.server_buffer;version=snapshot,\
-	AILS_impl.server_dao;version=snapshot,\
-	AILS_impl.server_location_profile_miner;version=snapshot,\
-	AILS_impl.server_location_profile_service_impl;version=snapshot,\
-	AILS_impl.server_location_provider_service_impl;version=snapshot,\
-	AILS_impl.server_streaming_profile_miner;version=snapshot,\
-	AILS_impl.server_streaming_profile_service_impl;version=snapshot,\
-	AILS_impl.server_user_extendeddatastore_impl;version=snapshot,\
-	AILS_impl.server_user_service_impl;version=snapshot,\
-	com.google.guava;version='[13.0.1,13.0.2)',\
 	com.google.guava;version='[18.0.0,18.0.1)',\
 	org.apache.felix.configadmin;version='[1.8.8,1.8.9)',\
 	org.apache.felix.dependencymanager;version='[4.1.0,4.1.1)',\
@@ -43,4 +30,15 @@
 	org.apache.felix.gogo.command;version='[0.14.0,0.14.1)',\
 	org.apache.felix.gogo.runtime;version='[0.16.2,0.16.3)',\
 	org.apache.felix.gogo.shell;version='[0.10.0,0.10.1)',\
-	org.apache.felix.metatype;version='[1.1.2,1.1.3)'
+	org.apache.felix.metatype;version='[1.1.2,1.1.3)',\
+	org.inaetics.ails.api.common.model;version=snapshot,\
+	org.inaetics.ails.api.server.user.datastore;version=snapshot,\
+	org.inaetics.ails.impl.server.buffer;version=snapshot,\
+	org.inaetics.ails.impl.server.database;version=snapshot,\
+	org.inaetics.ails.impl.server.location.provider;version=snapshot,\
+	org.inaetics.ails.impl.server.location_profile.miner;version=snapshot,\
+	org.inaetics.ails.impl.server.location_profile.service;version=snapshot,\
+	org.inaetics.ails.impl.server.streaming_profile.miner;version=snapshot,\
+	org.inaetics.ails.impl.server.streaming_profile.service;version=snapshot,\
+	org.inaetics.ails.impl.server.user.extended_datastore;version=snapshot,\
+	org.inaetics.ails.impl.server.users.service;version=snapshot
