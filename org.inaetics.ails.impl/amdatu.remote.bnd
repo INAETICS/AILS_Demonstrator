@@ -1,0 +1,4 @@
+Export-Package: \
+	org.amdatu.remote.admin.http,\
+	org.amdatu.remote.discovery.etcd,\
+	org.amdatu.remote.topology.promiscuous
