@@ -36,14 +36,18 @@ configurations {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
 
-    compile group: 'com.google.guava', name: 'guava', version:'18.0'
-    compile 'org.apache.felix:org.apache.felix.dependencymanager:4.2.0'
-    compile 'org.apache.felix:org.apache.felix.framework:5.4.0'
+    compile group: 'com.google.guava', name: 'guava', version: '18.0'
 
+    compile fileTree(dir: '../../org.inaetics.ails.api/generated',
+            include: 'org.inaetics.ails.api.server.*.jar')
     compile fileTree(dir: '../../org.inaetics.ails.api/generated',
             include: 'org.inaetics.ails.api.common.model.jar')
     compile fileTree(dir: '../../org.inaetics.ails.impl/generated',
             include: 'org.inaetics.ails.impl.client.*.jar')
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'org.apache.felix:org.apache.felix.dependencymanager:4.2.0'
+    compile 'org.apache.felix:org.apache.felix.framework:5.4.0'
+    compile 'org.apache.felix:org.apache.felix.configadmin:1.0.1'
+    compile 'com.android.support:design:23.1.1'
 }

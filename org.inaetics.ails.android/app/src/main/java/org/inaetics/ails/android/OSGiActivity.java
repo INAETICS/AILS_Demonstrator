@@ -4,31 +4,21 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import org.apache.felix.dm.DependencyManager;
-import org.apache.felix.framework.Felix;
-import org.apache.felix.framework.util.FelixConstants;
-import org.inaetics.ails.android.wifi_factory.WiFiProfileFactoryActivatorAndroid;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
-import org.osgi.framework.Constants;
-
-import java.io.File;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
- * This activity manages the startup of Felix, the dependency manager and the bundle context.
+ * This class manages the Felix component lifecycle of any Android Activity.
  * It makes sure that the init, start, stop and destroy methods are called at the correct moments.
+ * FelixManager is used to manage the Felix framework.
  *
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
+ * @version 0.2.0
  * @since 09-12-2015
  */
 public abstract class OSGiActivity extends AppCompatActivity {
 
-    private Felix felix;
-    private BundleContext bundleContext;
-    private DependencyManager dependencyManager;
+    public FelixManager felixManager;
 
     /**
      * This method is similar to the Felix lifecycle method init.
@@ -81,35 +71,11 @@ public abstract class OSGiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Map<String, Object> config = new HashMap<>();
-
-        // Cache File for bundle storage
-        File cache = new File("/data/data/org.inaetics.ails.android/felixcache");
-        System.out.println("Creating cache: " + cache.mkdirs());
-        config.put(Constants.FRAMEWORK_STORAGE, cache.toString());
-
-        // Framework bundle
-        config.put(FelixConstants.SERVICE_URLHANDLERS_PROP, "false");
-        config.put("org.osgi.framework.bundle.parent", "framework");
-
-        // Bundle Activators
-        config.put(FelixConstants.SYSTEMBUNDLE_ACTIVATORS_PROP, Arrays.asList(
-                new WiFiProfileFactoryActivatorAndroid(getApplicationContext())
-        ));
-
-        // Startup Felix
-        felix = new Felix(config);
-        try {
-            felix.start();
-        } catch (BundleException e) {
-            throw new RuntimeException("Felix could not be started", e);
-        }
-
-        bundleContext = felix.getBundleContext();
-        dependencyManager = new DependencyManager(bundleContext);
+        FelixManager.configure(getApplicationContext());
+        felixManager = FelixManager.getInstance();
 
         // init the bundle
-        init(bundleContext, dependencyManager);
+        init(felixManager.getBundleContext(), felixManager.getDependencyManager());
     }
 
     /**
@@ -119,17 +85,27 @@ public abstract class OSGiActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         // destroy the bundle
-        destroy(bundleContext, dependencyManager);
+        destroy(felixManager.getBundleContext(), felixManager.getDependencyManager());
 
         // Stop Felix
         try {
-            felix.stop();
+            felixManager.stopFelix();
         } catch (BundleException e) {
-            throw new RuntimeException("Felic could not be stopped", e);
+            throw new RuntimeException("Felix could not be stopped", e);
         }
 
         // destroy the activity
         super.onDestroy();
+    }
+
+    /**
+     * Check if a service is available.
+     *
+     * @param clazz The class of the service that is checked for availability.
+     * @return true if the service is available, otherwise false.
+     */
+    protected boolean isServiceAvailable(Class clazz) {
+        return felixManager.getBundleContext().getServiceReference(clazz) != null;
     }
 
 }

@@ -23,5 +23,8 @@
 	org.inaetics.ails.api.server.streaming_profile.service;version=latest,\
 	org.inaetics.ails.api.server.user.datastore;version=latest,\
 	org.inaetics.ails.api.server.user.extended_datastore;version=latest,\
-	org.inaetics.ails.api.server.user.service;version=latest
+	org.inaetics.ails.api.server.user.service;version=latest,\
+	org.amdatu.remote.admin.http;version=latest,\
+	org.amdatu.remote.discovery.etcd;version=latest,\
+	org.amdatu.remote.topology.promiscuous;version=latest
 -sub: *.bnd

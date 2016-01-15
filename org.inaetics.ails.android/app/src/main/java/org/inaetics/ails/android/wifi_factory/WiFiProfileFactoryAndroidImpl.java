@@ -1,11 +1,10 @@
 package org.inaetics.ails.android.wifi_factory;
 
+import com.google.common.base.Optional;
+
 import android.content.Context;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
-import android.util.Log;
-
-import com.google.common.base.Optional;
 
 import org.inaetics.ails.api.client.model.wifi_profile_factory.WiFiProfileFactory;
 import org.inaetics.ails.api.common.model.AccessPoint;
@@ -18,11 +17,11 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * The ProfileFactoryImpl class provides an implementation of the {@link WiFiProfileFactory
- * WiFiProfileFactory}
+ * The WiFiProfileFactoryAndroidImpl class provides an implementation of the
+ * {@link WiFiProfileFactory} specifically for Android.
  *
  * @author L. Buit, N. Korthout, J. Naus
- * @version 2.0.0
+ * @version 2.0.1
  * @since 05-11-2015
  */
 public class WiFiProfileFactoryAndroidImpl extends WiFiProfileFactoryImpl {
