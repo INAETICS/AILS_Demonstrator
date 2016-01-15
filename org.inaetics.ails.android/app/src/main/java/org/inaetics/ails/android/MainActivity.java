@@ -1,14 +1,16 @@
 package org.inaetics.ails.android;
 
-import com.google.common.base.Optional;
-
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.apache.felix.dm.DependencyManager;
 import org.inaetics.ails.api.client.model.wifi_profile_factory.WiFiProfileFactory;
-import org.inaetics.ails.api.common.model.AccessPointMeasurement;
-import org.inaetics.ails.api.common.model.WiFiProfile;
+import org.inaetics.ails.api.server.user.service.UserService;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -18,14 +20,13 @@ import org.osgi.framework.BundleContext;
  * due to its superclass OSGiActivity.
  *
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
+ * @version 0.1.2
  * @since 09-12-2015
  */
 public class MainActivity extends OSGiActivity {
 
     private volatile WiFiProfileFactory wiFiProfileFactory;
-
-    private TextView text;
+    private volatile UserService userService;
 
     @Override
     protected void init(BundleContext context, DependencyManager manager) {
@@ -34,40 +35,56 @@ public class MainActivity extends OSGiActivity {
                         .setImplementation(this)
                         .add(manager.createServiceDependency()
                                 .setService(WiFiProfileFactory.class)
+                                .setRequired(true))
+                        .add(manager.createServiceDependency()
+                                .setService(UserService.class)
                                 .setRequired(false))
         );
     }
 
     @Override
     void start() {
-        text = new TextView(this);
-        setContentView(text);
+        final Context applicationContext = this;
 
-        if (wiFiProfileFactory != null) {
-            Optional<WiFiProfile> profile = wiFiProfileFactory.getProfile();
-            if (profile.isPresent())  {
-                StringBuilder measurements = new StringBuilder();
-                for (AccessPointMeasurement measurement : profile.get().getAccessPointMeasurements()) {
-                    String accessPointMac = new String(measurement.getAccessPoint().getMac());
-                    measurements.append(accessPointMac)
-                            .append(": ")
-                            .append(measurement.getMeasurementValue())
-                            .append("\n");
-                }
-                text.setText("Access Point Measurements:\n" + measurements);
+        LinearLayout content = new LinearLayout(applicationContext);
+        content.setOrientation(LinearLayout.VERTICAL);
+        setContentView(content);
 
-            } else {
-                text.setText("No WiFi Profile available.");
+        TextView textView = new TextView(applicationContext);
+        StringBuilder textBuilder = new StringBuilder("Main activity\n");
+        textView.setText(textBuilder.toString());
+        content.addView(textView);
+
+        Button nextActivityButton = new Button(applicationContext);
+        nextActivityButton.setText("Next activity");
+        nextActivityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(applicationContext, SecondActivity.class));
             }
+        });
+        content.addView(nextActivityButton);
+
+        // Check WiFiProfileFactory dependency
+        if (isServiceAvailable(WiFiProfileFactory.class)) {
+            textBuilder.append("Wifi profile factory available\n");
         } else {
-            text.setText("WiFiProfileFactory is null");
+            textBuilder.append("Wifi profile factory not available\n");
         }
 
+        // Check UserService dependency
+        if (isServiceAvailable(UserService.class)) {
+            textBuilder.append("User service available\n");
+        } else {
+            textBuilder.append("User service not available\n");
+        }
+
+        textView.setText(textBuilder.toString());
     }
 
     @Override
     void stop() {
-        text.setText("Stopping....");
+
     }
 
     @Override

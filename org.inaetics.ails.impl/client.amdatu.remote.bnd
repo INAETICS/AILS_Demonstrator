@@ -1,8 +1,14 @@
 Export-Package: \
-	org.amdatu.remote.admin.http,\
+	org.amdatu.remote.topology,\
+	org.amdatu.remote.discovery,\
+	org.amdatu.remote.admin,\
 	org.amdatu.remote.discovery.etcd,\
-	org.amdatu.remote.topology.promiscuous
+	org.amdatu.remote.topology.promiscuous,\
+	org.amdatu.remote.admin.http
 Private-Package: \
-	org.amdatu.remote.admin.http,\
+	org.amdatu.remote.topology,\
+	org.amdatu.remote.discovery,\
+	org.amdatu.remote.admin,\
 	org.amdatu.remote.discovery.etcd,\
-	org.amdatu.remote.topology.promiscuous
+	org.amdatu.remote.topology.promiscuous,\
+	org.amdatu.remote.admin.http
