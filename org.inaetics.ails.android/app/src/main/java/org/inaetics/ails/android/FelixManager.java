@@ -24,7 +24,7 @@ import java.util.Map;
  * It can be used to request the BundleContext or the DependencyManager
  *
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.1
+ * @version 0.1.2
  * @since 13-01-2016
  */
 public class FelixManager {
@@ -86,9 +86,9 @@ public class FelixManager {
         // Bundle Activators
         config.put(FelixConstants.SYSTEMBUNDLE_ACTIVATORS_PROP, Arrays.asList(
                 // Amdatu remote services bundles
-//                new org.amdatu.remote.admin.http.Activator(),
-//                new org.amdatu.remote.discovery.etcd.Activator(),
-//                new org.amdatu.remote.topology.promiscuous.Activator(),
+                new org.amdatu.remote.admin.http.Activator(),
+                new org.amdatu.remote.discovery.etcd.Activator(),
+                new org.amdatu.remote.topology.promiscuous.Activator(),
 
                 // AILS bundles
                 new DeviceControllerActivator(),

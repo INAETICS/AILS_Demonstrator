@@ -1,14 +1,16 @@
 package org.inaetics.ails.android;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.Context;
+import android.os.Build;
 import android.support.design.widget.Snackbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import org.apache.felix.dm.DependencyManager;
 import org.inaetics.ails.api.client.controllers.device.DeviceController;
@@ -21,13 +23,18 @@ import org.osgi.framework.BundleContext;
  * Trying the back button causes the app to close.
  *
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.2.0
  * @since 19-01-2016
  */
 public class RegisterActivity extends OSGiActivity {
 
     // Injected by Dependency Manager
     private volatile DeviceController deviceController;
+
+    // UI references.
+    private EditText nameView;
+    private View progressView;
+    private View registerView;
 
     @Override
     protected void init(BundleContext context, DependencyManager manager) {
@@ -43,44 +50,21 @@ public class RegisterActivity extends OSGiActivity {
     @Override
     void start() {
         Log.d("RegisterActivity", "Dependencies resolved");
-        final LinearLayout content = new LinearLayout(this);
-        content.setOrientation(LinearLayout.VERTICAL);
-        setContentView(content);
+        setContentView(R.layout.activity_register);
 
-        TextView textView = new TextView(this);
-        textView.setText("Welcome, new user. Please register your device");
-        content.addView(textView);
+        // Set up the login form.
+        nameView = (EditText) findViewById(R.id.name);
 
-        final EditText nameEditText = new EditText(this);
-        content.addView(nameEditText);
-
-        final Context applicationContext = this;
-
-        Button registerButton = new Button(this);
-        registerButton.setText("Register");
+        Button registerButton = (Button) findViewById(R.id.register_button);
         registerButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                final String name = nameEditText.getText().toString();
-                Log.d("RegisterActivity", "trying to register " + name);
-
-                if (name.isEmpty()) {
-                    Snackbar.make(content, "Please enter your name", Snackbar.LENGTH_LONG)
-                            .show();
-
-                } else {
-                    Log.d("RegisterActivity", "perform register of " + name);
-                    try {
-                        deviceController.registerUser(name);
-                        finish();
-
-                    } catch (ServerUnavailableException e) {
-                        Snackbar.make(content, "No connection could be established", Snackbar.LENGTH_LONG)
-                                .show();
-                    }
-                }
+            @Override
+            public void onClick(View view) {
+                attemptRegister();
             }
         });
-        content.addView(registerButton);
+
+        registerView = findViewById(R.id.register_form);
+        progressView = findViewById(R.id.register_progress);
     }
 
     @Override
@@ -97,4 +81,81 @@ public class RegisterActivity extends OSGiActivity {
     public void onBackPressed() {
         this.finishAffinity();
     }
+
+    private void attemptRegister() {
+        // Reset errors.
+        nameView.setError(null);
+
+        // Store values at the time of the login attempt.
+        final String name = nameView.getText().toString();
+
+        boolean cancel = false;
+        View focusView = null;
+
+        // Check for a valid email address.
+        if (TextUtils.isEmpty(name)) {
+            nameView.setError(getString(R.string.error_field_required));
+            focusView = nameView;
+            cancel = true;
+        }
+
+        if (cancel) {
+            // There was an error; don't attempt login and focus the first
+            // form field with an error.
+            focusView.requestFocus();
+        } else {
+            // Show a progress spinner, and kick off a background task to
+            // perform the user login attempt.
+            showProgress(true);
+            Log.d("RegisterActivity", "Perform register");
+
+            try {
+                deviceController.registerUser(name);
+                finish();
+
+            } catch (ServerUnavailableException e) {
+                showProgress(false);
+                Snackbar.make(registerView, R.string.server_unavailable, Snackbar.LENGTH_LONG)
+                        .show();
+                Log.w("RegisterActivity", e);
+            }
+        }
+    }
+
+    /**
+     * Shows the progress UI and hides the register form.
+     */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
+    private void showProgress(final boolean show) {
+        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
+        // for very easy animations. If available, use these APIs to fade-in
+        // the progress spinner.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
+            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
+
+            registerView.setVisibility(show ? View.GONE : View.VISIBLE);
+            registerView.animate().setDuration(shortAnimTime).alpha(
+                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    registerView.setVisibility(show ? View.GONE : View.VISIBLE);
+                }
+            });
+
+            progressView.setVisibility(show ? View.VISIBLE : View.GONE);
+            progressView.animate().setDuration(shortAnimTime).alpha(
+                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    progressView.setVisibility(show ? View.VISIBLE : View.GONE);
+                }
+            });
+        } else {
+            // The ViewPropertyAnimator APIs are not available, so simply show
+            // and hide the relevant UI components.
+            progressView.setVisibility(show ? View.VISIBLE : View.GONE);
+            registerView.setVisibility(show ? View.GONE : View.VISIBLE);
+        }
+    }
+
 }
