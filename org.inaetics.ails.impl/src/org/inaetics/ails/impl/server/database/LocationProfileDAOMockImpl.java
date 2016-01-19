@@ -43,8 +43,8 @@ public class LocationProfileDAOMockImpl implements LocationProfileDAO {
     @Override
     public void update(LocationProfile locationProfile) {
         Preconditions.checkNotNull(locationProfile, "location profile is not set");
-        Preconditions.checkArgument(locationProfile.getKey() > -1, "key is not set");
-        storage.put(locationProfile.getKey(), locationProfile);
+        Preconditions.checkArgument(locationProfile.retrieveKey() > -1, "key is not set");
+        storage.put(locationProfile.retrieveKey(), locationProfile);
     }
 
     @Override

@@ -12,8 +12,12 @@ import com.google.common.base.Preconditions;
  */
 public class AccessPointMeasurement {
 
-    private final AccessPoint accessPoint;
-    private final int measurementValue;
+    private AccessPoint accessPoint;
+    private int measurementValue;
+    
+    public AccessPointMeasurement() {
+        // Empty constructor for Jackson
+    }
 
     /**
      * Constructor for AccessPointMeasurement.
@@ -42,5 +46,20 @@ public class AccessPointMeasurement {
      */
     public int getMeasurementValue() {
         return measurementValue;
+    }
+    
+
+    // Below setters only exist for Jackson
+
+    public void setAccessPoint(AccessPoint accessPoint) {
+        this.accessPoint = accessPoint;
+    }
+
+    public void setMeasurementValue(int measurementValue) {
+        this.measurementValue = measurementValue;
+    }  
+    
+    public String toString() {
+        return "AccessPointMeasurement{access_point: " + this.accessPoint + ", measurement_value: " + this.measurementValue +  "}";
     }
 }

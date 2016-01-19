@@ -44,7 +44,7 @@ public class UUIDLocationDAOMockImpl implements UUIDLocationDAO {
     @Override
     public void update(UUIDLocation uuidLocation) {
         Preconditions.checkNotNull(uuidLocation, "uuid location is not set");
-        storage.put(uuidLocation.getKey(), uuidLocation);
+        storage.put(uuidLocation.retrieveKey(), uuidLocation);
     }
 
     @Override

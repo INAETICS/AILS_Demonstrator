@@ -43,8 +43,8 @@ public class RawLocationProfileDAOMockImpl implements RawLocationProfileDAO {
     @Override
     public void update(RawLocationProfile rawLocationProfile) {
         Preconditions.checkNotNull(rawLocationProfile, "raw location profile is not set");
-        Preconditions.checkArgument(rawLocationProfile.getKey() > -1, "key is not set");
-        storage.put(rawLocationProfile.getKey(), rawLocationProfile);
+        Preconditions.checkArgument(rawLocationProfile.retrieveKey() > -1, "key is not set");
+        storage.put(rawLocationProfile.retrieveKey(), rawLocationProfile);
     }
 
     @Override

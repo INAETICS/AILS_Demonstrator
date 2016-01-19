@@ -11,10 +11,14 @@ import com.google.common.base.Preconditions;
  */
 public class Location {
 
-    private final String area;
-    private final String building;
-    private final String site;
-    private final String organization;
+    private String area;
+    private String building;
+    private String site;
+    private String organization;
+    
+    public Location () {
+        // Empty constructor for Jackson
+    }
 
     /**
      * Constructor of a Location.
@@ -67,5 +71,27 @@ public class Location {
     public String getOrganization() {
         return organization;
     }
+    
+    // Below setters only exist for Jackson
 
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public void setBuilding(String building) {
+        this.building = building;
+    }
+
+    public void setSite(String site) {
+        this.site = site;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+    
+    
+    public String toString() {
+        return "Location{area: " + this.area + ", building: " + this.building + ", site: " + this.site + ", organization: " + this.organization +  "}";
+    }
 }

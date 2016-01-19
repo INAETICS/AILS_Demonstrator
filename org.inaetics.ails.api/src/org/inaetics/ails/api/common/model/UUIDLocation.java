@@ -15,8 +15,12 @@ import com.google.common.base.Preconditions;
  */
 public class UUIDLocation implements Key<UUID> {
 
-    private final UUID uuid;
-    private final Location location;
+    private UUID uuid;
+    private Location location;
+    
+    public UUIDLocation() {
+        // Empty constructor for Jackson
+    }
 
     /**
      * Constructor
@@ -52,8 +56,21 @@ public class UUIDLocation implements Key<UUID> {
      * @since 0.2.0
      */
     @Override
-    public UUID getKey() {
+    public UUID retrieveKey() {
         return uuid;
     }
+    
+
+    // Below setters only exist for Jackson
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+    
+    
 
 }

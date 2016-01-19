@@ -43,8 +43,8 @@ public class UUIDWiFiProfileDAOMockImpl implements UUIDWiFiProfileDAO {
     @Override
     public void update(UUIDWiFiProfile uuidWiFiProfile) {
         Preconditions.checkNotNull(uuidWiFiProfile, "uuid wifi profile is not set");
-        Preconditions.checkArgument(uuidWiFiProfile.getKey() > -1, "key is not set");
-        storage.put(uuidWiFiProfile.getKey(), uuidWiFiProfile);
+        Preconditions.checkArgument(uuidWiFiProfile.retrieveKey() > -1, "key is not set");
+        storage.put(uuidWiFiProfile.retrieveKey(), uuidWiFiProfile);
     }
 
     @Override

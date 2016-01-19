@@ -2,6 +2,7 @@ package org.inaetics.ails.api.common.model;
 
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.Preconditions;
 
 /**
@@ -13,9 +14,13 @@ import com.google.common.base.Preconditions;
  */
 public class User implements Key<UUID> {
 
-    private final UUID uuid;
-    private final String name;
-    private final Accuracy accuracy;
+    private UUID uuid;
+    private String name;
+    private Accuracy accuracy;
+    
+    public User () {
+        // Empty constructor for Jackson
+    }
 
     /**
      * Constructor for User.
@@ -59,8 +64,22 @@ public class User implements Key<UUID> {
     }
 
     @Override
-    public UUID getKey() {
+    public UUID retrieveKey() {
         return uuid;
+    }
+    
+    // Below setters only exist for Jackson
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAccuracy(Accuracy accuracy) {
+        this.accuracy = accuracy;
     }
 
     /**

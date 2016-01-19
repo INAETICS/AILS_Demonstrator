@@ -15,8 +15,12 @@ import com.google.common.base.Preconditions;
  */
 public class WiFiProfile {
 
-    private final Instant creationDate;
-    private final List<AccessPointMeasurement> accessPointMeasurements;
+    private Instant creationDate;
+    private List<AccessPointMeasurement> accessPointMeasurements;
+    
+    public WiFiProfile() {
+        // empty constructor for Jackson
+    }
 
     /**
      * Constructor for WiFiProfile.
@@ -61,5 +65,20 @@ public class WiFiProfile {
     public List<AccessPointMeasurement> getAccessPointMeasurements() {
         return accessPointMeasurements;
     }
+    
 
+    // Below setters only exist for Jackson
+
+    public void setCreationDate(Instant creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public void setAccessPointMeasurements(List<AccessPointMeasurement> accessPointMeasurements) {
+        this.accessPointMeasurements = accessPointMeasurements;
+    }
+    
+    
+    public String toString() {
+        return "WiFiProfile{instant: " + this.creationDate + ", accessPointMeasurements: " + this.accessPointMeasurements.toString() + "}";
+    }
 }

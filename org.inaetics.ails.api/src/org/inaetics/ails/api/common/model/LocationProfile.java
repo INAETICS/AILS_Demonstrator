@@ -14,10 +14,14 @@ import com.google.common.base.Preconditions;
 public class LocationProfile implements Key<Integer> {
 
     // Used to reference the object in persistence
-    private final int storageIndex;
+    private int storageIndex;
 
-    private final WiFiProfile wifiProfile;
-    private final Location location;
+    private WiFiProfile wifiProfile;
+    private Location location;
+    
+    public LocationProfile() {
+        // Empty constructor for Jackson
+    }
 
     /**
      * Constructor for LocationProfile.
@@ -60,8 +64,25 @@ public class LocationProfile implements Key<Integer> {
      * @since 1.0.0
      */
     @Override
-    public Integer getKey() {
+    public Integer retrieveKey() {
         return storageIndex;
     }
+    
+
+    // Below setters only exist for Jackson
+
+    public void setStorageIndex(int storageIndex) {
+        this.storageIndex = storageIndex;
+    }
+
+    public void setWifiProfile(WiFiProfile wifiProfile) {
+        this.wifiProfile = wifiProfile;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+    
+    
 
 }

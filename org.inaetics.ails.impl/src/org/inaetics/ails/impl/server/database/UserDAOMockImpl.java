@@ -44,7 +44,7 @@ public class UserDAOMockImpl implements UserDAO {
     @Override
     public void update(User user) {
         Preconditions.checkNotNull(user, "user is not set");
-        storage.put(user.getKey(), user);
+        storage.put(user.retrieveKey(), user);
     }
 
     @Override

@@ -3,7 +3,7 @@
 	osgi.core;version=5.0,\
 	osgi.cmpn,\
 	org.amdatu.testing.configurator;version='[3.1,4)',\
-	org.apache.felix.dependencymanager;version='[4,5)',\
+	org.apache.felix.dependencymanager;version='[3.2,4)',\
 	org.mockito.mockito-all,\
 	org.inaetics.ails.api.client.controllers.device;version=latest,\
 	org.inaetics.ails.api.client.controllers.learning;version=latest,\
@@ -54,10 +54,10 @@ Test-Cases: ${classes;CONCRETE;EXTENDS;junit.framework.TestCase}
 	osgi.identity;filter:='(osgi.identity=org.amdatu.testing.configurator)'
 -runbundles: \
 	biz.aQute.junit;version='[3.0.0,3.0.1)',\
-	com.google.guava;version='[13.0.1,13.0.2)',\
 	com.google.guava;version='[18.0.0,18.0.1)',\
 	org.amdatu.testing.configurator;version='[3.1.0,3.1.1)',\
 	org.apache.felix.configadmin;version='[1.8.8,1.8.9)',\
+	org.apache.felix.dependencymanager;version='[3.2.0,3.2.1)',\
 	org.apache.felix.dependencymanager;version='[4.1.0,4.1.1)',\
 	org.apache.felix.log;version='[1.0.1,1.0.2)',\
 	org.apache.felix.metatype;version='[1.1.2,1.1.3)',\

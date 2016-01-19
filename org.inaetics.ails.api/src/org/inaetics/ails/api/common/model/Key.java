@@ -17,6 +17,6 @@ public interface Key<E> {
      * 
      * @return The key.
      */
-    E getKey();
+    E retrieveKey();
 
 }
