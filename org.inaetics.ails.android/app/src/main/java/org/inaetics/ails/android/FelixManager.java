@@ -8,6 +8,8 @@ import org.apache.felix.dm.DependencyManager;
 import org.apache.felix.framework.Felix;
 import org.apache.felix.framework.util.FelixConstants;
 import org.inaetics.ails.android.wifi_factory.WiFiProfileFactoryActivatorAndroid;
+import org.inaetics.ails.impl.client.controllers.device.DeviceControllerActivator;
+import org.inaetics.ails.impl.client.model.device_data_store.DeviceDataStoreActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
 import org.osgi.framework.Constants;
@@ -22,7 +24,7 @@ import java.util.Map;
  * It can be used to request the BundleContext or the DependencyManager
  *
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 13-01-2016
  */
 public class FelixManager {
@@ -84,16 +86,20 @@ public class FelixManager {
         // Bundle Activators
         config.put(FelixConstants.SYSTEMBUNDLE_ACTIVATORS_PROP, Arrays.asList(
                 // Amdatu remote services bundles
-                new org.amdatu.remote.admin.http.Activator(),
-                new org.amdatu.remote.discovery.etcd.Activator(),
-                new org.amdatu.remote.topology.promiscuous.Activator(),
+//                new org.amdatu.remote.admin.http.Activator(),
+//                new org.amdatu.remote.discovery.etcd.Activator(),
+//                new org.amdatu.remote.topology.promiscuous.Activator(),
 
                 // AILS bundles
+                new DeviceControllerActivator(),
+                new DeviceDataStoreActivator(),
+
                 new WiFiProfileFactoryActivatorAndroid(applicationContext)
         ));
 
         // Startup Felix
         felix = new Felix(config);
+        
         try {
             felix.start();
         } catch (BundleException e) {

@@ -74,7 +74,7 @@ public abstract class OSGiActivity extends AppCompatActivity {
         FelixManager.configure(getApplicationContext());
         felixManager = FelixManager.getInstance();
 
-        // init the bundle
+        // call init on the activity
         init(felixManager.getBundleContext(), felixManager.getDependencyManager());
     }
 

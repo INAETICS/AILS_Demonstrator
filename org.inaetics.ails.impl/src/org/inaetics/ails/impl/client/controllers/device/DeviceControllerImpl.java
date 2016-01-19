@@ -16,7 +16,7 @@ import com.google.common.base.Preconditions;
  * local storage and to set his/her accuracy.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.3
+ * @version 0.2.0
  * @since 05-11-2015
  */
 public class DeviceControllerImpl implements DeviceController {
@@ -29,13 +29,15 @@ public class DeviceControllerImpl implements DeviceController {
     // Injected by Dependency Manager
     private volatile UserService userService;
     private volatile DeviceDataStore deviceDataStore;
+    
+    private boolean userServiceAvailable;
 
     @Override
     public void registerUser(String name) throws ServerUnavailableException {
         if (deviceDataStore.hasUser()) {
             throw new IllegalStateException("Registered user on device, while user already exists");
         }
-        if (userService == null) {
+        if (!userServiceAvailable) {
             throw new ServerUnavailableException("UserService unavailable during register user");
         }
         Preconditions.checkNotNull(name, "name is not set");
@@ -50,5 +52,23 @@ public class DeviceControllerImpl implements DeviceController {
             throw new IllegalStateException("Userless device cannot have accuracy set");
         }
         deviceDataStore.storeAccuracy(accuracy);
+    }
+    
+    /**
+     * Callback function that is called when UserService becomes available.
+     * 
+     * @param userService The UserService that became available.
+     */
+    public void added(UserService userService) {
+        userServiceAvailable = true;
+    }
+    
+    /**
+     * Callback function that is called when UserService is removed.
+     * 
+     * @param userService The UserService that is removed.
+     */
+    public void removed(UserService userService) {
+        userServiceAvailable = false;
     }
 }
