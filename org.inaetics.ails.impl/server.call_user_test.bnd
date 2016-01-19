@@ -1,0 +1,2 @@
+Private-Package: org.inaetics.ails.impl.server.call_user_test
+Bundle-Activator: org.inaetics.ails.impl.server.call_user_test.CallUserTestActivator
