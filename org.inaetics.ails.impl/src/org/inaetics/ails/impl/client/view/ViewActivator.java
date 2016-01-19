@@ -21,8 +21,7 @@ public class ViewActivator extends DependencyActivatorBase {
 
     @Override
     public void init(BundleContext context, DependencyManager manager) throws Exception {
-        manager.add(
-                createComponent().setInterface(View.class.getName(), null)
+        manager.add(createComponent().setInterface(View.class.getName(), null)
                         .setImplementation(ViewImpl.class)
                         .add(createServiceDependency().setService(DeviceDataStore.class).setRequired(true))
                         .add(createServiceDependency().setService(DeviceController.class)
@@ -32,6 +31,11 @@ public class ViewActivator extends DependencyActivatorBase {
                         .setRequired(true))
                 .add(createServiceDependency().setService(LearningController.class)
                         .setRequired(true)));
+    }
+
+    @Override
+    public void destroy(BundleContext bundleContext, DependencyManager dependencyManager) throws Exception {
+
     }
 
 }

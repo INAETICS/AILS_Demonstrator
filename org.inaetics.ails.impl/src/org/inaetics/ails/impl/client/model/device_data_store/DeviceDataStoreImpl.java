@@ -1,6 +1,6 @@
 package org.inaetics.ails.impl.client.model.device_data_store;
 
-import java.util.Optional;
+import com.google.common.base.Optional;
 import java.util.UUID;
 
 import org.inaetics.ails.api.client.model.device_data_store.DeviceDataStore;
@@ -25,7 +25,11 @@ public class DeviceDataStoreImpl implements DeviceDataStore {
 
     @Override
     public Optional<UUID> getUUID() {
-        return user == null ? Optional.empty() : Optional.of(user.getUuid());
+        if (user == null) {
+            return Optional.absent();
+        } else {
+            return Optional.of(user.getUuid());
+        }
     }
 
     @Override

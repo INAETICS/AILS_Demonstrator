@@ -1,11 +1,11 @@
 package org.inaetics.ails.impl.server.buffer;
 
 import java.util.LinkedList;
-import java.util.Optional;
 import java.util.Queue;
 
 import org.inaetics.ails.api.server.buffer.BufferService;
 
+import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 
 /**
@@ -13,7 +13,7 @@ import com.google.common.base.Preconditions;
  * for buffering elements in a First In First Out (FIFO) order.
  *
  * @author L. Buit, N. Korthout, J. Naus
- * @version 2.0.0
+ * @version 2.0.1
  * @param <E> The type of elements this buffer can handle.
  * @since 04-11-2015
  */
@@ -40,7 +40,7 @@ public class BufferServiceFIFOImpl<E> implements BufferService<E> {
 
     @Override
     public Optional<E> remove() {
-        return Optional.ofNullable(fifoQueue.poll());
+        return Optional.fromNullable(fifoQueue.poll());
     }
 
     @Override

@@ -25,4 +25,9 @@ public class LocationControllerActivator extends DependencyActivatorBase {
                         .setRequired(true)));
     }
 
+    @Override
+    public void destroy(BundleContext bundleContext, DependencyManager dependencyManager) throws Exception {
+
+    }
+
 }

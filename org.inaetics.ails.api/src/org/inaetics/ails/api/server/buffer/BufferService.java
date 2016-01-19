@@ -1,7 +1,6 @@
 package org.inaetics.ails.api.server.buffer;
 
-import java.util.Optional;
-
+import com.google.common.base.Optional;
 /**
  * A buffer can be used to temporarily store objects before processing. The buffer provides ways to
  * add and remove elements and to check its size.

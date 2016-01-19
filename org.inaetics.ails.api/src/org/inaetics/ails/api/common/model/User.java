@@ -101,7 +101,7 @@ public class User implements Key<UUID> {
      * 
      * @param obj the reference object with which to compare.
      * @return true if this object is the same as the obj argument; false otherwise.
-     * @see java.lang.Object#equals(java.lang.Object)
+     * @see Object#equals(Object)
      */
     @Override
     public boolean equals(Object obj) {

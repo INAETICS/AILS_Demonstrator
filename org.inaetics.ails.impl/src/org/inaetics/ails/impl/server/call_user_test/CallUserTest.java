@@ -1,14 +1,11 @@
 package org.inaetics.ails.impl.server.call_user_test;
 
-import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 import org.inaetics.ails.api.common.model.AccessPoint;
 import org.inaetics.ails.api.common.model.AccessPointMeasurement;
@@ -61,7 +58,11 @@ public class CallUserTest extends TimerTask {
 			us.add("User #" + (us.getAll().size() + 1), Accuracy.BUILDING);
 
 			System.out.println("User service now has: " + us.getAll().size() + " users!");
-	    	System.out.println(us.getAll().stream().map(x -> x.getName()).collect(Collectors.joining(",")));
+			
+			for (User u : us.getAll()) {
+				System.out.println(u.getName() + ",");
+			}
+			System.out.println();
 			
 			this.currentStatus = Status.CREATING_ACCESS_POINTS;
 			break;
@@ -73,13 +74,15 @@ public class CallUserTest extends TimerTask {
 			this.currentStatus = Status.ADDING_STREAMING_PROFILES;
 			break;
 		case ADDING_STREAMING_PROFILES:
+			List<AccessPointMeasurement> measures = new ArrayList<>();
+			
+			for (AccessPoint ap : apList.subList(rand.nextInt(6), rand.nextInt(6) + 11)) {
+				measures.add(new AccessPointMeasurement(ap, rand.nextInt()));
+			}
+			
 			UUIDWiFiProfile prof = new UUIDWiFiProfile(
 					counter++,
-					new WiFiProfile(Instant.now(), 
-							apList.subList(rand.nextInt(6), rand.nextInt(6) + 11).stream()
-								.map(x -> { 
-									return new AccessPointMeasurement(x, rand.nextInt());
-								}).collect(Collectors.toList())),
+					new WiFiProfile(new Date(), measures),
 					us.getAll().get(rand.nextInt(us.getAll().size())).getUuid()
 			);
 			
@@ -92,13 +95,16 @@ public class CallUserTest extends TimerTask {
 			this.currentStatus = Status.ADDING_LOCATION_PROFILES;			
 			break;
 		case ADDING_LOCATION_PROFILES:
+			List<AccessPointMeasurement> measures2 = new ArrayList<>();
+			
+			for (AccessPoint ap : apList.subList(rand.nextInt(6), rand.nextInt(6) + 11)) {
+				measures2.add(new AccessPointMeasurement(ap, rand.nextInt()));
+			}
+			
 			RawLocationProfile rawProf = new RawLocationProfile(
 					counter++,
-					new WiFiProfile(Instant.now(), 
-							apList.subList(rand.nextInt(6), rand.nextInt(6) + 11).stream()
-								.map(x -> { 
-									return new AccessPointMeasurement(x, rand.nextInt());
-								}).collect(Collectors.toList())),				
+					new WiFiProfile(new Date(), 
+							measures2),				
 					new Location("Area#"+counter, "Building#"+counter, "Site#"+counter, "Organisation#"+counter)
 			);		
 			lps.add(rawProf);

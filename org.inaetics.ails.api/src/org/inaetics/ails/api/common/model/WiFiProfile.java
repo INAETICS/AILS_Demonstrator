@@ -1,10 +1,10 @@
 package org.inaetics.ails.api.common.model;
 
-import java.time.Instant;
+import com.google.common.base.Preconditions;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Representation of a WiFi Profile.
@@ -14,8 +14,7 @@ import com.google.common.base.Preconditions;
  * @since 22-10-2015
  */
 public class WiFiProfile {
-
-    private Instant creationDate;
+    private Date creationDate;
     private List<AccessPointMeasurement> accessPointMeasurements;
     
     public WiFiProfile() {
@@ -29,7 +28,7 @@ public class WiFiProfile {
      * @param accessPointMeasurements @NotNull List of AccessPointMeasurements belonging to this
      *        WiFiProfile.
      */
-    public WiFiProfile(Instant creationDate, List<AccessPointMeasurement> accessPointMeasurements) {
+    public WiFiProfile(Date creationDate, List<AccessPointMeasurement> accessPointMeasurements) {
         super();
         this.creationDate = Preconditions.checkNotNull(creationDate, "creationDate is not set");
         this.accessPointMeasurements = Preconditions.checkNotNull(accessPointMeasurements,
@@ -53,7 +52,7 @@ public class WiFiProfile {
      *
      * @return the creationDate
      */
-    public Instant getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
 
@@ -69,7 +68,7 @@ public class WiFiProfile {
 
     // Below setters only exist for Jackson
 
-    public void setCreationDate(Instant creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 

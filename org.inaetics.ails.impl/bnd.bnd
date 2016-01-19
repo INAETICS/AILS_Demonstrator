@@ -5,11 +5,15 @@
 	org.apache.felix.dependencymanager.shell;version='[3.2,4)',\
 	com.google.guava;version='[18.0,19)',\
 	org.apache.felix.dependencymanager.runtime,\
+	org.amdatu.remote.admin.http;version=latest,\
+	org.amdatu.remote.discovery.etcd;version=latest,\
+	org.amdatu.remote.topology.promiscuous;version=latest,\
 	org.inaetics.ails.api.client.controllers.device;version=latest,\
 	org.inaetics.ails.api.client.controllers.learning;version=latest,\
 	org.inaetics.ails.api.client.controllers.location;version=latest,\
 	org.inaetics.ails.api.client.controllers.streaming_wifi_profiles;version=latest,\
 	org.inaetics.ails.api.client.controllers.users;version=latest,\
+	org.inaetics.ails.api.client.exceptions;version=latest,\
 	org.inaetics.ails.api.client.model.device_data_store;version=latest,\
 	org.inaetics.ails.api.client.model.wifi_profile_factory;version=latest,\
 	org.inaetics.ails.api.client.view;version=latest,\

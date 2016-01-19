@@ -1,6 +1,7 @@
 package org.inaetics.ails.api.client.model.wifi_profile_factory;
 
-import java.util.Optional;
+import com.google.common.base.Optional;
+
 import org.inaetics.ails.api.common.model.WiFiProfile;
 
 /**
@@ -18,5 +19,5 @@ public interface WiFiProfileFactory {
      * @return An optional containing the current WiFi profile of the device if the operation
      *         succeeded, otherwise returns an empty optional.
      */
-    public Optional<WiFiProfile> getProfile();
+    Optional<WiFiProfile> getProfile();
 }

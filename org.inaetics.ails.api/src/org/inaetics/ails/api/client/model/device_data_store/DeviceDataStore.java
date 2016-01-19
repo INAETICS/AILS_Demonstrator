@@ -1,7 +1,8 @@
 package org.inaetics.ails.api.client.model.device_data_store;
 
-import java.util.Optional;
 import java.util.UUID;
+
+import com.google.common.base.Optional;
 
 import org.inaetics.ails.api.common.model.Accuracy;
 import org.inaetics.ails.api.common.model.User;

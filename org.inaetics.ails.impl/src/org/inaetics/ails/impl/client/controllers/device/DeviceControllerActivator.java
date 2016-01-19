@@ -11,7 +11,7 @@ import org.inaetics.ails.api.server.user.service.UserService;
  * The DeviceControllerActivator starts the {@link DeviceController DeviceController}.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 04-11-2015
  */
 public class DeviceControllerActivator extends DependencyActivatorBase {
@@ -20,8 +20,15 @@ public class DeviceControllerActivator extends DependencyActivatorBase {
     public void init(BundleContext context, DependencyManager dm) throws Exception {
         dm.add(createComponent().setInterface(DeviceController.class.getName(), null)
                 .setImplementation(DeviceControllerImpl.class)
-                .add(createServiceDependency().setService(UserService.class).setRequired(true))
                 .add(createServiceDependency().setService(DeviceDataStore.class)
-                        .setRequired(true)));
+                        .setRequired(true))
+                .add(createServiceDependency().setService(UserService.class)
+                        .setRequired(false)
+                        .setCallbacks("added", "removed")));
+    }
+
+    @Override
+    public void destroy(BundleContext bundleContext, DependencyManager dependencyManager) throws Exception {
+
     }
 }

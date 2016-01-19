@@ -14,7 +14,7 @@ import org.inaetics.ails.api.server.streaming_profile.service.StreamingProfileSe
  * StreamingWiFiProfileController} bundle.
  * 
  * @author L. Buit, N. Korthout, J. Naus
- * @version 0.1.0
+ * @version 0.1.1
  * @since 11-11-2015
  */
 public class StreamingWiFiProfilesControllerActivator extends DependencyActivatorBase {
@@ -27,8 +27,13 @@ public class StreamingWiFiProfilesControllerActivator extends DependencyActivato
                 .add(createServiceDependency().setService(WiFiProfileFactory.class)
                         .setRequired(true))
                 .add(createServiceDependency().setService(StreamingProfileService.class)
-                        .setRequired(true))
+                        .setRequired(false))
                 .add(createServiceDependency().setService(DeviceDataStore.class)
                         .setRequired(true)));
+    }
+
+    @Override
+    public void destroy(BundleContext bundleContext, DependencyManager dependencyManager) throws Exception {
+
     }
 }

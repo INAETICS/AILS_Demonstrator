@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.inaetics.ails.api.common.model.LocationProfile;
 import org.inaetics.ails.api.server.database.DAO;
 import org.inaetics.ails.api.server.database.LocationProfileDAO;
 
+import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 
 /**
@@ -50,7 +50,7 @@ public class LocationProfileDAOMockImpl implements LocationProfileDAO {
     @Override
     public Optional<LocationProfile> find(Integer key) {
         Preconditions.checkArgument(key > -1, "key is not set");
-        return Optional.ofNullable(storage.get(key));
+        return Optional.fromNullable(storage.get(key));
     }
 
     @Override
