@@ -45,7 +45,7 @@ dependencies {
 
     compile 'org.apache.felix:org.apache.felix.framework:5.4.0'
     compile 'org.apache.felix:org.apache.felix.dependencymanager:4.2.0'
-    //    compile 'org.apache.felix:org.apache.felix.configadmin:1.0.1'
+    compile 'org.apache.felix:org.apache.felix.configadmin:1.0.1'
 
     compile fileTree(include: 'org.inaetics.ails.api.server.*.jar', dir: '../../org.inaetics.ails.api/generated')
     compile fileTree(include: 'org.inaetics.ails.api.common.model.jar', dir: '../../org.inaetics.ails.api/generated')
